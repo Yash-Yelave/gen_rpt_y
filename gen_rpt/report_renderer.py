@@ -57,92 +57,107 @@ body {{
 }}
 .content-area {{ margin-top:0.30in; }}
 
-/* Running head */
+/* Running head — stable table layout avoids flex collision */
 .run-head {{
     position:absolute;
     top:0.14in;
     left:{PAD_X}in;
     right:{PAD_X}in;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    padding-bottom:0.04in;
     border-bottom:0.6pt solid var(--line);
+    padding-bottom:0.04in;
+    display:table;
+    width:{PAGE_W - PAD_X * 2}in;
+}}
+.run-head-inner {{
+    display:table;
+    width:100%;
 }}
 .run-head-brand {{
+    display:table-cell;
     font-size:6.5pt;
     font-weight:700;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--accent);
-}}
-.run-head-label {{
-    font-size:6.5pt;
-    color:var(--muted);
     letter-spacing:0.06em;
     text-transform:uppercase;
+    color:var(--accent);
+    vertical-align:bottom;
+    white-space:nowrap;
+}}
+.run-head-label {{
+    display:table-cell;
+    text-align:right;
+    font-size:6.5pt;
+    color:var(--muted);
+    letter-spacing:0;
     font-weight:500;
+    white-space:nowrap;
+    vertical-align:bottom;
 }}
 .logo-fixed {{
     height:0.20in;
     width:auto;
     object-fit:contain;
+    vertical-align:bottom;
 }}
 
-/* Running foot */
+/* Running foot — table layout for stability */
 .run-foot {{
     position:absolute;
     bottom:0.12in;
     left:{PAD_X}in;
     right:{PAD_X}in;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    padding-top:0.04in;
     border-top:0.6pt solid var(--line);
+    padding-top:0.05in;
+    display:table;
+    width:{PAGE_W - PAD_X * 2}in;
 }}
 .run-foot-left {{
+    display:table-cell;
     font-size:6.5pt;
     color:var(--muted);
-    letter-spacing:0.04em;
-    font-weight:500;
+    letter-spacing:0;
+    font-weight:400;
+    white-space:nowrap;
 }}
 .run-foot-pg {{
+    display:table-cell;
+    text-align:right;
     font-size:6.5pt;
     color:var(--muted);
-    font-weight:700;
-    letter-spacing:0.06em;
+    font-weight:600;
+    letter-spacing:0;
+    white-space:nowrap;
 }}
 
-/* Type hierarchy */
-h1 {{ font-size:22pt; line-height:1.12; font-weight:300; color:var(--dark); letter-spacing:-0.02em; margin-bottom:0.16in; }}
-h2 {{ font-size:17pt; line-height:1.20; font-weight:600; color:var(--ink); letter-spacing:-0.01em; margin-bottom:0.10in; }}
-h3 {{ font-size:13pt; line-height:1.28; font-weight:600; color:var(--ink); margin-bottom:0.07in; }}
+/* Type hierarchy — tracking applied with editorial restraint */
+h1 {{ font-size:22pt; line-height:1.12; font-weight:300; color:var(--dark); letter-spacing:-0.015em; margin-bottom:0.16in; }}
+h2 {{ font-size:17pt; line-height:1.20; font-weight:600; color:var(--ink); letter-spacing:-0.005em; margin-bottom:0.10in; }}
+h3 {{ font-size:13pt; line-height:1.28; font-weight:600; color:var(--ink); letter-spacing:0; margin-bottom:0.07in; }}
 
+/* Small institutional label — tracking appropriate here */
 .chapter-label {{
     display:block;
     font-size:6.5pt;
     font-weight:700;
-    letter-spacing:0.16em;
+    letter-spacing:0.08em;
     text-transform:uppercase;
     color:var(--accent);
     margin-bottom:0.06in;
     padding-bottom:0.05in;
     border-bottom:2pt solid var(--accent2);
-    width:0.55in;
+    width:0.60in;
 }}
 .section-title {{
     font-size:17pt;
     font-weight:600;
     line-height:1.18;
     color:var(--dark);
-    letter-spacing:-0.015em;
+    letter-spacing:-0.010em;
     margin-bottom:0.07in;
     margin-top:0.04in;
 }}
 .lead {{
     font-size:10.5pt;
-    line-height:1.55;
+    line-height:1.58;
     color:var(--mid);
     font-weight:400;
     margin-bottom:0.14in;
@@ -150,9 +165,9 @@ h3 {{ font-size:13pt; line-height:1.28; font-weight:600; color:var(--ink); margi
     border-left:2.5pt solid var(--accent2);
     padding-left:0.12in;
 }}
-p {{ margin:0 0 0.12in; font-size:10pt; line-height:1.70; color:var(--ink); }}
-ul, ol {{ margin:0 0 0.12in 0.17in; padding:0; }}
-li {{ font-size:10pt; line-height:1.65; margin-bottom:0.06in; color:var(--ink); }}
+p {{ margin:0 0 0.13in; font-size:10pt; line-height:1.72; color:var(--ink); letter-spacing:0; }}
+ul, ol {{ margin:0 0 0.13in 0.17in; padding:0; }}
+li {{ font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); letter-spacing:0; }}
 
 /* Section layout */
 .section-grid {{
@@ -194,9 +209,9 @@ li {{ font-size:10pt; line-height:1.65; margin-bottom:0.06in; color:var(--ink); 
 
 /* Executive highlights */
 .highlights-label {{
-    font-size:6.5pt;
+    font-size:7pt;
     font-weight:700;
-    letter-spacing:0.14em;
+    letter-spacing:0.06em;
     text-transform:uppercase;
     color:var(--accent);
     margin-bottom:0.12in;
@@ -217,16 +232,17 @@ li {{ font-size:10pt; line-height:1.65; margin-bottom:0.06in; color:var(--ink); 
     page-break-inside:avoid;
 }}
 .highlight-card .num {{
-    font-size:6.5pt;
+    font-size:7pt;
     font-weight:700;
     color:var(--accent);
-    letter-spacing:0.05em;
+    letter-spacing:0.02em;
     margin-bottom:0.025in;
 }}
 .highlight-card .text {{
-    font-size:8pt;
-    line-height:1.48;
+    font-size:8.5pt;
+    line-height:1.52;
     color:var(--ink);
+    letter-spacing:0;
 }}
 
 /* Insight panel */
@@ -238,21 +254,21 @@ li {{ font-size:10pt; line-height:1.65; margin-bottom:0.06in; color:var(--ink); 
     page-break-inside:avoid;
 }}
 .insight-head {{
-    font-size:6.5pt;
+    font-size:7pt;
     font-weight:700;
-    letter-spacing:0.12em;
+    letter-spacing:0.06em;
     text-transform:uppercase;
     color:var(--accent);
     margin-bottom:0.06in;
 }}
 .insight-panel ul {{ margin:0; }}
-.insight-panel li {{ font-size:8pt; line-height:1.55; margin-bottom:0.04in; }}
+.insight-panel li {{ font-size:8.5pt; line-height:1.58; margin-bottom:0.04in; letter-spacing:0; }}
 
 /* TOC */
 .toc-head {{
-    font-size:6.5pt;
+    font-size:7pt;
     font-weight:700;
-    letter-spacing:0.14em;
+    letter-spacing:0.06em;
     text-transform:uppercase;
     color:var(--accent);
     margin-bottom:0.14in;
@@ -314,9 +330,9 @@ li {{ font-size:10pt; line-height:1.65; margin-bottom:0.06in; color:var(--ink); 
 }}
 .cover-brand {{
     display:block;
-    font-size:6.5pt;
+    font-size:7pt;
     font-weight:700;
-    letter-spacing:0.22em;
+    letter-spacing:0.10em;
     text-transform:uppercase;
     color:rgba(255,255,255,0.55);
     margin-bottom:0.18in;
@@ -328,40 +344,54 @@ li {{ font-size:10pt; line-height:1.65; margin-bottom:0.06in; color:var(--ink); 
     margin-bottom:0.18in;
 }}
 .cover-title {{
-    font-size:30pt;
-    line-height:1.06;
+    font-size:28pt;
+    line-height:1.08;
     font-weight:300;
     color:#ffffff;
-    letter-spacing:-0.025em;
-    margin-bottom:0.18in;
+    letter-spacing:-0.015em;
+    margin-bottom:0.16in;
 }}
 .cover-sub {{
     font-size:8pt;
-    color:rgba(255,255,255,0.60);
+    color:rgba(255,255,255,0.55);
     font-weight:400;
-    letter-spacing:0.07em;
+    letter-spacing:0.04em;
     text-transform:uppercase;
-    margin-bottom:0.28in;
+    margin-bottom:0.26in;
 }}
 .cover-divider {{
     width:100%;
     height:0.5pt;
-    background:rgba(255,255,255,0.18);
+    background:rgba(255,255,255,0.15);
     margin-bottom:0.16in;
 }}
-.cover-meta {{ display:flex; gap:0.38in; }}
-.cover-meta-item {{ display:flex; flex-direction:column; }}
+/* Cover metadata — table layout prevents label/value collision */
+.cover-meta {{
+    display:table;
+    border-collapse:separate;
+    border-spacing:0.30in 0;
+}}
+.cover-meta-item {{
+    display:table-cell;
+    vertical-align:top;
+    padding-right:0.30in;
+}}
 .cover-meta-label {{
-    font-size:5.5pt;
-    letter-spacing:0.14em;
+    display:block;
+    font-size:6pt;
+    letter-spacing:0.08em;
     text-transform:uppercase;
-    color:rgba(255,255,255,0.38);
-    margin-bottom:0.025in;
+    color:rgba(255,255,255,0.35);
+    margin-bottom:0.03in;
+    white-space:nowrap;
 }}
 .cover-meta-value {{
+    display:block;
     font-size:8pt;
     color:rgba(255,255,255,0.75);
     font-weight:500;
+    white-space:nowrap;
+    letter-spacing:0;
 }}
 
 /* Compact profile */
@@ -589,15 +619,23 @@ def render_report_markdown(report: Dict[str, Any], assets: Dict[str, str], outpu
 
 
 def _page_header(parts: List[str], logo_path: str, page_no: int, labels: Dict[str, str]) -> None:
+    brand_display = html.escape(BRAND_NAME)
+    report_display = html.escape(REPORT_LABEL)
+    conf_display = labels['confidential']
+
+    # Header row — table layout is stable in wkhtmltopdf; flex can cause collision
     parts.append("<div class='run-head'>")
+    parts.append("<div class='run-head-inner'>")
     if logo_path and not logo_path.lower().endswith(".svg"):
-        parts.append(f"<img class='logo-fixed' src='{html.escape(logo_path)}' alt='' />")
+        parts.append(f"<span class='run-head-brand'><img class='logo-fixed' src='{html.escape(logo_path)}' alt='' /></span>")
     else:
-        parts.append(f"<span class='run-head-brand'>{html.escape(BRAND_NAME)}</span>")
-    parts.append(f"<span class='run-head-label'>{html.escape(REPORT_LABEL)} &nbsp;|&nbsp; {labels['confidential']}</span>")
-    parts.append("</div>")
+        parts.append(f"<span class='run-head-brand'>{brand_display}</span>")
+    parts.append(f"<span class='run-head-label'>{report_display} &nbsp;&nbsp; {conf_display}</span>")
+    parts.append("</div></div>")
+
+    # Footer row — same stable table pattern
     parts.append("<div class='run-foot'>")
-    parts.append(f"<span class='run-foot-left'>{html.escape(BRAND_NAME)} &nbsp;&mdash;&nbsp; {labels['confidential']}</span>")
+    parts.append(f"<span class='run-foot-left'>{brand_display} &nbsp;&mdash;&nbsp; {conf_display}</span>")
     parts.append(f"<span class='run-foot-pg'>{page_no}</span>")
     parts.append("</div>")
 
