@@ -4,7 +4,7 @@
 
 **Topic**: AI Agent Market Research
 
-## Key highlights
+## Executive Summary
 
 - China's VRFB advantage is shifting from early deployment momentum to a structural position in supply, cost and policy demand.
 - Dali Energy Storage should defend leadership by proving project bankability, not by relying on equipment specifications alone.
@@ -13,7 +13,7 @@
 - International expansion will require local partners, financing structures and reference projects that lower buyer risk.
 - The next management agenda should sequence market entry around proof points, lifecycle economics and supply-chain credibility.
 
-## Contents
+## Table of Contents
 
 - China's VRFB edge is becoming structural as supply, cost and policy reinforce each other
 - Dali can convert technical capacity into leadership only if it proves project bankability
@@ -24,9 +24,9 @@
 - Dali's international playbook should sequence markets by proof potential, not just demand size
 - The next leadership agenda should focus on membranes, service models and evidence quality
 
-## Disclaimer
+## Important Notice
 
-This document is a management consulting and research analysis deliverable for strategy discussion only. It is not professional advisory guidance.
+This document is a management research and strategy analysis deliverable for internal discussion purposes only. It does not constitute professional investment, legal, or regulatory advice.
 
 ## China's VRFB edge is becoming structural as supply, cost and policy reinforce each other
 
