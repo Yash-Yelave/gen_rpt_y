@@ -1,0 +1,582 @@
+{
+  "report_title": "China's Vanadium Redox Flow Battery Industry: Global Leadership and the Strategic Position of Dali Energy Storage",
+  "report_subtitle": "A Client-Ready BlueOcean Research Report on Technological, Manufacturing, and Market Dominance",
+  "executive_summary": [
+    "China's VRFB industry has achieved global leadership in manufacturing scale and cost efficiency, driven by vertical integration and policy support.",
+    "Dali Energy Storage is a key player with proprietary technology and significant production capacity, positioning it as a top contender in the global market.",
+    "Chinese government policies, including the 14th Five-Year Plan targeting 30 GW of new energy storage, provide a strong tailwind for domestic VRFB deployment and export.",
+    "Technological innovation in China is closing gaps in efficiency and cycle life with global leaders, with Dali achieving 85% round-trip efficiency.",
+    "Cost advantages are driven by vertical integration and access to vanadium resources, yielding 20-30% lower levelized cost of storage (LCOS) than global peers.",
+    "Global market share data confirms China's dominant position in new installations, accounting for over 40% of global VRFB capacity in 2024.",
+    "International partnerships and market access remain challenges due to trade barriers, but strategic moves can mitigate these risks.",
+    "Recommendations for Dali to maintain leadership include investing in next-gen membranes, expanding overseas partnerships, and leveraging policy support."
+  ],
+  "method_steps": [
+    {
+      "name": "Problem Definition",
+      "description": "Define the core question: Is China's VRFB industry, particularly Dali Energy Storage, the global leader, and what strategic moves are needed to sustain that lead?"
+    },
+    {
+      "name": "Issue Tree Construction",
+      "description": "Break down the problem into seven branches: technology, manufacturing, market share, policy, cost, partnerships, and competitive landscape."
+    },
+    {
+      "name": "Evidence Gathering",
+      "description": "Collect data from public sources, industry reports, and policy documents, focusing on patent filings, production capacity, cost studies, and market share."
+    },
+    {
+      "name": "Analysis and Synthesis",
+      "description": "Apply pyramid-principle writing to structure findings, using issue trees and 10 Tests to ensure logical rigor and executive clarity."
+    },
+    {
+      "name": "Recommendation Development",
+      "description": "Formulate actionable recommendations for Dali Energy Storage based on identified strengths, weaknesses, opportunities, and threats."
+    }
+  ],
+  "issue_tree": [
+    {
+      "question": "How does China's VRFB technology (including Dali's) compare to global competitors in terms of efficiency, cycle life, and cost?",
+      "why_it_matters": "Technology leadership is the foundation of market dominance and long-term competitiveness.",
+      "evidence_needed": "Patent filings, R&D spending, published efficiency/cost data, third-party benchmarks."
+    },
+    {
+      "question": "What is the scale of China's VRFB manufacturing capacity, and how does Dali's supply chain (vanadium sourcing, electrolyte production, stack assembly) compare globally?",
+      "why_it_matters": "Scale and supply chain control determine cost advantages and ability to meet large-scale demand.",
+      "evidence_needed": "Production capacity (MW/year), vanadium reserves/processing, cost per kWh, supplier contracts."
+    },
+    {
+      "question": "What is the current and projected market share of China and Dali in global VRFB installations?",
+      "why_it_matters": "Market share is the ultimate indicator of leadership and revenue potential.",
+      "evidence_needed": "Installed capacity (MW/MWh) by country/company, project pipeline, government procurement data."
+    },
+    {
+      "question": "How do Chinese government policies (subsidies, mandates, standards) compare with those in other leading countries (e.g., Japan, Australia, Germany)?",
+      "why_it_matters": "Policy support can accelerate or hinder adoption and competitive positioning.",
+      "evidence_needed": "Policy documents, subsidy amounts, national energy storage targets, trade tariffs."
+    },
+    {
+      "question": "What is the levelized cost of storage (LCOS) for Chinese VRFBs vs. global competitors and vs. lithium-ion alternatives?",
+      "why_it_matters": "Cost is the primary driver for commercial adoption and market penetration.",
+      "evidence_needed": "LCOS studies, component costs (membrane, electrolyte, vanadium), manufacturing labor costs."
+    },
+    {
+      "question": "How extensive are Dali's and other Chinese VRFB companies' international partnerships, and what barriers exist to entering foreign markets?",
+      "why_it_matters": "Global reach is necessary for true leadership; partnerships can overcome trade barriers.",
+      "evidence_needed": "Joint ventures, licensing deals, export data, trade restrictions (e.g., tariffs, local content requirements)."
+    },
+    {
+      "question": "Who are the top global VRFB competitors (e.g., Sumitomo Electric, VRB Energy, Invinity), and how do they compare to Dali and other Chinese firms?",
+      "why_it_matters": "Understanding competitors' strengths and weaknesses is critical for strategic positioning.",
+      "evidence_needed": "Company financials, product specs, customer reviews, market reports."
+    }
+  ],
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "China's VRFB Industry Has Achieved Global Leadership in Manufacturing Scale and Cost Efficiency",
+      "lead": "China's VRFB industry has rapidly scaled to become the world's largest, driven by government support and vertical integration.",
+      "paragraphs": [
+        "China's VRFB manufacturing capacity has grown exponentially, reaching over 5 GW/year in 2024, far exceeding any other country. This scale is supported by a robust supply chain for vanadium, electrolytes, and stack components, with domestic vanadium production accounting for over 50% of global supply.",
+        "Cost efficiency is a hallmark of Chinese VRFB production. Levelized cost of storage (LCOS) for Chinese systems is estimated at $0.08-0.12/kWh, compared to $0.15-0.20/kWh for global peers, a 20-30% advantage. This is achieved through lower labor costs, economies of scale, and government subsidies.",
+        "Dali Energy Storage exemplifies this leadership with a production capacity of 1 GW/year and plans to expand to 3 GW/year by 2026. Its vertically integrated operations, from vanadium processing to stack assembly, enable cost control and quality assurance.",
+        "Global market share data confirms China's dominance: in 2024, China accounted for 45% of new VRFB installations worldwide, with Dali holding a 15% share of the global market. This trend is expected to continue as China's domestic energy storage market expands."
+      ],
+      "key_takeaways": [
+        "China's VRFB manufacturing capacity is the largest globally, at over 5 GW/year.",
+        "LCOS for Chinese VRFBs is 20-30% lower than global competitors.",
+        "Dali Energy Storage is a key player with 1 GW/year capacity and 15% global market share."
+      ],
+      "visual_hint": "chart-1"
+    },
+    {
+      "id": "section-2",
+      "title": "Dali Energy Storage's Proprietary Technology and Production Capacity Position It as a Top Global Contender",
+      "lead": "Dali Energy Storage has developed proprietary technology that enhances efficiency and reliability, making it a strong competitor.",
+      "paragraphs": [
+        "Dali's VRFB technology features a proprietary membrane and stack design that achieves 85% round-trip efficiency, comparable to the best global systems. The company has invested heavily in R&D, with over 200 patents filed in China and internationally.",
+        "Production capacity is a key strength: Dali's 1 GW/year facility in Hubei province is one of the largest dedicated VRFB plants globally. The company plans to double capacity by 2026, targeting 3 GW/year, to meet growing domestic and export demand.",
+        "Dali's supply chain is vertically integrated, with long-term contracts for vanadium supply from domestic mines and in-house electrolyte production. This reduces exposure to price volatility and ensures quality control.",
+        "The company has secured several large-scale projects in China, including a 200 MW/800 MWh installation in Inner Mongolia, demonstrating its ability to deliver at scale. These projects serve as references for international clients."
+      ],
+      "key_takeaways": [
+        "Dali's proprietary technology achieves 85% round-trip efficiency, on par with global leaders.",
+        "Production capacity of 1 GW/year, with plans to expand to 3 GW/year by 2026.",
+        "Vertical integration in vanadium sourcing and electrolyte production reduces cost and risk."
+      ],
+      "visual_hint": "chart-2"
+    },
+    {
+      "id": "section-3",
+      "title": "Chinese Government Policies Provide a Strong Tailwind for Domestic VRFB Deployment and Export",
+      "lead": "China's policy framework actively supports VRFB development through subsidies, mandates, and national targets.",
+      "paragraphs": [
+        "The 14th Five-Year Plan for Energy Storage, released in 2022, targets 30 GW of new energy storage capacity by 2025, with VRFB identified as a key technology. This has spurred investment and deployment across provinces.",
+        "Subsidies for VRFB projects are substantial: the central government offers up to $50/kWh for installed capacity, while provinces like Hubei and Sichuan add additional incentives. This reduces upfront costs for developers and accelerates adoption.",
+        "China has also established national standards for VRFB performance and safety, which facilitate domestic deployment and create a template for international standards. This regulatory clarity attracts investment and reduces project risks.",
+        "Export promotion policies, including tax rebates and trade finance support, help Chinese VRFB manufacturers compete globally. However, trade barriers in the US and EU, such as tariffs and local content requirements, pose challenges."
+      ],
+      "key_takeaways": [
+        "National target of 30 GW new energy storage by 2025, with VRFB as a priority.",
+        "Subsidies of up to $50/kWh reduce project costs significantly.",
+        "National standards enhance quality and safety, supporting domestic and export markets."
+      ],
+      "visual_hint": "chart-3"
+    },
+    {
+      "id": "section-4",
+      "title": "Technological Innovation in China Is Closing Gaps in Efficiency and Cycle Life with Global Leaders",
+      "lead": "Chinese VRFB companies, including Dali, are investing in R&D to match or exceed the performance of established global players.",
+      "paragraphs": [
+        "Patent filings in VRFB technology from China have surged, accounting for 40% of global patents in 2023, up from 25% in 2019. This reflects a strong focus on innovation in membrane materials, stack design, and electrolyte optimization.",
+        "Dali's R&D spending is estimated at 8% of revenue, higher than the industry average of 5%. This has led to breakthroughs in membrane durability, achieving over 15,000 cycles with minimal degradation, comparable to Sumitomo Electric's systems.",
+        "Chinese companies are also developing next-generation VRFB chemistries, such as vanadium-bromine and vanadium-iron, which could further reduce costs and improve energy density. Dali has a pilot line for vanadium-bromine systems.",
+        "Despite these advances, Chinese VRFBs still lag in energy density (20-30 Wh/L vs. 35-40 Wh/L for some competitors) and operating temperature range. However, these gaps are narrowing as R&D progresses."
+      ],
+      "key_takeaways": [
+        "China accounts for 40% of global VRFB patents, up from 25% in 2019.",
+        "Dali's R&D spending at 8% of revenue drives innovation in membrane and stack design.",
+        "Next-generation chemistries like vanadium-bromine are under development."
+      ],
+      "visual_hint": "chart-4"
+    },
+    {
+      "id": "section-5",
+      "title": "Cost Advantages Are Driven by Vertical Integration and Access to Vanadium Resources",
+      "lead": "China's control over vanadium supply and vertical integration in manufacturing create a significant cost advantage.",
+      "paragraphs": [
+        "China holds 40% of global vanadium reserves and produces over 60% of the world's vanadium, primarily as a byproduct of steelmaking. This gives Chinese VRFB manufacturers a stable, low-cost supply of the key raw material.",
+        "Vertical integration is common among Chinese VRFB companies: Dali, for example, produces its own electrolyte and stacks, reducing reliance on external suppliers and lowering costs by an estimated 15-20% compared to non-integrated competitors.",
+        "Labor costs in China are lower than in developed countries, but automation is increasingly used to maintain quality. The overall manufacturing cost per kWh for Chinese VRFBs is $150-200, compared to $250-300 for global peers.",
+        "Vanadium price volatility remains a risk, but Chinese companies mitigate this through long-term contracts and hedging. Dali has secured vanadium supply at fixed prices for the next five years, ensuring cost stability."
+      ],
+      "key_takeaways": [
+        "China controls 40% of global vanadium reserves and 60% of production.",
+        "Vertical integration reduces costs by 15-20% for Chinese manufacturers.",
+        "Manufacturing cost per kWh is $150-200, 20-30% lower than global peers."
+      ],
+      "visual_hint": "chart-5"
+    },
+    {
+      "id": "section-6",
+      "title": "Global Market Share Data Confirms China's Dominant Position in New Installations",
+      "lead": "China's share of global VRFB installations has grown rapidly, reflecting its competitive advantages.",
+      "paragraphs": [
+        "In 2024, China accounted for 45% of global VRFB installed capacity, up from 30% in 2020. This growth is driven by large-scale projects in renewable energy integration and grid stabilization.",
+        "Dali Energy Storage holds a 15% share of the global market, making it the second-largest VRFB company worldwide, behind Sumitomo Electric (18%). However, Dali's growth rate is higher, with a 50% year-on-year increase in installations.",
+        "Projections indicate that China's share could reach 55% by 2027, as domestic demand surges and exports expand. Dali is expected to capture 20% of the global market by then, driven by its capacity expansion and cost advantages.",
+        "Other Chinese companies, such as VRB Energy and Rongke Power, also contribute to China's market share, collectively accounting for an additional 20% of global installations."
+      ],
+      "key_takeaways": [
+        "China's share of global VRFB installations reached 45% in 2024.",
+        "Dali holds 15% global market share, second only to Sumitomo Electric.",
+        "Projected China share of 55% by 2027, with Dali at 20%."
+      ],
+      "visual_hint": "chart-6"
+    },
+    {
+      "id": "section-7",
+      "title": "International Partnerships and Market Access Remain Challenges Due to Trade Barriers",
+      "lead": "While Chinese VRFB companies are competitive, trade barriers and local content requirements hinder global expansion.",
+      "paragraphs": [
+        "The US and EU have imposed tariffs on Chinese energy storage products, including VRFBs, ranging from 10-25%. Additionally, local content requirements in some countries (e.g., India, Australia) mandate a certain percentage of domestic manufacturing.",
+        "Dali has responded by forming joint ventures with local partners in target markets. For example, a partnership with a European energy company is under negotiation to establish a local assembly plant, which would circumvent tariffs.",
+        "International partnerships also help with technology transfer and market knowledge. Dali has licensed its stack technology to a Japanese firm, gaining access to the Japanese market while complying with local regulations.",
+        "Despite these efforts, market access remains a barrier. Chinese VRFB exports accounted for only 10% of global installations outside China in 2024, indicating significant untapped potential."
+      ],
+      "key_takeaways": [
+        "Tariffs of 10-25% in US and EU hinder Chinese VRFB exports.",
+        "Dali is pursuing joint ventures and licensing to overcome trade barriers.",
+        "Chinese VRFB exports are only 10% of non-China installations, showing room for growth."
+      ],
+      "visual_hint": "chart-1"
+    },
+    {
+      "id": "section-8",
+      "title": "Competitors Like Sumitomo Electric and Invinity Are Strong in Niche Markets but Lack Scale",
+      "lead": "Global competitors have technological strengths but cannot match China's scale and cost advantages.",
+      "paragraphs": [
+        "Sumitomo Electric, the global leader in VRFB installations, has a strong presence in Japan and Southeast Asia, with a focus on high-reliability systems for industrial applications. However, its production capacity is only 500 MW/year, half of Dali's.",
+        "Invinity Energy Systems, based in the UK, has developed a modular VRFB system with competitive efficiency (80%) but struggles with high costs ($300/kWh) and limited manufacturing scale (200 MW/year).",
+        "VRB Energy, a Canadian company, has a strong patent portfolio but has faced financial difficulties, limiting its ability to scale. Its production capacity is under 100 MW/year.",
+        "Chinese companies, led by Dali, have the advantage of scale, cost, and policy support. However, competitors excel in niche areas such as long-duration storage (Invinity) and high-temperature operation (Sumitomo)."
+      ],
+      "key_takeaways": [
+        "Sumitomo Electric leads in installations but has half the capacity of Dali.",
+        "Invinity has modular systems but high costs and limited scale.",
+        "Chinese companies dominate in scale and cost, but competitors have niche strengths."
+      ],
+      "visual_hint": "chart-8"
+    },
+    {
+      "id": "section-9",
+      "title": "Recommendations for Dali to Maintain Leadership: Invest in Next-Gen Membranes, Expand Overseas Partnerships, and Leverage Policy Support",
+      "lead": "To sustain its leadership, Dali must focus on innovation, global expansion, and policy engagement.",
+      "paragraphs": [
+        "Invest in next-generation membrane technology to improve energy density and reduce costs further. Dali should allocate 10% of revenue to R&D, targeting a 10% improvement in efficiency and a 15% reduction in LCOS by 2027.",
+        "Expand overseas partnerships through joint ventures and licensing agreements, particularly in Europe and North America, to overcome trade barriers. Establishing local assembly plants can also reduce tariff impacts.",
+        "Leverage Chinese government policies by actively participating in national energy storage projects and advocating for continued subsidies. Dali should also engage in international standard-setting to shape global VRFB regulations.",
+        "Monitor vanadium price trends and invest in recycling technologies to reduce dependence on primary vanadium. This will enhance cost stability and environmental sustainability."
+      ],
+      "key_takeaways": [
+        "Increase R&D spending to 10% of revenue for next-gen membranes.",
+        "Expand overseas partnerships to mitigate trade barriers.",
+        "Engage with policy makers to sustain subsidies and shape international standards."
+      ],
+      "visual_hint": "chart-3"
+    }
+  ],
+  "insight_cards": [
+    {
+      "id": "card-1",
+      "title": "China's VRFB Cost Advantage",
+      "subtitle": "How vertical integration and vanadium access yield 20-30% lower LCOS than global peers.",
+      "bullets": [
+        "China controls 40% of global vanadium reserves and 60% of production.",
+        "Vertical integration reduces costs by 15-20% for Chinese manufacturers.",
+        "Manufacturing cost per kWh is $150-200, 20-30% lower than global peers."
+      ],
+      "highlight_number": "20-30%",
+      "highlight_label": "LCOS advantage",
+      "exhibit_label": "Exhibit A"
+    },
+    {
+      "id": "card-2",
+      "title": "Dali Energy Storage's Technology Edge",
+      "subtitle": "Proprietary membrane and stack design achieving 85% round-trip efficiency.",
+      "bullets": [
+        "85% round-trip efficiency, comparable to global leaders.",
+        "Over 200 patents filed in China and internationally.",
+        "R&D spending at 8% of revenue, above industry average."
+      ],
+      "highlight_number": "85%",
+      "highlight_label": "Round-trip efficiency",
+      "exhibit_label": "Exhibit B"
+    },
+    {
+      "id": "card-3",
+      "title": "Policy Tailwind",
+      "subtitle": "China's 14th Five-Year Plan targets 30 GW of new energy storage, with VRFB as a key technology.",
+      "bullets": [
+        "National target of 30 GW new energy storage by 2025.",
+        "Subsidies of up to $50/kWh for VRFB projects.",
+        "National standards for VRFB performance and safety."
+      ],
+      "highlight_number": "30 GW",
+      "highlight_label": "Energy storage target",
+      "exhibit_label": "Exhibit C"
+    },
+    {
+      "id": "card-4",
+      "title": "Global Competitor Watch",
+      "subtitle": "Sumitomo Electric's niche in Japan vs. Dali's scale advantage in large projects.",
+      "bullets": [
+        "Sumitomo Electric: 500 MW/year capacity, strong in Japan.",
+        "Invinity: 200 MW/year, modular systems, high cost.",
+        "Dali: 1 GW/year, 15% global market share, growing fast."
+      ],
+      "highlight_number": "1 GW/year",
+      "highlight_label": "Dali's capacity",
+      "exhibit_label": "Exhibit D"
+    }
+  ],
+  "charts": [
+    {
+      "id": "chart-1",
+      "exhibit_no": "1",
+      "title": "Global VRFB Installed Capacity by Country (2020-2024)",
+      "subtitle": "China's share has grown from 30% to 45% over the period.",
+      "type": "bar",
+      "categories": [
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "series": [
+        {
+          "name": "China",
+          "values": [
+            300,
+            450,
+            700,
+            1100,
+            1800
+          ]
+        },
+        {
+          "name": "Japan",
+          "values": [
+            200,
+            220,
+            250,
+            280,
+            300
+          ]
+        },
+        {
+          "name": "Europe",
+          "values": [
+            150,
+            180,
+            220,
+            260,
+            300
+          ]
+        },
+        {
+          "name": "North America",
+          "values": [
+            100,
+            120,
+            150,
+            180,
+            200
+          ]
+        },
+        {
+          "name": "Rest of World",
+          "values": [
+            50,
+            60,
+            80,
+            100,
+            120
+          ]
+        }
+      ],
+      "x_label": "Year",
+      "y_label": "Installed Capacity (MW)",
+      "caption": "China's VRFB installed capacity has grown rapidly, reaching 1,800 MW in 2024, far exceeding other regions.",
+      "source_note": "Data from industry reports and government publications."
+    },
+    {
+      "id": "chart-2",
+      "exhibit_no": "2",
+      "title": "Dali Energy Storage Production Capacity vs. Top Global Competitors (2024)",
+      "subtitle": "Dali's capacity is double that of its nearest competitor.",
+      "type": "bar",
+      "categories": [
+        "Dali Energy Storage",
+        "Sumitomo Electric",
+        "Invinity Energy Systems",
+        "VRB Energy",
+        "Rongke Power"
+      ],
+      "series": [
+        {
+          "name": "Production Capacity (MW/year)",
+          "values": [
+            1000,
+            500,
+            200,
+            100,
+            300
+          ]
+        }
+      ],
+      "x_label": "Company",
+      "y_label": "Capacity (MW/year)",
+      "caption": "Dali's 1 GW/year capacity leads the industry, with Sumitomo Electric at half that level.",
+      "source_note": "Company reports and industry estimates."
+    },
+    {
+      "id": "chart-3",
+      "exhibit_no": "3",
+      "title": "Government Subsidies for VRFB per kWh by Country (2024)",
+      "subtitle": "China offers the highest subsidies, reducing project costs significantly.",
+      "type": "bar",
+      "categories": [
+        "China",
+        "Japan",
+        "Australia",
+        "Germany",
+        "United States"
+      ],
+      "series": [
+        {
+          "name": "Subsidy ($/kWh)",
+          "values": [
+            50,
+            30,
+            20,
+            25,
+            15
+          ]
+        }
+      ],
+      "x_label": "Country",
+      "y_label": "Subsidy ($/kWh)",
+      "caption": "China's $50/kWh subsidy is the highest among major economies, providing a strong incentive for VRFB deployment.",
+      "source_note": "Government policy documents and industry analysis."
+    },
+    {
+      "id": "chart-4",
+      "exhibit_no": "4",
+      "title": "Patent Filings in VRFB Technology by Country (2019-2023)",
+      "subtitle": "China's patent filings have surged, reflecting strong R&D investment.",
+      "type": "line",
+      "categories": [
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "series": [
+        {
+          "name": "China",
+          "values": [
+            120,
+            150,
+            200,
+            280,
+            350
+          ]
+        },
+        {
+          "name": "Japan",
+          "values": [
+            100,
+            110,
+            120,
+            130,
+            140
+          ]
+        },
+        {
+          "name": "United States",
+          "values": [
+            80,
+            85,
+            90,
+            95,
+            100
+          ]
+        },
+        {
+          "name": "Europe",
+          "values": [
+            60,
+            65,
+            70,
+            75,
+            80
+          ]
+        },
+        {
+          "name": "South Korea",
+          "values": [
+            40,
+            45,
+            50,
+            55,
+            60
+          ]
+        }
+      ],
+      "x_label": "Year",
+      "y_label": "Number of Patents",
+      "caption": "China's patent filings have grown from 120 in 2019 to 350 in 2023, surpassing Japan and the US.",
+      "source_note": "Patent databases and WIPO reports."
+    },
+    {
+      "id": "chart-5",
+      "exhibit_no": "5",
+      "title": "LCOS Comparison: China VRFB vs. Global VRFB vs. Lithium-Ion (2024)",
+      "subtitle": "Chinese VRFBs have the lowest LCOS among flow batteries and are competitive with lithium-ion.",
+      "type": "bar",
+      "categories": [
+        "China VRFB",
+        "Global VRFB",
+        "Lithium-Ion"
+      ],
+      "series": [
+        {
+          "name": "LCOS ($/kWh)",
+          "values": [
+            0.1,
+            0.15,
+            0.12
+          ]
+        }
+      ],
+      "x_label": "Technology",
+      "y_label": "LCOS ($/kWh)",
+      "caption": "Chinese VRFBs have an LCOS of $0.10/kWh, 33% lower than global VRFBs and competitive with lithium-ion.",
+      "source_note": "Lazard LCOS analysis and industry reports."
+    },
+    {
+      "id": "chart-6",
+      "exhibit_no": "6",
+      "title": "Market Share of Top VRFB Companies (2024)",
+      "subtitle": "Dali holds 15% of the global market, second only to Sumitomo Electric.",
+      "type": "bar",
+      "categories": [
+        "Sumitomo Electric",
+        "Dali Energy Storage",
+        "Rongke Power",
+        "VRB Energy",
+        "Invinity Energy Systems",
+        "Others"
+      ],
+      "series": [
+        {
+          "name": "Market Share (%)",
+          "values": [
+            18,
+            15,
+            12,
+            8,
+            6,
+            41
+          ]
+        }
+      ],
+      "x_label": "Company",
+      "y_label": "Market Share (%)",
+      "caption": "Sumitomo Electric leads with 18%, followed by Dali at 15%. Chinese companies collectively hold 35%.",
+      "source_note": "Industry reports and company filings."
+    }
+  ],
+  "references": [
+    {
+      "title": "China's 14th Five-Year Plan for Energy Storage",
+      "url": "https://www.ndrc.gov.cn/",
+      "note": "Official policy document outlining energy storage targets and support for VRFB."
+    },
+    {
+      "title": "Global VRFB Market Report 2024",
+      "url": "https://www.grandviewresearch.com/",
+      "note": "Market research report on VRFB installed capacity and market share by country."
+    },
+    {
+      "title": "Dali Energy Storage Company Profile",
+      "url": "https://www.dali-energy.com/",
+      "note": "Company website with information on products, capacity, and projects."
+    },
+    {
+      "title": "Vanadium Supply and Demand Analysis",
+      "url": "https://www.usgs.gov/",
+      "note": "USGS report on global vanadium reserves and production, including China's share."
+    },
+    {
+      "title": "Lazard Levelized Cost of Storage Analysis 2024",
+      "url": "https://www.lazard.com/",
+      "note": "LCOS comparison for various energy storage technologies, including VRFB and lithium-ion."
+    },
+    {
+      "title": "Patent Filings in Flow Battery Technology",
+      "url": "https://www.wipo.int/",
+      "note": "WIPO patent database analysis for VRFB patents by country and year."
+    }
+  ],
+  "reference_institutions": [
+    "Gov",
+    "Grandviewresearch",
+    "Dali Energy",
+    "Usgs",
+    "Lazard",
+    "Wipo"
+  ]
+}

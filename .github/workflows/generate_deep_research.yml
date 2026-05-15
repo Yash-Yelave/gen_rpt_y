@@ -1,0 +1,156 @@
+name: Generate Deep Research Report
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'gen_rpt/**'
+      - 'tests/**'
+      - '.github/workflows/generate_deep_research.yml'
+      - 'requirements.txt'
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: Research topic. You can enter either English or Chinese.
+        required: false
+        default: Nuclear fusion commercialization outlook and strategic implications
+        type: string
+      slug:
+        description: Optional custom output directory slug
+        required: false
+        default: ""
+        type: string
+      language:
+        description: Report language
+        required: false
+        default: en
+        type: choice
+        options:
+          - en
+          - zh
+      target_length:
+        description: Optional legacy target length. Leave blank for natural 10-30 page report.
+        required: false
+        default: ""
+        type: string
+      model:
+        description: DeepSeek model name
+        required: false
+        default: deepseek-chat
+        type: string
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: gen-rpt-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  generate-report:
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && !contains(github.event.head_commit.message, 'Add generated deep research report')) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      REPORT_PAGE_FORMAT: A4
+      MAX_AI_SECTION_IMAGES: 12
+      AI_IMAGE_TIMEOUT: 45
+      AI_IMAGE_RETRIES: 3
+      SHOW_FALLBACK_IMAGES: true
+      TOPIC_INPUT: ${{ inputs.topic || '' }}
+      SLUG_INPUT: ${{ inputs.slug || '' }}
+      LANGUAGE_INPUT: ${{ inputs.language || '' }}
+      TARGET_LENGTH_INPUT: ${{ inputs.target_length || '' }}
+      MODEL_INPUT: ${{ inputs.model || '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Python syntax check
+        run: |
+          python -m compileall -q gen_rpt tests
+
+      - name: Install system packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk wkhtmltopdf texlive-xetex texlive-latex-recommended texlive-pictures texlive-latex-extra
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run smoke test
+        env:
+          DISABLE_AI_IMAGES: true
+        run: |
+          python tests/smoke_test_pipeline.py
+
+      - name: Validate secret
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          if [ -z "$DEEPSEEK_API_KEY" ]; then
+            echo "Missing DEEPSEEK_API_KEY secret" >&2
+            exit 1
+          fi
+
+      - name: Generate report
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          set -euo pipefail
+          TOPIC="$TOPIC_INPUT"
+          SLUG="$SLUG_INPUT"
+          LANGUAGE="$LANGUAGE_INPUT"
+          MODEL="$MODEL_INPUT"
+          TARGET_LENGTH="$TARGET_LENGTH_INPUT"
+
+          if [ -z "$TOPIC" ]; then
+            TOPIC="Nuclear fusion commercialization outlook and strategic implications"
+          fi
+          if [ -z "$LANGUAGE" ]; then
+            LANGUAGE="en"
+          fi
+          if [ -z "$MODEL" ]; then
+            MODEL="deepseek-chat"
+          fi
+          if [ "$GITHUB_EVENT_NAME" = "push" ] && [ -z "$SLUG" ]; then
+            SHORT_SHA="$(echo "$GITHUB_SHA" | cut -c1-7)"
+            SLUG="auto-smoke-nuclear-fusion-${SHORT_SHA}"
+          fi
+
+          EXTRA_ARGS=""
+          if [ -n "$TARGET_LENGTH" ]; then
+            EXTRA_ARGS="$EXTRA_ARGS --target-length $TARGET_LENGTH"
+          fi
+          python -m gen_rpt.main \
+            --topic "$TOPIC" \
+            --slug "$SLUG" \
+            --language "$LANGUAGE" \
+            --model "$MODEL" \
+            --out-root reports \
+            $EXTRA_ARGS
+
+      - name: Commit generated report back to repo
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain reports)" ]; then
+            git add reports
+            git commit -m "Add generated deep research report"
+            git pull --rebase origin main
+            git push
+          else
+            echo "No report changes to commit"
+          fi
