@@ -1,6 +1,6 @@
 # Run
 
-python main.py --topic "AI Agent Market Research" --language en --provider groq
+python main.py --topic "Specialized agents designed for specific industries" --language en --provider groq
 Specialized agents designed for specific industries
 
 # gen_rpt
