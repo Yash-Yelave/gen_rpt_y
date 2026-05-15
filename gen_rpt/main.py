@@ -7,7 +7,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-from .deepseek_client import DeepSeekClient
+from .llm_client import LLMClient
 from .latex_renderer import render_latex_pdf
 from .research_pipeline import ResearchPipeline
 from .logger import log_stage, log_success, log_info, log_error, log_warning
@@ -25,7 +25,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--topic", required=True, help="Research topic or the sentence you typed into GitHub Action.")
     parser.add_argument("--slug", default="", help="Optional custom output slug.")
     parser.add_argument("--language", default="en", help="Report language. Default: en")
-    parser.add_argument("--model", default="deepseek-chat", help="DeepSeek model name.")
+    parser.add_argument("--provider", default="", help="LLM provider (e.g. groq, deepseek).")
+    parser.add_argument("--model", default="", help="LLM model name.")
     parser.add_argument("--target-length", type=int, default=0, help="Optional legacy target length. Leave empty for natural report length.")
     parser.add_argument("--out-root", default="reports", help="Output root directory.")
     return parser.parse_args()
@@ -75,8 +76,23 @@ def print_summary(start_time: float, output_dir: Path, result: dict | None = Non
                 
     print("="*60 + "\n")
 
+def load_env() -> None:
+    env_path = Path(".env")
+    if env_path.exists():
+        for line in env_path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            if "=" in line:
+                key, val = line.split("=", 1)
+                key = key.strip()
+                val = val.strip().strip('"').strip("'")
+                if key not in os.environ:
+                    os.environ[key] = val
+
 
 def main() -> None:
+    load_env()
     start_time = time.time()
     
     log_stage("INIT", "Loading configuration")
@@ -85,8 +101,11 @@ def main() -> None:
     normalized_language = "zh" if str(args.language).lower().startswith("zh") else "en"
     target_length = args.target_length or 0
 
-    log_stage("INIT", f"Initializing client with model {args.model}")
-    client = DeepSeekClient(model=args.model)
+    log_stage("INIT", f"Initializing LLM client (Provider: {args.provider or 'auto'}, Model: {args.model or 'auto'})")
+    client = LLMClient(
+        provider=args.provider if args.provider else None,
+        model=args.model if args.model else None
+    )
     pipeline = ResearchPipeline(client=client, language=normalized_language, target_length=target_length)
 
     date_prefix = datetime.utcnow().strftime("%Y-%m-%d")

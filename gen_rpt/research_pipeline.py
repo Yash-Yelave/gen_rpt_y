@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from .brand_assets import copy_or_generate_brand_assets, summarize_reference_institutions, write_reference_backup
-from .deepseek_client import DeepSeekClient
+from .llm_client import LLMClient
 from .graphics import create_chart, create_insight_card, ensure_dir
 from .image_generator import generate_ai_image_assets
 from .pdf_qa import apply_pdf_qa_fixes, run_pdf_qa
@@ -19,7 +19,7 @@ from .logger import log_stage, log_success, log_warning, log_error
 
 
 class ResearchPipeline:
-    def __init__(self, client: DeepSeekClient, language: str = "en", target_length: int | None = None) -> None:
+    def __init__(self, client: LLMClient, language: str = "en", target_length: int | None = None) -> None:
         self.client = client
         self.language = "en" if str(language or "en").lower().startswith("en") else "zh"
         self.target_length = target_length or 0

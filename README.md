@@ -1,7 +1,7 @@
 # Run
 
-python -m gen_rpt.main --topic "Impact of AI on SaaS industry in 2026" --language en --target-length 1500 --out-root reports
-
+python main.py --topic "AI Agent Market Research" --language en --provider groq
+Specialized agents designed for specific industries
 
 # gen_rpt
 

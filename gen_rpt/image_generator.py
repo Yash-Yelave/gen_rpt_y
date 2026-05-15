@@ -10,7 +10,7 @@ from urllib.parse import quote
 import requests
 from PIL import Image, ImageDraw, ImageFilter
 
-from .deepseek_client import DeepSeekClient
+from .llm_client import LLMClient
 from .theme import load_theme
 
 THEME = load_theme()
@@ -21,7 +21,7 @@ DEFAULT_IMAGE_RETRIES = 3
 
 
 def generate_ai_image_assets(
-    client: DeepSeekClient,
+    client: LLMClient,
     topic: str,
     report: Dict[str, Any],
     assets_dir: Path,
@@ -84,7 +84,7 @@ def generate_ai_image_assets(
     return result
 
 
-def _polish_prompt(client: DeepSeekClient, keywords: str) -> str:
+def _polish_prompt(client: LLMClient, keywords: str) -> str:
     system = "You are an image prompt engineer. Return JSON only."
     user = f"""
 Rewrite the following keywords into one rich English image prompt.
