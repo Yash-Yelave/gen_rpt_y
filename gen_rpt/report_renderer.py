@@ -19,36 +19,212 @@ PAD_X, PAD_TOP, PAD_BOTTOM = (0.42, 0.38, 0.30) if PAGE_FORMAT == "A4" else (0.3
 
 CSS = f"""
 @page {{ size:{PAGE_W}in {PAGE_H}in; margin:0; }}
-:root {{ --accent:{PALETTE['accent']}; --accent2:{PALETTE.get('bright_blue', PALETTE['accent'])}; --ink:{PALETTE['ink']}; --muted:{PALETTE['subtle']}; --line:{PALETTE['line']}; --paper:{PALETTE['paper']}; --panel:{PALETTE['panel']}; }}
-* {{ box-sizing:border-box; }}
-html, body {{ width:{PAGE_W}in; margin:0; padding:0; background:#fff; }}
-body {{ font-family:{FONT_FAMILY}; color:var(--ink); font-size:10.6pt; line-height:1.34; }}
-.page {{ width:{PAGE_W}in; height:{PAGE_H}in; margin:0; background:var(--paper); position:relative; padding:{PAD_TOP}in {PAD_X}in {PAD_BOTTOM}in {PAD_X}in; page-break-after:always; overflow:hidden; }}
-.cover {{ padding:0; background-size:cover; background-position:center; }}
-.cover::after {{ content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(5,28,44,.88), rgba(5,28,44,.52), rgba(5,28,44,.06)); }}
-.cover-panel {{ position:absolute; left:.48in; top:.62in; width:5.25in; background:rgba(255,255,255,.95); color:var(--ink); padding:.24in .28in; z-index:2; border-top:.055in solid var(--accent2); }}
-.cover-panel .eyebrow {{ font-size:7pt; color:var(--accent); font-weight:bold; letter-spacing:.06em; text-transform:uppercase; }}
-.cover-panel h1 {{ font-size:22pt; line-height:1.07; font-weight:400; margin:.14in 0 .13in; }}
-.cover-date {{ font-size:7.6pt; color:#5f666e; font-weight:bold; }}
-.logo-fixed {{ position:absolute; top:.12in; right:.28in; width:.50in; z-index:10; }}
-.page-header {{ position:absolute; top:.12in; left:{PAD_X}in; right:.92in; color:#98A1AA; font-size:5.4pt; text-transform:uppercase; letter-spacing:.05em; }}
-.page-footer {{ position:absolute; bottom:.09in; left:{PAD_X}in; right:{PAD_X}in; display:flex; justify-content:space-between; color:#A8B0B8; font-size:5.4pt; }}
-.kicker {{ color:var(--accent); font-size:6.6pt; font-weight:bold; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.05in; }}
-h1, h2, h3 {{ margin:0; }} h2 {{ font-size:17pt; line-height:1.12; font-weight:400; color:var(--ink); margin-bottom:.10in; }}
-.lead {{ font-size:12pt; line-height:1.20; color:var(--accent); font-weight:400; margin:.045in 0 .10in; }}
-p {{ margin:0 0 .062in; }} ul, ol {{ margin:.02in 0 .04in .16in; padding:0; }} li {{ margin-bottom:.03in; }}
-.contents-list {{ margin-top:.15in; font-size:9.2pt; line-height:1.35; }} .contents-list li {{ margin-bottom:.055in; }}
-.highlight-grid {{ display:grid; grid-template-columns:repeat(2,1fr); gap:.08in .11in; margin-top:.10in; }}
-.highlight-card {{ border-left:3px solid var(--accent); background:#fff; padding:.06in .075in; min-height:.55in; box-shadow:0 0 0 1px var(--line); }}
-.highlight-card .num {{ color:var(--accent); font-size:7.8pt; font-weight:bold; margin-bottom:.016in; }} .highlight-card .text {{ color:var(--ink); font-size:7.5pt; line-height:1.20; }}
-.section-grid {{ display:grid; grid-template-columns:1.02fr .98fr; gap:.20in; align-items:start; }}
-.section-visual {{ width:100%; height:3.95in; object-fit:cover; display:block; border:0; }} .chart-inline {{ width:100%; max-height:3.85in; object-fit:contain; border:none; margin:.06in 0; }}
-.placeholder {{ height:3.95in; background:linear-gradient(135deg,#F5F9FC,#E6F1FA); border:1px solid var(--line); position:relative; }}
-.placeholder::before {{ content:""; position:absolute; left:.25in; right:.25in; top:1.6in; height:.035in; background:var(--accent2); transform:rotate(-14deg); }}
-.placeholder::after {{ content:"Strategic visual"; position:absolute; left:.25in; bottom:.25in; color:var(--muted); font-size:7pt; }}
-.takeaway {{ border-left:3px solid var(--accent); background:#F6FAFD; padding:.065in .085in; margin:.075in 0 .06in; page-break-inside:avoid; font-size:7.3pt; line-height:1.20; }} .takeaway strong {{ display:block; margin-bottom:.02in; }}
-.reference-note, .disclaimer-text, .small-note {{ color:var(--muted); font-size:7.8pt; line-height:1.36; }} .reference-note {{ border-top:1px solid var(--line); padding-top:.07in; }}
-@media print {{ html, body {{ width:{PAGE_W}in; }} .page {{ margin:0; box-shadow:none; }} }}
+
+/* Base Theme Variables */
+:root {{
+    --accent: {PALETTE['accent']};
+    --accent2: {PALETTE.get('bright_blue', PALETTE['accent'])};
+    --ink: {PALETTE['ink']};
+    --muted: {PALETTE['subtle']};
+    --line: {PALETTE['line']};
+    --paper: {PALETTE['paper']};
+    --panel: {PALETTE['panel']};
+    
+    /* Executive Profile Defaults */
+    --base-font-size: 10.5pt;
+    --line-height: 1.65;
+    --h1-size: 24pt;
+    --h2-size: 18pt;
+    --h3-size: 14pt;
+    --paragraph-spacing: 0.15in;
+    --bullet-spacing: 0.08in;
+    --takeaway-padding: 0.12in 0.14in;
+    --font-family: "Inter", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+}}
+
+/* Compact Profile */
+.profile-compact {{
+    --base-font-size: 9.5pt;
+    --line-height: 1.5;
+    --h1-size: 20pt;
+    --h2-size: 15pt;
+    --paragraph-spacing: 0.1in;
+    --bullet-spacing: 0.05in;
+    --takeaway-padding: 0.08in 0.1in;
+}}
+
+/* Presentation Profile */
+.profile-presentation {{
+    --base-font-size: 13pt;
+    --line-height: 1.5;
+    --h1-size: 28pt;
+    --h2-size: 22pt;
+    --paragraph-spacing: 0.2in;
+    --bullet-spacing: 0.1in;
+    --takeaway-padding: 0.15in 0.2in;
+}}
+
+* {{ box-sizing: border-box; text-rendering: auto; -webkit-font-smoothing: antialiased; letter-spacing: 0px !important; word-spacing: 0px !important; }}
+html, body {{ width: {PAGE_W}in; margin: 0; padding: 0; background: #fff; }}
+
+body {{ 
+    font-family: var(--font-family); 
+    color: var(--ink); 
+    font-size: var(--base-font-size); 
+    line-height: var(--line-height); 
+}}
+
+.page {{ 
+    width: {PAGE_W}in; 
+    height: {PAGE_H}in; 
+    margin: 0; 
+    background: var(--paper); 
+    position: relative; 
+    padding: {PAD_TOP}in {PAD_X}in {PAD_BOTTOM}in {PAD_X}in; 
+    page-break-after: always; 
+    overflow: hidden; 
+}}
+
+/* Typography Hierarchy */
+h1, h2, h3 {{ margin: 0; color: var(--ink); font-weight: 600; letter-spacing: -0.01em; }}
+h1 {{ font-size: var(--h1-size); line-height: 1.1; margin-bottom: 0.15in; }}
+h2 {{ font-size: var(--h2-size); line-height: 1.25; margin-bottom: 0.12in; }}
+h3 {{ font-size: var(--h3-size); line-height: 1.3; margin-bottom: 0.08in; }}
+
+p {{ 
+    margin: 0 0 var(--paragraph-spacing); 
+    text-align: left; 
+    color: var(--ink);
+}}
+
+ul, ol {{ 
+    margin: 0.05in 0 var(--paragraph-spacing) 0.2in; 
+    padding: 0; 
+}}
+li {{ margin-bottom: var(--bullet-spacing); }}
+
+.lead {{ 
+    font-size: calc(var(--base-font-size) * 1.15); 
+    line-height: 1.45; 
+    color: var(--accent); 
+    font-weight: 500; 
+    margin-bottom: 0.18in; 
+}}
+
+.kicker {{ 
+    color: var(--accent); 
+    font-size: calc(var(--base-font-size) * 0.7); 
+    font-weight: 700; 
+    letter-spacing: 0.08em; 
+    text-transform: uppercase; 
+    margin-bottom: 0.06in; 
+}}
+
+/* Structural Layouts */
+.section-grid {{ 
+    display: grid; 
+    grid-template-columns: 1.1fr 0.9fr; 
+    gap: 0.25in; 
+    align-items: start; 
+}}
+
+.highlight-grid {{ 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 0.12in 0.16in; 
+    margin-top: 0.15in; 
+}}
+
+/* Components */
+.highlight-card {{ 
+    border-left: 4px solid var(--accent); 
+    background: #fff; 
+    padding: 0.12in 0.14in; 
+    min-height: 0.65in; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px var(--line); 
+    border-radius: 2px;
+    page-break-inside: avoid;
+}}
+.highlight-card .num {{ color: var(--accent); font-size: calc(var(--base-font-size) * 0.85); font-weight: 700; margin-bottom: 0.04in; }}
+.highlight-card .text {{ color: var(--ink); font-size: calc(var(--base-font-size) * 0.9); line-height: 1.45; }}
+
+.takeaway {{ 
+    border-left: 4px solid var(--accent); 
+    background: var(--panel); 
+    padding: var(--takeaway-padding); 
+    margin: 0.15in 0 var(--paragraph-spacing); 
+    page-break-inside: avoid; 
+    border-radius: 0 4px 4px 0;
+}}
+.takeaway strong {{ display: block; margin-bottom: 0.04in; font-weight: 600; color: var(--ink); }}
+.takeaway ul {{ margin-bottom: 0; }}
+
+/* Visuals & Images */
+.section-visual {{ 
+    width: 100%; 
+    height: 3.95in; 
+    object-fit: cover; 
+    display: block; 
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+}}
+.chart-inline {{ 
+    width: 100%; 
+    max-height: 3.85in; 
+    object-fit: contain; 
+    border: none; 
+    margin: 0.1in 0; 
+    page-break-inside: avoid;
+}}
+
+.placeholder {{ 
+    height: 3.95in; 
+    background: linear-gradient(135deg, var(--paper), var(--panel)); 
+    border: 1px dashed var(--line); 
+    position: relative; 
+    border-radius: 4px;
+}}
+.placeholder::before {{ content: ""; position: absolute; left: 0.25in; right: 0.25in; top: 1.6in; height: 0.035in; background: var(--accent2); transform: rotate(-14deg); opacity: 0.2; }}
+.placeholder::after {{ content: "Strategic visual"; position: absolute; left: 0.25in; bottom: 0.25in; color: var(--muted); font-size: calc(var(--base-font-size) * 0.8); }}
+
+/* Headers and Footers */
+.page-header {{ position: absolute; top: 0.12in; left: {PAD_X}in; right: 0.92in; color: var(--muted); font-size: calc(var(--base-font-size) * 0.55); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }}
+.page-footer {{ position: absolute; bottom: 0.09in; left: {PAD_X}in; right: {PAD_X}in; display: flex; justify-content: space-between; color: var(--muted); font-size: calc(var(--base-font-size) * 0.55); font-weight: 500; }}
+.logo-fixed {{ position: absolute; top: 0.12in; right: 0.28in; width: 0.50in; z-index: 10; object-fit: contain; }}
+
+/* Cover Page */
+.cover {{ padding: 0; background-size: cover; background-position: center; }}
+.cover::after {{ content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,28,44,.92), rgba(5,28,44,.65), rgba(5,28,44,.1)); }}
+.cover-panel {{ 
+    position: absolute; 
+    left: 0.48in; 
+    top: 0.8in; 
+    width: 5.4in; 
+    background: rgba(255,255,255,.98); 
+    color: var(--ink); 
+    padding: 0.35in 0.4in; 
+    z-index: 2; 
+    border-top: 4px solid var(--accent2); 
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}}
+.cover-panel .eyebrow {{ font-size: calc(var(--base-font-size) * 0.75); color: var(--accent); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.04in; }}
+.cover-panel h1 {{ font-size: 26pt; line-height: 1.15; font-weight: 300; margin: 0.15in 0 0.2in; letter-spacing: -0.02em; }}
+.cover-date {{ font-size: calc(var(--base-font-size) * 0.8); color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }}
+
+/* Utilities */
+.contents-list {{ margin-top: 0.2in; font-size: calc(var(--base-font-size) * 0.95); line-height: 1.6; }}
+.contents-list li {{ margin-bottom: 0.08in; }}
+
+.reference-note, .disclaimer-text, .small-note {{ color: var(--muted); font-size: calc(var(--base-font-size) * 0.8); line-height: 1.5; }}
+.reference-note {{ border-top: 1px solid var(--line); padding-top: 0.1in; margin-top: 0.2in; }}
+
+@media print {{ 
+    html, body {{ width: {PAGE_W}in; }} 
+    .page {{ margin: 0; box-shadow: none; border: none; }} 
+    * {{ -webkit-print-color-adjust: exact !important; color-adjust: exact !important; }}
+}}
 """
 
 LABELS = {
@@ -65,10 +241,19 @@ def render_report_html(report: Dict[str, Any], assets: Dict[str, str], output_fi
     cover_path = assets.get("cover-background", "")
     title = str(report.get("report_title") or topic)
     page_no = 1
-    parts: List[str] = ["<!DOCTYPE html>", f"<html lang='{labels['lang']}'>", "<head>", "<meta charset='utf-8' />", f"<title>{html.escape(title)}</title>", f"<style>{CSS}</style>", "</head>", "<body>"]
+    
+    profile = os.getenv("REPORT_PROFILE", "executive").lower().strip()
+    profile_class = f"profile-{profile}"
+    
+    parts: List[str] = ["<!DOCTYPE html>", f"<html lang='{labels['lang']}'>", "<head>", "<meta charset='utf-8' />", f"<title>{html.escape(title)}</title>", f"<style>{CSS}</style>", "</head>", f"<body class='{profile_class}'>"]
 
     bg = f"background-image:url('{html.escape(cover_path)}');" if cover_path else "background:#051C2C;"
-    parts.append(f"<section class='page cover' style=\"{bg}\"><div class='cover-panel'><div class='eyebrow'>{html.escape(BRAND_NAME)}</div><div class='eyebrow'>{html.escape(REPORT_LABEL)}</div><h1>{html.escape(title)}</h1><div class='cover-date'>{html.escape(topic)}</div></div></section>")
+    parts.append(f"<section class='page cover' style=\"{bg}\">")
+    parts.append(f"<div class='cover-panel'>")
+    parts.append(f"<div class='eyebrow'>{html.escape(BRAND_NAME)} | {html.escape(REPORT_LABEL)}</div>")
+    parts.append(f"<h1>{html.escape(title)}</h1>")
+    parts.append(f"<div class='cover-date'>Strategic Intelligence Brief &nbsp;&mdash;&nbsp; {html.escape(topic)}</div>")
+    parts.append(f"</div></section>")
     page_no += 1
 
     parts.append("<section class='page'>")
@@ -105,28 +290,49 @@ def render_report_html(report: Dict[str, Any], assets: Dict[str, str], output_fi
         while len(paragraphs) < 3:
             paragraphs.append("Evidence should be validated against the source backup and translated into management implications.")
         takeaways = [str(x) for x in (section.get("key_takeaways", []) or [])[:3]]
+        
         visual = _resolve_visual(section, idx, assets)
+        if visual:
+            v_path = Path(assets[visual])
+            if not v_path.exists() or v_path.stat().st_size == 0:
+                visual = ""
+
+        text_column = []
+        for p in paragraphs[:2]:
+            text_column.append(f"<p>{html.escape(_shorten(p, 650))}</p>")
+        if takeaways:
+            text_column.append(f"<div class='takeaway'><strong>{html.escape(labels['takeaways'])}</strong><ul>")
+            for item in takeaways:
+                text_column.append(f"<li>{html.escape(_shorten(item, 150))}</li>")
+            text_column.append("</ul></div>")
+        for p in paragraphs[2:4]:
+            text_column.append(f"<p>{html.escape(_shorten(p, 520))}</p>")
+
+        visual_column = []
+        if visual:
+            cls = "chart-inline" if visual.startswith("chart-") else "section-visual"
+            visual_column.append(f"<img class='{cls}' src='{html.escape(assets[visual])}' alt='{html.escape(visual)}' />")
+        else:
+            visual_column.append("<div class='placeholder'></div>")
+
         parts.append(f"<div class='kicker'>Chapter {idx}</div><h2>{html.escape(title_text)}</h2>")
         if lead:
             parts.append(f"<div class='lead'>{html.escape(_shorten(lead, 260))}</div>")
-        parts.append("<div class='section-grid'><div>")
-        for p in paragraphs[:2]:
-            parts.append(f"<p>{html.escape(_shorten(p, 650))}</p>")
-        if takeaways:
-            parts.append(f"<div class='takeaway'><strong>{html.escape(labels['takeaways'])}</strong><ul>")
-            for item in takeaways:
-                parts.append(f"<li>{html.escape(_shorten(item, 150))}</li>")
-            parts.append("</ul></div>")
-        parts.append("</div><div>")
-        if visual:
-            cls = "chart-inline" if visual.startswith("chart-") else "section-visual"
-            parts.append(f"<img class='{cls}' src='{html.escape(assets[visual])}' alt='{html.escape(visual)}' />")
+            
+        parts.append("<div class='section-grid'>")
+        if idx % 2 == 0:
+            parts.append("<div>")
+            parts.extend(visual_column)
+            parts.append("</div><div>")
+            parts.extend(text_column)
+            parts.append("</div>")
         else:
-            parts.append("<div class='placeholder'></div>")
-        parts.append("</div></div>")
-        for p in paragraphs[2:4]:
-            parts.append(f"<p>{html.escape(_shorten(p, 520))}</p>")
-        parts.append("</section>")
+            parts.append("<div>")
+            parts.extend(text_column)
+            parts.append("</div><div>")
+            parts.extend(visual_column)
+            parts.append("</div>")
+        parts.append("</div></section>")
         page_no += 1
 
     if institutions:

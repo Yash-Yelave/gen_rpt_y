@@ -66,7 +66,7 @@ def _safe_list(value: Any) -> List[Any]:
 
 def create_insight_card(card: Dict, output_path: Path) -> Path:
     ensure_dir(output_path.parent)
-    fig = plt.figure(figsize=(11.4, 4.5), dpi=180, facecolor=PAPER)
+    fig = plt.figure(figsize=(11.4, 4.5), dpi=300, facecolor=PAPER)
     ax = plt.axes([0, 0, 1, 1])
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
@@ -136,7 +136,7 @@ def create_chart(chart: Dict, output_path: Path) -> Path:
     title = _truncate_text(chart.get("title", "Chart"), 82)
     subtitle = _truncate_text(chart.get("subtitle", ""), 130)
 
-    fig = plt.figure(figsize=(10.8, 6.0), dpi=180, facecolor=PAPER)
+    fig = plt.figure(figsize=(10.8, 6.0), dpi=300, facecolor=PAPER)
     ax = _base_chart_frame(fig, title, subtitle, str(chart.get("exhibit_no", "")) or None)
 
     try:
