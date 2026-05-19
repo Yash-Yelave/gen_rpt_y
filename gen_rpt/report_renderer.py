@@ -485,17 +485,17 @@ def _labels(language: str) -> Dict[str, str]:
     return LABELS["en"] if str(language).lower().startswith("en") else LABELS["zh"]
 
 
-def _resolve_visuals(section: Dict[str, Any], idx: int, assets: Dict[str, str]):
+def _resolve_visuals(section: Dict[str, Any], idx: int, assets: Dict[str, str], base_dir: Path = Path(".")):
     """Return (image_key, chart_key) — both may be empty strings."""
     img, chart = "", ""
     for k in [f"image-{idx}", str(section.get("visual_hint", ""))]:
         if k and k in assets:
-            p = Path(assets[k])
+            p = base_dir / assets[k]
             if p.exists() and p.stat().st_size > 0:
                 img = k; break
     for k in [f"chart-{idx}"]:
         if k in assets:
-            p = Path(assets[k])
+            p = base_dir / assets[k]
             if p.exists() and p.stat().st_size > 0:
                 chart = k; break
     return img, chart
