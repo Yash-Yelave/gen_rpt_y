@@ -36,9 +36,16 @@ CSS = f"""
 *{{box-sizing:border-box;margin:0;padding:0;}}
 html,body{{width:{PAGE_W}in;background:#fff;}}
 body{{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:9.5pt;line-height:1.62;color:var(--ink);
-  word-spacing:normal;letter-spacing:normal;text-rendering:optimizeLegibility;
+  font-family:Georgia,"Times New Roman","Noto Serif",serif;
+  font-size:9.5pt;line-height:1.68;color:var(--ink);
+  word-spacing:0.01em;letter-spacing:0.003em;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-kerning:normal;
+  font-feature-settings:"kern" 1,"liga" 1,"onum" 1;
+  orphans:2;widows:2;
+  text-wrap:pretty;
 }}
 
 /* ── Page ── */
@@ -58,14 +65,14 @@ body{{
 }}
 .run-head-inner{{display:table;width:100%;}}
 .run-head-brand{{
-  display:table-cell;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:6pt;font-weight:600;letter-spacing:0.06em;
+  display:table-cell;font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5.5pt;font-weight:600;letter-spacing:0.07em;
   text-transform:uppercase;color:var(--accent);vertical-align:bottom;white-space:nowrap;
 }}
 .run-head-label{{
   display:table-cell;text-align:right;
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:5.5pt;color:var(--muted);letter-spacing:0.02em;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5pt;color:var(--muted);letter-spacing:0.03em;
   font-weight:400;white-space:nowrap;vertical-align:bottom;
 }}
 
@@ -76,37 +83,38 @@ body{{
   display:table;width:{CW}in;
 }}
 .run-foot-left{{
-  display:table-cell;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:5.5pt;color:var(--muted);letter-spacing:0.01em;font-weight:400;white-space:nowrap;
+  display:table-cell;font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5pt;color:var(--muted);letter-spacing:0.02em;font-weight:400;white-space:nowrap;
 }}
 .run-foot-pg{{
   display:table-cell;text-align:right;
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:5.5pt;color:var(--muted);font-weight:500;white-space:nowrap;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5pt;color:var(--muted);font-weight:400;letter-spacing:0.04em;white-space:nowrap;
 }}
 
 /* ── Type Hierarchy ── */
-h1{{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:24pt;line-height:1.08;font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:0.12in;}}
-h2{{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15pt;line-height:1.18;font-weight:700;color:var(--navy);letter-spacing:-0.01em;margin-bottom:0.08in;}}
-h3{{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12pt;line-height:1.24;font-weight:700;color:var(--ink);letter-spacing:0;margin-bottom:0.06in;}}
-p{{margin:0 0 0.10in;font-size:9.5pt;line-height:1.62;color:var(--ink);letter-spacing:0;}}
+h1{{font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:24pt;line-height:1.08;font-weight:800;color:var(--navy);letter-spacing:-0.025em;margin-bottom:0.12in;}}
+h2{{font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14pt;line-height:1.22;font-weight:600;color:var(--navy);letter-spacing:-0.008em;margin-bottom:0.08in;}}
+h3{{font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11.5pt;line-height:1.26;font-weight:600;color:var(--ink);letter-spacing:0;margin-bottom:0.06in;}}
+p{{margin:0 0 0.11in;font-size:9.5pt;line-height:1.68;color:var(--ink);letter-spacing:0.003em;orphans:2;widows:2;}}
 ul,ol{{margin:0 0 0.10in 0.16in;padding:0;}}
-li{{font-size:9.5pt;line-height:1.58;margin-bottom:0.04in;color:var(--ink);letter-spacing:0;}}
+li{{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter-spacing:0.003em;}}
 
 /* ── Chapter Label ── */
 .chapter-label{{
-  display:block;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:7pt;font-weight:700;letter-spacing:0.08em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:0.04in;
+  display:block;font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;letter-spacing:0.10em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:0.05in;
 }}
 .section-title{{
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:18pt;font-weight:700;line-height:1.12;
-  color:var(--navy);letter-spacing:-0.015em;margin-bottom:0.05in;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:17pt;font-weight:600;line-height:1.14;
+  color:var(--navy);letter-spacing:-0.012em;margin-bottom:0.06in;
 }}
 .lead{{
-  font-size:9.5pt;line-height:1.52;color:var(--accent);
+  font-size:9.5pt;line-height:1.58;color:var(--accent);
   font-weight:500;margin-bottom:0.10in;font-style:normal;
+  letter-spacing:0.005em;
 }}
 
 /* ── Section Grid ── */
@@ -122,75 +130,75 @@ li{{font-size:9.5pt;line-height:1.58;margin-bottom:0.04in;color:var(--ink);lette
 
 /* ── Executive Summary ── */
 .exec-label{{
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:7pt;font-weight:700;letter-spacing:0.08em;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;letter-spacing:0.10em;
   text-transform:uppercase;color:var(--accent);
-  margin-bottom:0.10in;padding-bottom:0.05in;
+  margin-bottom:0.12in;padding-bottom:0.06in;
   border-bottom:0.4pt solid var(--line);
 }}
-.exec-findings{{margin-top:0.06in;}}
+.exec-findings{{margin-top:0.08in;}}
 .exec-item{{
-  display:table;width:100%;padding:0.07in 0;
-  border-bottom:0.4pt solid #E8EAED;
+  display:table;width:100%;padding:0.08in 0;
+  border-bottom:0.4pt solid #ECEDF0;
 }}
 .exec-num{{
-  display:table-cell;width:0.30in;vertical-align:top;
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:8pt;font-weight:700;color:var(--accent);
+  display:table-cell;width:0.34in;vertical-align:top;padding-top:0.01in;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:8pt;font-weight:600;color:var(--accent);letter-spacing:0.02em;
 }}
 .exec-text{{
   display:table-cell;vertical-align:top;
-  font-size:9pt;line-height:1.52;color:var(--ink);
+  font-size:9.5pt;line-height:1.62;color:var(--ink);letter-spacing:0.003em;
 }}
 
 /* ── Implication Panel ── */
 .impl-panel{{
-  background:var(--gray-bg);padding:0.10in 0.12in;
+  background:var(--gray-bg);padding:0.10in 0.13in;
   margin:0.10in 0 0.08in;page-break-inside:avoid;
   border-top:0.4pt solid var(--line);
 }}
 .impl-head{{
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:6.5pt;font-weight:700;letter-spacing:0.06em;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6pt;font-weight:600;letter-spacing:0.08em;
   text-transform:uppercase;color:var(--mid);margin-bottom:0.05in;
 }}
 .impl-panel ul{{margin:0;padding:0 0 0 0.14in;}}
-.impl-panel li{{font-size:8.5pt;line-height:1.52;margin-bottom:0.03in;color:var(--ink);}}
+.impl-panel li{{font-size:8.5pt;line-height:1.56;margin-bottom:0.03in;color:var(--ink);letter-spacing:0.003em;}}
 
 /* ── TOC ── */
 .toc-label{{
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:7pt;font-weight:700;letter-spacing:0.08em;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;letter-spacing:0.10em;
   text-transform:uppercase;color:var(--accent);
-  margin-bottom:0.12in;padding-bottom:0.05in;
+  margin-bottom:0.14in;padding-bottom:0.06in;
   border-bottom:0.4pt solid var(--line);
 }}
 .toc-list{{list-style:none;margin:0;padding:0;}}
 .toc-list li{{
-  font-size:9.5pt;line-height:1.42;margin-bottom:0.06in;
-  padding:0.04in 0;border-bottom:0.4pt solid #F0F1F3;
-  color:var(--ink);display:table;width:100%;
+  font-size:9.5pt;line-height:1.48;margin-bottom:0.04in;
+  padding:0.05in 0;border-bottom:0.4pt solid #F0F1F3;
+  color:var(--ink);display:table;width:100%;letter-spacing:0.003em;
 }}
 .toc-num{{
-  display:table-cell;width:0.78in;padding-right:0.10in;
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:7pt;font-weight:700;color:var(--accent);
-  letter-spacing:0.04em;vertical-align:top;padding-top:0.02in;
+  display:table-cell;width:0.80in;padding-right:0.12in;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;color:var(--accent);
+  letter-spacing:0.05em;vertical-align:top;padding-top:0.03in;
 }}
 .toc-title-text{{display:table-cell;vertical-align:top;}}
 
 /* ── Disclaimer / refs ── */
 .disc-label{{
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:7pt;font-weight:700;letter-spacing:0.08em;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;letter-spacing:0.10em;
   text-transform:uppercase;color:var(--accent);
-  margin-bottom:0.10in;padding-bottom:0.05in;
+  margin-bottom:0.12in;padding-bottom:0.06in;
   border-bottom:0.4pt solid var(--line);
 }}
-.disc-text{{font-size:9pt;line-height:1.58;color:var(--muted);margin-bottom:0.08in;}}
-.disc-note{{font-size:8pt;line-height:1.52;color:var(--muted);margin-top:0.06in;}}
+.disc-text{{font-size:9pt;line-height:1.62;color:var(--muted);margin-bottom:0.10in;letter-spacing:0.005em;}}
+.disc-note{{font-size:8pt;line-height:1.56;color:var(--muted);margin-top:0.08in;letter-spacing:0.005em;}}
 .ref-block{{
-  margin-top:0.18in;padding-top:0.10in;
+  margin-top:0.22in;padding-top:0.12in;
   border-top:0.4pt solid var(--line);
 }}
 
@@ -211,33 +219,33 @@ li{{font-size:9.5pt;line-height:1.58;margin-bottom:0.04in;color:var(--ink);lette
   padding:0.40in 0.55in 0.50in;
 }}
 .cover-brand-line{{
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:7pt;font-weight:700;letter-spacing:0.08em;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;letter-spacing:0.10em;
   text-transform:uppercase;color:var(--accent);margin-bottom:0.14in;
 }}
-.cover-rule{{width:0.36in;height:2pt;background:var(--accent);margin-bottom:0.16in;}}
+.cover-rule{{width:0.36in;height:1.5pt;background:var(--accent);margin-bottom:0.18in;}}
 .cover-title{{
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:28pt;line-height:1.06;font-weight:700;
-  color:var(--navy);letter-spacing:-0.02em;margin-bottom:0.10in;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:28pt;line-height:1.06;font-weight:800;
+  color:var(--navy);letter-spacing:-0.025em;margin-bottom:0.10in;
 }}
 .cover-sub{{
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:9pt;color:var(--muted);font-weight:400;
-  letter-spacing:0.02em;text-transform:uppercase;margin-bottom:0.28in;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:8.5pt;color:var(--muted);font-weight:400;
+  letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.28in;
 }}
 .cover-divider{{width:100%;height:0.4pt;background:var(--line);margin-bottom:0.14in;}}
 .cover-meta{{display:table;border-collapse:separate;border-spacing:0;}}
-.cover-meta-item{{display:table-cell;vertical-align:top;padding-right:0.44in;}}
+.cover-meta-item{{display:table-cell;vertical-align:top;padding-right:0.48in;}}
 .cover-meta-item:last-child{{padding-right:0;}}
 .cover-meta-label{{
-  display:block;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:6pt;font-weight:600;letter-spacing:0.06em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:0.03in;white-space:nowrap;
+  display:block;font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5.5pt;font-weight:500;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:0.04in;white-space:nowrap;
 }}
 .cover-meta-value{{
-  display:block;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size:8.5pt;color:var(--navy);font-weight:600;white-space:nowrap;letter-spacing:0;
+  display:block;font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:8.5pt;color:var(--navy);font-weight:600;white-space:nowrap;letter-spacing:0.005em;
 }}
 
 /* ── Profiles ── */
@@ -252,7 +260,8 @@ li{{font-size:9.5pt;line-height:1.58;margin-bottom:0.04in;color:var(--ink);lette
 @media print{{
   html,body{{width:{PAGE_W}in;}}
   .page{{margin:0;box-shadow:none;border:none;}}
-  *{{-webkit-print-color-adjust:exact !important;color-adjust:exact !important;}}
+  *{{-webkit-print-color-adjust:exact !important;color-adjust:exact !important;print-color-adjust:exact !important;}}
+  p{{orphans:2;widows:2;}}
 }}
 """
 
