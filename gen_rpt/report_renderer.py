@@ -485,11 +485,137 @@ def _labels(language: str) -> Dict[str, str]:
     return LABELS["en"] if str(language).lower().startswith("en") else LABELS["zh"]
 
 
-def _resolve_visual(section: Dict[str, Any], idx: int, assets: Dict[str, str]) -> str:
-    for key in [f"image-{idx}", str(section.get("visual_hint", "")), f"chart-{idx}", "cover-background"]:
-        if key and key in assets:
-            return key
-    return ""
+def _resolve_visuals(section: Dict[str, Any], idx: int, assets: Dict[str, str]):
+    """Return (image_key, chart_key) — both may be empty strings."""
+    img, chart = "", ""
+    for k in [f"image-{idx}", str(section.get("visual_hint", ""))]:
+        if k and k in assets:
+            p = Path(assets[k])
+            if p.exists() and p.stat().st_size > 0:
+                img = k; break
+    for k in [f"chart-{idx}"]:
+        if k in assets:
+            p = Path(assets[k])
+            if p.exists() and p.stat().st_size > 0:
+                chart = k; break
+    return img, chart
+
+
+def _select_layout(idx: int, total: int, has_img: bool, has_chart: bool) -> str:
+    """Cycle through layout templates for visual variety."""
+    if idx == 1:
+        return "B" if has_img else "A"
+    cycle = idx % 5
+    if cycle == 0:
+        return "C" if has_img else "A"
+    if cycle == 1:
+        return "A"
+    if cycle == 2:
+        return "D" if has_chart else "A"
+    if cycle == 3:
+        return "E"
+    return "B" if has_img else "A"
+
+
+def _img_tag(key: str, assets: Dict[str, str], cls: str) -> str:
+    return f"<img class='{cls}' src='{html.escape(assets[key])}' alt='' />"
+
+
+def _impl_block(parts, takeaways, labels):
+    if not takeaways:
+        return
+    parts.append("<div class='impl-panel'>")
+    parts.append(f"<div class='impl-head'>{html.escape(labels['takeaways'])}</div>")
+    parts.append("<ul>")
+    for item in takeaways:
+        parts.append(f"<li>{html.escape(_shorten(item, 160))}</li>")
+    parts.append("</ul></div>")
+
+
+def _render_layout_a(parts, paragraphs, takeaways, img_key, chart_key, assets, labels):
+    """Editorial Split — text-heavy left, visual right."""
+    parts.append("<div class='layout-a'>")
+    parts.append("<div>")
+    for p in paragraphs[:2]:
+        parts.append(f"<p>{html.escape(_shorten(p, 650))}</p>")
+    _impl_block(parts, takeaways, labels)
+    for p in paragraphs[2:3]:
+        parts.append(f"<p>{html.escape(_shorten(p, 500))}</p>")
+    parts.append("</div><div>")
+    vis = chart_key or img_key
+    if vis:
+        cls = "chart-inline" if vis.startswith("chart-") else "vis-main"
+        parts.append(_img_tag(vis, assets, cls))
+    else:
+        parts.append("<div class='visual-empty'></div>")
+    parts.append("</div></div>")
+
+
+def _render_layout_b(parts, paragraphs, takeaways, img_key, chart_key, assets, labels):
+    """Visual-First — hero image top, text in two columns below."""
+    parts.append("<div class='layout-b-hero'>")
+    parts.append(_img_tag(img_key, assets, "vis-hero"))
+    parts.append("</div>")
+    parts.append("<div class='layout-b-cols'>")
+    parts.append("<div>")
+    for p in paragraphs[:2]:
+        parts.append(f"<p>{html.escape(_shorten(p, 420))}</p>")
+    parts.append("</div><div>")
+    _impl_block(parts, takeaways, labels)
+    if chart_key:
+        parts.append(_img_tag(chart_key, assets, "chart-sm"))
+    elif paragraphs[2:3]:
+        parts.append(f"<p>{html.escape(_shorten(paragraphs[2], 400))}</p>")
+    parts.append("</div></div>")
+
+
+def _render_layout_c(parts, paragraphs, takeaways, img_key, chart_key, assets, labels):
+    """Asymmetric — narrow text left, large visual right."""
+    parts.append("<div class='layout-c'>")
+    parts.append("<div>")
+    for p in paragraphs[:2]:
+        parts.append(f"<p>{html.escape(_shorten(p, 360))}</p>")
+    _impl_block(parts, takeaways, labels)
+    parts.append("</div><div>")
+    parts.append(_img_tag(img_key, assets, "vis-main"))
+    if chart_key:
+        parts.append("<div class='ed-rule'></div>")
+        parts.append(_img_tag(chart_key, assets, "chart-sm"))
+    parts.append("</div></div>")
+
+
+def _render_layout_d(parts, paragraphs, takeaways, img_key, chart_key, assets, labels):
+    """Data + Insight — chart and insight stacked on right."""
+    parts.append("<div class='layout-d'>")
+    parts.append("<div>")
+    for p in paragraphs[:3]:
+        parts.append(f"<p>{html.escape(_shorten(p, 520))}</p>")
+    parts.append("</div><div class='layout-d-stack'>")
+    parts.append(_img_tag(chart_key, assets, "chart-sm"))
+    _impl_block(parts, takeaways, labels)
+    if img_key:
+        parts.append(_img_tag(img_key, assets, "vis-half"))
+    parts.append("</div></div>")
+
+
+def _render_layout_e(parts, paragraphs, takeaways, img_key, chart_key, assets, labels):
+    """Side Panel — wide text, narrow institutional sidebar."""
+    parts.append("<div class='layout-e'>")
+    parts.append("<div>")
+    for p in paragraphs[:2]:
+        parts.append(f"<p>{html.escape(_shorten(p, 620))}</p>")
+    if img_key:
+        parts.append(_img_tag(img_key, assets, "vis-half"))
+    elif chart_key:
+        parts.append(_img_tag(chart_key, assets, "chart-sm"))
+    for p in paragraphs[2:3]:
+        parts.append(f"<p>{html.escape(_shorten(p, 450))}</p>")
+    parts.append("</div><div class='layout-e-sidebar'>")
+    _impl_block(parts, takeaways, labels)
+    if chart_key and img_key:
+        parts.append("<div class='ed-accent-rule'></div>")
+        parts.append(_img_tag(chart_key, assets, "chart-sm"))
+    parts.append("</div></div>")
 
 
 def _safe_sections(value: Any) -> List[Dict[str, Any]]:
@@ -509,3 +635,4 @@ def _clean(item: str) -> str:
 def _shorten(value: Any, max_chars: int) -> str:
     text = " ".join(str(value or "").replace("\n", " ").split())
     return text if len(text) <= max_chars else text[: max_chars - 1].rstrip() + "."
+
