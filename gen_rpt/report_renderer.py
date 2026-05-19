@@ -554,88 +554,94 @@ def _impl_block(parts, takeaways, labels):
 
 
 def _render_layout_a(parts, paragraphs, takeaways, img_key, chart_key, assets, labels):
-    """Editorial Split — text-heavy left, visual right."""
-    parts.append("<div class='layout-a'>")
-    parts.append("<div>")
+    """Layout A — Editorial Split: text-heavy left (59%), visual right (38%)."""
+    parts.append("<div class='lt'>")
+    parts.append("<div class='lt-l la-l'>")
     for p in paragraphs[:2]:
         parts.append(f"<p>{html.escape(_shorten(p, 650))}</p>")
     _impl_block(parts, takeaways, labels)
     for p in paragraphs[2:3]:
         parts.append(f"<p>{html.escape(_shorten(p, 500))}</p>")
-    parts.append("</div><div>")
+    parts.append("</div>")
+    parts.append("<div class='lt-r la-r'>")
     vis = chart_key or img_key
     if vis:
-        cls = "chart-inline" if vis.startswith("chart-") else "vis-main"
-        parts.append(_img_tag(vis, assets, cls))
+        cls = "chart-inline" if vis.startswith("chart-") else "vis-main-img"
+        parts.append(f"<img class='{cls}' src='{html.escape(assets[vis])}' width='100%' alt='' />")
     else:
         parts.append("<div class='visual-empty'></div>")
     parts.append("</div></div>")
 
 
 def _render_layout_b(parts, paragraphs, takeaways, img_key, chart_key, assets, labels):
-    """Visual-First — hero image top, text in two columns below."""
+    """Layout B — Visual-First: full-width hero top, two-col text below."""
     parts.append("<div class='layout-b-hero'>")
-    parts.append(_img_tag(img_key, assets, "vis-hero"))
+    parts.append(f"<img class='vis-hero-img' src='{html.escape(assets[img_key])}' width='100%' alt='' />")
     parts.append("</div>")
-    parts.append("<div class='layout-b-cols'>")
-    parts.append("<div>")
+    # two-column row below
+    parts.append("<div class='lt'>")
+    parts.append("<div class='lt-l lb-l'>")
     for p in paragraphs[:2]:
         parts.append(f"<p>{html.escape(_shorten(p, 420))}</p>")
-    parts.append("</div><div>")
+    parts.append("</div>")
+    parts.append("<div class='lt-r lb-r'>")
     _impl_block(parts, takeaways, labels)
     if chart_key:
-        parts.append(_img_tag(chart_key, assets, "chart-sm"))
+        parts.append(f"<img class='chart-sm' src='{html.escape(assets[chart_key])}' width='100%' alt='' />")
     elif paragraphs[2:3]:
         parts.append(f"<p>{html.escape(_shorten(paragraphs[2], 400))}</p>")
     parts.append("</div></div>")
 
 
 def _render_layout_c(parts, paragraphs, takeaways, img_key, chart_key, assets, labels):
-    """Asymmetric — narrow text left, large visual right."""
-    parts.append("<div class='layout-c'>")
-    parts.append("<div>")
+    """Layout C — Asymmetric: narrow text (30%), large visual (67%)."""
+    parts.append("<div class='lt'>")
+    parts.append("<div class='lt-l lc-l'>")
     for p in paragraphs[:2]:
         parts.append(f"<p>{html.escape(_shorten(p, 360))}</p>")
     _impl_block(parts, takeaways, labels)
-    parts.append("</div><div>")
-    parts.append(_img_tag(img_key, assets, "vis-main"))
+    parts.append("</div>")
+    parts.append("<div class='lt-r lc-r'>")
+    parts.append(f"<img class='vis-main-img' src='{html.escape(assets[img_key])}' width='100%' alt='' />")
     if chart_key:
         parts.append("<div class='ed-rule'></div>")
-        parts.append(_img_tag(chart_key, assets, "chart-sm"))
+        parts.append(f"<img class='chart-sm' src='{html.escape(assets[chart_key])}' width='100%' alt='' />")
     parts.append("</div></div>")
 
 
 def _render_layout_d(parts, paragraphs, takeaways, img_key, chart_key, assets, labels):
-    """Data + Insight — chart and insight stacked on right."""
-    parts.append("<div class='layout-d'>")
-    parts.append("<div>")
+    """Layout D — Data+Insight: body text (56%), chart+panel stacked (41%)."""
+    parts.append("<div class='lt'>")
+    parts.append("<div class='lt-l ld-l'>")
     for p in paragraphs[:3]:
         parts.append(f"<p>{html.escape(_shorten(p, 520))}</p>")
-    parts.append("</div><div class='layout-d-stack'>")
-    parts.append(_img_tag(chart_key, assets, "chart-sm"))
+    parts.append("</div>")
+    parts.append("<div class='lt-r ld-r'>")
+    parts.append(f"<img class='chart-sm' src='{html.escape(assets[chart_key])}' width='100%' alt='' />")
     _impl_block(parts, takeaways, labels)
     if img_key:
-        parts.append(_img_tag(img_key, assets, "vis-half"))
+        parts.append(f"<img class='vis-half-img' src='{html.escape(assets[img_key])}' width='100%' alt='' />")
     parts.append("</div></div>")
 
 
 def _render_layout_e(parts, paragraphs, takeaways, img_key, chart_key, assets, labels):
-    """Side Panel — wide text, narrow institutional sidebar."""
-    parts.append("<div class='layout-e'>")
-    parts.append("<div>")
+    """Layout E — Side Panel: wide text (64%), narrow institutional sidebar (33%)."""
+    parts.append("<div class='lt'>")
+    parts.append("<div class='lt-l le-l'>")
     for p in paragraphs[:2]:
         parts.append(f"<p>{html.escape(_shorten(p, 620))}</p>")
     if img_key:
-        parts.append(_img_tag(img_key, assets, "vis-half"))
+        parts.append(f"<img class='vis-half-img' src='{html.escape(assets[img_key])}' width='100%' alt='' />")
     elif chart_key:
-        parts.append(_img_tag(chart_key, assets, "chart-sm"))
+        parts.append(f"<img class='chart-sm' src='{html.escape(assets[chart_key])}' width='100%' alt='' />")
     for p in paragraphs[2:3]:
         parts.append(f"<p>{html.escape(_shorten(p, 450))}</p>")
-    parts.append("</div><div class='layout-e-sidebar'>")
+    parts.append("</div>")
+    parts.append("<div class='lt-r le-r layout-e-sidebar'>")
     _impl_block(parts, takeaways, labels)
     if chart_key and img_key:
         parts.append("<div class='ed-accent-rule'></div>")
-        parts.append(_img_tag(chart_key, assets, "chart-sm"))
+        parts.append(f"<img class='chart-sm' src='{html.escape(assets[chart_key])}' width='100%' alt='' />")
     parts.append("</div></div>")
 
 
