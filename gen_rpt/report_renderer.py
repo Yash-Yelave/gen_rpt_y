@@ -172,7 +172,7 @@ li{{font-size:9.5pt;line-height:1.58;margin-bottom:0.04in;color:var(--ink);lette
   color:var(--ink);display:table;width:100%;
 }}
 .toc-num{{
-  display:table-cell;width:0.52in;
+  display:table-cell;width:0.78in;padding-right:0.10in;
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size:7pt;font-weight:700;color:var(--accent);
   letter-spacing:0.04em;vertical-align:top;padding-top:0.02in;
