@@ -415,45 +415,27 @@ def render_report_html(report: Dict[str, Any], assets: Dict[str, str], output_fi
         paragraphs = [str(p) for p in (section.get("paragraphs", []) or []) if str(p).strip()]
         takeaways = [str(x) for x in (section.get("key_takeaways", []) or [])[:3]]
 
-        visual = _resolve_visual(section, idx, assets)
-        if visual:
-            v_path = Path(assets[visual])
-            if not v_path.exists() or v_path.stat().st_size == 0:
-                visual = ""
-
-        # Text column
-        text_col = []
-        for p in paragraphs[:2]:
-            text_col.append(f"<p>{html.escape(_shorten(p, 650))}</p>")
-        if takeaways:
-            text_col.append("<div class='impl-panel'>")
-            text_col.append(f"<div class='impl-head'>{html.escape(labels['takeaways'])}</div>")
-            text_col.append("<ul>")
-            for item in takeaways:
-                text_col.append(f"<li>{html.escape(_shorten(item, 160))}</li>")
-            text_col.append("</ul></div>")
-        for p in paragraphs[2:3]:
-            text_col.append(f"<p>{html.escape(_shorten(p, 500))}</p>")
-
-        # Visual column
-        if visual:
-            cls = "chart-inline" if visual.startswith("chart-") else "section-visual"
-            vis_col = [f"<img class='{cls}' src='{html.escape(assets[visual])}' alt='' />"]
-        else:
-            vis_col = ["<div class='visual-empty'></div>"]
+        img_key, chart_key = _resolve_visuals(section, idx, assets)
+        layout = _select_layout(idx, len(sections), bool(img_key), bool(chart_key))
 
         parts.append("<div class='content-area'>")
         parts.append(f"<span class='chapter-label'>Chapter {idx:02d}</span>")
         parts.append(f"<div class='section-title'>{html.escape(title_text)}</div>")
         if lead:
             parts.append(f"<div class='lead'>{html.escape(_shorten(lead, 260))}</div>")
-        parts.append("<div class='section-grid'>")
-        parts.append("<div>")
-        parts.extend(text_col)
-        parts.append("</div><div>")
-        parts.extend(vis_col)
-        parts.append("</div>")
-        parts.append("</div></div></section>")
+
+        if layout == "B" and img_key:
+            _render_layout_b(parts, paragraphs, takeaways, img_key, chart_key, assets, labels)
+        elif layout == "C" and img_key:
+            _render_layout_c(parts, paragraphs, takeaways, img_key, chart_key, assets, labels)
+        elif layout == "D" and chart_key:
+            _render_layout_d(parts, paragraphs, takeaways, img_key, chart_key, assets, labels)
+        elif layout == "E":
+            _render_layout_e(parts, paragraphs, takeaways, img_key, chart_key, assets, labels)
+        else:
+            _render_layout_a(parts, paragraphs, takeaways, img_key, chart_key, assets, labels)
+
+        parts.append("</div></section>")
         page_no += 1
 
     parts.append("</body></html>")
