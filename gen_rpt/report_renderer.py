@@ -415,7 +415,7 @@ def render_report_html(report: Dict[str, Any], assets: Dict[str, str], output_fi
         paragraphs = [str(p) for p in (section.get("paragraphs", []) or []) if str(p).strip()]
         takeaways = [str(x) for x in (section.get("key_takeaways", []) or [])[:3]]
 
-        img_key, chart_key = _resolve_visuals(section, idx, assets)
+        img_key, chart_key = _resolve_visuals(section, idx, assets, output_file.parent)
         layout = _select_layout(idx, len(sections), bool(img_key), bool(chart_key))
 
         parts.append("<div class='content-area'>")
