@@ -17,6 +17,7 @@ FONT_FAMILY = THEME.get("font_family", "Helvetica Neue, Helvetica, Arial, sans-s
 PAGE_FORMAT = os.getenv("REPORT_PAGE_FORMAT", "A4").upper()
 PAGE_W, PAGE_H = (8.27, 11.69) if PAGE_FORMAT == "A4" else (6.93, 9.84)
 PAD_X, PAD_TOP, PAD_BOTTOM = (0.45, 0.40, 0.32) if PAGE_FORMAT == "A4" else (0.32, 0.32, 0.26)
+CONTENT_W = round(PAGE_W - PAD_X * 2, 2)
 
 CSS = f"""
 @page {{ size:{PAGE_W}in {PAGE_H}in; margin:0; }}
@@ -66,7 +67,7 @@ body {{
     border-bottom:0.6pt solid var(--line);
     padding-bottom:0.04in;
     display:table;
-    width:{PAGE_W - PAD_X * 2}in;
+    width:{CONTENT_W}in;
 }}
 .run-head-inner {{
     display:table;
@@ -76,7 +77,7 @@ body {{
     display:table-cell;
     font-size:6.5pt;
     font-weight:700;
-    letter-spacing:0.06em;
+    letter-spacing:0.04em;
     text-transform:uppercase;
     color:var(--accent);
     vertical-align:bottom;
@@ -108,22 +109,22 @@ body {{
     border-top:0.6pt solid var(--line);
     padding-top:0.05in;
     display:table;
-    width:{PAGE_W - PAD_X * 2}in;
+    width:{CONTENT_W}in;
 }}
 .run-foot-left {{
     display:table-cell;
-    font-size:6.5pt;
+    font-size:6pt;
     color:var(--muted);
-    letter-spacing:0;
+    letter-spacing:0.02em;
     font-weight:400;
     white-space:nowrap;
 }}
 .run-foot-pg {{
     display:table-cell;
     text-align:right;
-    font-size:6.5pt;
+    font-size:6pt;
     color:var(--muted);
-    font-weight:600;
+    font-weight:500;
     letter-spacing:0;
     white-space:nowrap;
 }}
@@ -138,7 +139,7 @@ h3 {{ font-size:13pt; line-height:1.28; font-weight:600; color:var(--ink); lette
     display:block;
     font-size:6.5pt;
     font-weight:700;
-    letter-spacing:0.08em;
+    letter-spacing:0.05em;
     text-transform:uppercase;
     color:var(--accent);
     margin-bottom:0.06in;
@@ -211,7 +212,7 @@ li {{ font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); 
 .highlights-label {{
     font-size:7pt;
     font-weight:700;
-    letter-spacing:0.06em;
+    letter-spacing:0.05em;
     text-transform:uppercase;
     color:var(--accent);
     margin-bottom:0.12in;
@@ -256,7 +257,7 @@ li {{ font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); 
 .insight-head {{
     font-size:7pt;
     font-weight:700;
-    letter-spacing:0.06em;
+    letter-spacing:0.05em;
     text-transform:uppercase;
     color:var(--accent);
     margin-bottom:0.06in;
@@ -268,7 +269,7 @@ li {{ font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); 
 .toc-head {{
     font-size:7pt;
     font-weight:700;
-    letter-spacing:0.06em;
+    letter-spacing:0.05em;
     text-transform:uppercase;
     color:var(--accent);
     margin-bottom:0.14in;
@@ -289,7 +290,7 @@ li {{ font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); 
     font-size:6.5pt;
     font-weight:700;
     color:var(--accent);
-    letter-spacing:0.07em;
+    letter-spacing:0.05em;
     margin-bottom:0.01in;
 }}
 
@@ -332,7 +333,7 @@ li {{ font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); 
     display:block;
     font-size:7pt;
     font-weight:700;
-    letter-spacing:0.10em;
+    letter-spacing:0.06em;
     text-transform:uppercase;
     color:rgba(255,255,255,0.55);
     margin-bottom:0.18in;
@@ -355,7 +356,7 @@ li {{ font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); 
     font-size:8pt;
     color:rgba(255,255,255,0.55);
     font-weight:400;
-    letter-spacing:0.04em;
+    letter-spacing:0.03em;
     text-transform:uppercase;
     margin-bottom:0.26in;
 }}
@@ -369,26 +370,30 @@ li {{ font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); 
 .cover-meta {{
     display:table;
     border-collapse:separate;
-    border-spacing:0.30in 0;
+    border-spacing:0 0;
 }}
 .cover-meta-item {{
     display:table-cell;
     vertical-align:top;
-    padding-right:0.30in;
+    padding-right:0.40in;
+}}
+.cover-meta-item:last-child {{
+    padding-right:0;
 }}
 .cover-meta-label {{
     display:block;
-    font-size:6pt;
-    letter-spacing:0.08em;
+    font-size:6.5pt;
+    font-weight:600;
+    letter-spacing:0.05em;
     text-transform:uppercase;
-    color:rgba(255,255,255,0.35);
-    margin-bottom:0.03in;
+    color:rgba(255,255,255,0.40);
+    margin-bottom:0.04in;
     white-space:nowrap;
 }}
 .cover-meta-value {{
     display:block;
-    font-size:8pt;
-    color:rgba(255,255,255,0.75);
+    font-size:8.5pt;
+    color:rgba(255,255,255,0.80);
     font-weight:500;
     white-space:nowrap;
     letter-spacing:0;
@@ -528,9 +533,7 @@ def render_report_html(report: Dict[str, Any], assets: Dict[str, str], output_fi
 
         title_text = _strip_number_prefix(section.get("title", f"Section {idx}"))
         lead = str(section.get("lead", ""))
-        paragraphs = [str(p) for p in (section.get("paragraphs", []) or [])]
-        while len(paragraphs) < 3:
-            paragraphs.append("The evidence should be translated into management-grade implications and tested against strategic constraints.")
+        paragraphs = [str(p) for p in (section.get("paragraphs", []) or []) if str(p).strip()]
         takeaways = [str(x) for x in (section.get("key_takeaways", []) or [])[:3]]
 
         visual = _resolve_visual(section, idx, assets)
@@ -550,7 +553,7 @@ def render_report_html(report: Dict[str, Any], assets: Dict[str, str], output_fi
             for item in takeaways:
                 text_col.append(f"<li>{html.escape(_shorten(item, 150))}</li>")
             text_col.append("</ul></div>")
-        for p in paragraphs[2:4]:
+        for p in paragraphs[2:3]:
             text_col.append(f"<p>{html.escape(_shorten(p, 500))}</p>")
 
         # Build visual column
@@ -588,9 +591,9 @@ def render_report_html(report: Dict[str, Any], assets: Dict[str, str], output_fi
         parts.append("<section class='page'>")
         _page_header(parts, logo_path, page_no, labels)
         parts.append("<div class='content-area'>")
-        parts.append(f"<div class='toc-head'>Sources & References</div>")
-        parts.append(f"<p class='disclaimer-text'>{html.escape(labels['reference_note'])} {html.escape(', '.join(str(x) for x in institutions))}.</p>")
-        parts.append(f"<p class='small-note'>{html.escape(labels['formal_note'])}</p>")
+        parts.append(f"<div class='toc-head'>Sources &amp; References</div>")
+        inst_formatted = '; '.join(str(x) for x in institutions)
+        parts.append(f"<p class='disclaimer-text'>{html.escape(labels['reference_note'])} {html.escape(inst_formatted)}.</p>")
         parts.append("</div></section>")
 
     parts.append("</body></html>")
@@ -635,8 +638,8 @@ def _page_header(parts: List[str], logo_path: str, page_no: int, labels: Dict[st
 
     # Footer row — same stable table pattern
     parts.append("<div class='run-foot'>")
-    parts.append(f"<span class='run-foot-left'>{brand_display} &nbsp;&mdash;&nbsp; {conf_display}</span>")
-    parts.append(f"<span class='run-foot-pg'>{page_no}</span>")
+    parts.append(f"<span class='run-foot-left'>{brand_display} &nbsp;&#183;&nbsp; {conf_display}</span>")
+    parts.append(f"<span class='run-foot-pg'>Page {page_no}</span>")
     parts.append("</div>")
 
 
