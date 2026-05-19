@@ -117,16 +117,41 @@ li{{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);lette
   letter-spacing:0.005em;
 }}
 
-/* ── Section Grid ── */
-.section-grid{{
-  display:grid;grid-template-columns:1.25fr 0.75fr;gap:0.20in;
-  align-items:start;margin-top:0.06in;
-}}
+/* ── Layout A: Editorial Split (text-heavy left, visual right) ── */
+.layout-a{{display:grid;grid-template-columns:1.25fr 0.75fr;gap:0.20in;align-items:start;margin-top:0.06in;}}
+/* ── Layout B: Visual-First (large visual top, text below in 2 cols) ── */
+.layout-b-hero{{margin-top:0.06in;margin-bottom:0.10in;}}
+.layout-b-cols{{display:grid;grid-template-columns:1fr 1fr;gap:0.18in;margin-top:0.04in;}}
+/* ── Layout C: Asymmetric (narrow text left, wide visual right) ── */
+.layout-c{{display:grid;grid-template-columns:0.65fr 1.35fr;gap:0.20in;align-items:start;margin-top:0.06in;}}
+/* ── Layout D: Data + Insight (chart top-right, insight panel bottom-right) ── */
+.layout-d{{display:grid;grid-template-columns:1.20fr 0.80fr;gap:0.16in;align-items:start;margin-top:0.06in;}}
+.layout-d-stack{{display:grid;grid-template-rows:auto auto;gap:0.10in;}}
+/* ── Layout E: Side Panel (text + floating sidebar) ── */
+.layout-e{{display:grid;grid-template-columns:1.40fr 0.60fr;gap:0.18in;align-items:start;margin-top:0.06in;}}
+.layout-e-sidebar{{background:var(--gray-bg);padding:0.10in 0.12in;border-top:1.5pt solid var(--accent);}}
 
 /* ── Visuals ── */
-.section-visual{{width:100%;height:4.20in;object-fit:cover;display:block;page-break-inside:avoid;}}
+.vis-hero{{width:100%;height:3.00in;object-fit:cover;display:block;page-break-inside:avoid;}}
+.vis-main{{width:100%;height:4.20in;object-fit:cover;display:block;page-break-inside:avoid;}}
+.vis-half{{width:100%;height:2.00in;object-fit:cover;display:block;page-break-inside:avoid;}}
 .chart-inline{{width:100%;max-height:4.20in;object-fit:contain;display:block;page-break-inside:avoid;}}
-.visual-empty{{height:4.20in;background:var(--panel);border:0.4pt dashed var(--line);}}
+.chart-sm{{width:100%;max-height:2.40in;object-fit:contain;display:block;page-break-inside:avoid;}}
+.visual-empty{{height:3.20in;background:var(--panel);border:0.4pt dashed var(--line);}}
+.vis-caption{{
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6pt;color:var(--muted);margin-top:0.04in;letter-spacing:0.02em;line-height:1.4;
+}}
+
+/* ── Editorial Elements ── */
+.ed-rule{{width:100%;height:0.4pt;background:var(--line);margin:0.10in 0;}}
+.ed-accent-rule{{width:0.50in;height:1.5pt;background:var(--accent);margin:0.08in 0;}}
+.pull-quote{{
+  font-size:11pt;line-height:1.42;color:var(--navy);font-weight:600;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  border-left:2pt solid var(--accent);padding-left:0.12in;margin:0.10in 0;
+  letter-spacing:-0.005em;
+}}
 
 /* ── Executive Summary ── */
 .exec-label{{
