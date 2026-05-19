@@ -117,26 +117,47 @@ li{{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);lette
   letter-spacing:0.005em;
 }}
 
-/* ── Layout A: Editorial Split (text-heavy left, visual right) ── */
-.layout-a{{display:grid;grid-template-columns:1.25fr 0.75fr;gap:0.20in;align-items:start;margin-top:0.06in;}}
-/* ── Layout B: Visual-First (large visual top, text below in 2 cols) ── */
+/* ─────────────────────────────────────────────────────
+   Layout system — all display:table for wkhtmltopdf 0.12.6
+   (Qt WebKit has NO CSS Grid support)
+   ───────────────────────────────────────────────────── */
+
+/* Shared table wrapper */
+.lt{{display:table;width:100%;border-collapse:separate;border-spacing:0;margin-top:0.06in;}}
+.lt-l,.lt-r{{display:table-cell;vertical-align:top;}}
+
+/* Layout A — text 59%, visual 38%, gap 3% */
+.la-l{{width:59%;padding-right:0.20in;}}
+.la-r{{width:38%;}}
+
+/* Layout B — hero full width top; below: left 49%, right 48%, gap 3% */
 .layout-b-hero{{margin-top:0.06in;margin-bottom:0.10in;}}
-.layout-b-cols{{display:grid;grid-template-columns:1fr 1fr;gap:0.18in;margin-top:0.04in;}}
-/* ── Layout C: Asymmetric (narrow text left, wide visual right) ── */
-.layout-c{{display:grid;grid-template-columns:0.65fr 1.35fr;gap:0.20in;align-items:start;margin-top:0.06in;}}
-/* ── Layout D: Data + Insight (chart top-right, insight panel bottom-right) ── */
-.layout-d{{display:grid;grid-template-columns:1.20fr 0.80fr;gap:0.16in;align-items:start;margin-top:0.06in;}}
-.layout-d-stack{{display:grid;grid-template-rows:auto auto;gap:0.10in;}}
-/* ── Layout E: Side Panel (text + floating sidebar) ── */
-.layout-e{{display:grid;grid-template-columns:1.40fr 0.60fr;gap:0.18in;align-items:start;margin-top:0.06in;}}
+.lb-l{{width:49%;padding-right:0.18in;}}
+.lb-r{{width:48%;}}
+
+/* Layout C — narrow text 30%, large visual 67%, gap 3% */
+.lc-l{{width:30%;padding-right:0.20in;}}
+.lc-r{{width:67%;}}
+
+/* Layout D — body text 56%, data stack 41%, gap 3% */
+.ld-l{{width:56%;padding-right:0.16in;}}
+.ld-r{{width:41%;}}
+
+/* Layout E — wide text 64%, sidebar 33%, gap 3% */
+.le-l{{width:64%;padding-right:0.18in;}}
+.le-r{{width:33%;}}
 .layout-e-sidebar{{background:var(--gray-bg);padding:0.10in 0.12in;border-top:1.5pt solid var(--accent);}}
 
-/* ── Visuals ── */
-.vis-hero{{width:100%;height:3.00in;object-fit:cover;display:block;page-break-inside:avoid;}}
-.vis-main{{width:100%;height:4.20in;object-fit:cover;display:block;page-break-inside:avoid;}}
-.vis-half{{width:100%;height:2.00in;object-fit:cover;display:block;page-break-inside:avoid;}}
-.chart-inline{{width:100%;max-height:4.20in;object-fit:contain;display:block;page-break-inside:avoid;}}
-.chart-sm{{width:100%;max-height:2.40in;object-fit:contain;display:block;page-break-inside:avoid;}}
+/* ── Visuals (object-fit unsupported in wkhtmltopdf — use overflow:hidden) ── */
+.vis-hero{{display:block;width:100%;height:3.00in;overflow:hidden;}}
+.vis-hero img,.vis-hero-img{{width:100%;height:3.00in;display:block;}}
+.vis-main{{display:block;width:100%;height:4.00in;overflow:hidden;}}
+.vis-half{{display:block;width:100%;height:2.00in;overflow:hidden;}}
+.vis-hero-img{{width:100%;height:3.00in;display:block;}}
+.vis-main-img{{width:100%;height:4.00in;display:block;}}
+.vis-half-img{{width:100%;height:2.00in;display:block;}}
+.chart-inline{{width:100%;height:4.00in;display:block;}}
+.chart-sm{{width:100%;height:2.40in;display:block;}}
 .visual-empty{{height:3.20in;background:var(--panel);border:0.4pt dashed var(--line);}}
 .vis-caption{{
   font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
