@@ -5,407 +5,247 @@
 <title>Specialized agents designed for specific industries</title>
 <style>
 @page { size:8.27in 11.69in; margin:0; }
-
 :root {
-    --accent:  #003087;
-    --accent2: #3273F6;
-    --ink:     #333333;
-    --muted:   #64696E;
-    --line:    #C8C8C8;
-    --paper:   #FFFFFF;
-    --panel:   #F5F7FA;
-    --dark:    #0B1929;
-    --mid:     #4A5568;
+  --accent:#003087;
+  --accent2:#3273F6;
+  --ink:#333333;
+  --muted:#64696E;
+  --line:#C8C8C8;
+  --paper:#FFFFFF;
+  --panel:#F5F7FA;
+  --navy:#051C2C;
+  --mid:#4A5568;
+  --gray-bg:#F4F5F7;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:8.27in;background:#fff;}
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:9.5pt;line-height:1.62;color:var(--ink);
+  word-spacing:normal;letter-spacing:normal;text-rendering:optimizeLegibility;
 }
 
-* { box-sizing:border-box; margin:0; padding:0; }
-html, body { width:8.27in; background:#fff; }
-body {
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:10pt;
-    line-height:1.70;
-    color:var(--ink);
-    word-spacing:normal;
-    letter-spacing:normal;
-    text-rendering:auto;
+/* ── Page ── */
+.page{
+  width:8.27in;height:11.69in;position:relative;
+  background:var(--paper);
+  padding:0.34in 0.5in 0.28in 0.5in;
+  page-break-after:always;overflow:hidden;
+}
+.content-area{margin-top:0.20in;}
+
+/* ── Running Header ── */
+.run-head{
+  position:absolute;top:0.12in;left:0.5in;right:0.5in;
+  border-bottom:0.4pt solid var(--line);padding-bottom:0.03in;
+  display:table;width:7.27in;
+}
+.run-head-inner{display:table;width:100%;}
+.run-head-brand{
+  display:table-cell;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6pt;font-weight:600;letter-spacing:0.06em;
+  text-transform:uppercase;color:var(--accent);vertical-align:bottom;white-space:nowrap;
+}
+.run-head-label{
+  display:table-cell;text-align:right;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5.5pt;color:var(--muted);letter-spacing:0.02em;
+  font-weight:400;white-space:nowrap;vertical-align:bottom;
 }
 
-/* Page shell */
-.page {
-    width:8.27in;
-    height:11.69in;
-    position:relative;
-    background:var(--paper);
-    padding:0.4in 0.45in 0.32in 0.45in;
-    page-break-after:always;
-    overflow:hidden;
+/* ── Running Footer ── */
+.run-foot{
+  position:absolute;bottom:0.10in;left:0.5in;right:0.5in;
+  border-top:0.4pt solid var(--line);padding-top:0.03in;
+  display:table;width:7.27in;
 }
-.content-area { margin-top:0.30in; }
-
-/* Running head — stable table layout avoids flex collision */
-.run-head {
-    position:absolute;
-    top:0.14in;
-    left:0.45in;
-    right:0.45in;
-    border-bottom:0.6pt solid var(--line);
-    padding-bottom:0.04in;
-    display:table;
-    width:7.37in;
+.run-foot-left{
+  display:table-cell;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5.5pt;color:var(--muted);letter-spacing:0.01em;font-weight:400;white-space:nowrap;
 }
-.run-head-inner {
-    display:table;
-    width:100%;
-}
-.run-head-brand {
-    display:table-cell;
-    font-size:6.5pt;
-    font-weight:700;
-    letter-spacing:0.04em;
-    text-transform:uppercase;
-    color:var(--accent);
-    vertical-align:bottom;
-    white-space:nowrap;
-}
-.run-head-label {
-    display:table-cell;
-    text-align:right;
-    font-size:6.5pt;
-    color:var(--muted);
-    letter-spacing:0;
-    font-weight:500;
-    white-space:nowrap;
-    vertical-align:bottom;
-}
-.logo-fixed {
-    height:0.20in;
-    width:auto;
-    object-fit:contain;
-    vertical-align:bottom;
+.run-foot-pg{
+  display:table-cell;text-align:right;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5.5pt;color:var(--muted);font-weight:500;white-space:nowrap;
 }
 
-/* Running foot — table layout for stability */
-.run-foot {
-    position:absolute;
-    bottom:0.12in;
-    left:0.45in;
-    right:0.45in;
-    border-top:0.6pt solid var(--line);
-    padding-top:0.05in;
-    display:table;
-    width:7.37in;
+/* ── Type Hierarchy ── */
+h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:24pt;line-height:1.08;font-weight:700;color:var(--navy);letter-spacing:-0.02em;margin-bottom:0.12in;}
+h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15pt;line-height:1.18;font-weight:700;color:var(--navy);letter-spacing:-0.01em;margin-bottom:0.08in;}
+h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12pt;line-height:1.24;font-weight:700;color:var(--ink);letter-spacing:0;margin-bottom:0.06in;}
+p{margin:0 0 0.10in;font-size:9.5pt;line-height:1.62;color:var(--ink);letter-spacing:0;}
+ul,ol{margin:0 0 0.10in 0.16in;padding:0;}
+li{font-size:9.5pt;line-height:1.58;margin-bottom:0.04in;color:var(--ink);letter-spacing:0;}
+
+/* ── Chapter Label ── */
+.chapter-label{
+  display:block;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:7pt;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:0.04in;
 }
-.run-foot-left {
-    display:table-cell;
-    font-size:6pt;
-    color:var(--muted);
-    letter-spacing:0.02em;
-    font-weight:400;
-    white-space:nowrap;
+.section-title{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:18pt;font-weight:700;line-height:1.12;
+  color:var(--navy);letter-spacing:-0.015em;margin-bottom:0.05in;
 }
-.run-foot-pg {
-    display:table-cell;
-    text-align:right;
-    font-size:6pt;
-    color:var(--muted);
-    font-weight:500;
-    letter-spacing:0;
-    white-space:nowrap;
+.lead{
+  font-size:9.5pt;line-height:1.52;color:var(--accent);
+  font-weight:500;margin-bottom:0.10in;font-style:normal;
 }
 
-/* Type hierarchy — tracking applied with editorial restraint */
-h1 { font-size:22pt; line-height:1.12; font-weight:300; color:var(--dark); letter-spacing:-0.015em; margin-bottom:0.16in; }
-h2 { font-size:17pt; line-height:1.20; font-weight:600; color:var(--ink); letter-spacing:-0.005em; margin-bottom:0.10in; }
-h3 { font-size:13pt; line-height:1.28; font-weight:600; color:var(--ink); letter-spacing:0; margin-bottom:0.07in; }
-
-/* Small institutional label — tracking appropriate here */
-.chapter-label {
-    display:block;
-    font-size:6.5pt;
-    font-weight:700;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin-bottom:0.06in;
-    padding-bottom:0.05in;
-    border-bottom:2pt solid var(--accent2);
-    width:0.60in;
-}
-.section-title {
-    font-size:17pt;
-    font-weight:600;
-    line-height:1.18;
-    color:var(--dark);
-    letter-spacing:-0.010em;
-    margin-bottom:0.07in;
-    margin-top:0.04in;
-}
-.lead {
-    font-size:10.5pt;
-    line-height:1.58;
-    color:var(--mid);
-    font-weight:400;
-    margin-bottom:0.14in;
-    font-style:italic;
-    border-left:2.5pt solid var(--accent2);
-    padding-left:0.12in;
-}
-p { margin:0 0 0.13in; font-size:10pt; line-height:1.72; color:var(--ink); letter-spacing:0; }
-ul, ol { margin:0 0 0.13in 0.17in; padding:0; }
-li { font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); letter-spacing:0; }
-
-/* Section layout */
-.section-grid {
-    display:grid;
-    grid-template-columns:1.15fr 0.85fr;
-    gap:0.26in;
-    align-items:start;
-    margin-top:0.08in;
-}
-.section-grid-flip {
-    display:grid;
-    grid-template-columns:0.85fr 1.15fr;
-    gap:0.26in;
-    align-items:start;
-    margin-top:0.08in;
+/* ── Section Grid ── */
+.section-grid{
+  display:grid;grid-template-columns:1.25fr 0.75fr;gap:0.20in;
+  align-items:start;margin-top:0.06in;
 }
 
-/* Visuals */
-.section-visual {
-    width:100%;
-    height:3.70in;
-    object-fit:cover;
-    display:block;
-    border:0.6pt solid var(--line);
-    page-break-inside:avoid;
+/* ── Visuals ── */
+.section-visual{width:100%;height:4.20in;object-fit:cover;display:block;page-break-inside:avoid;}
+.chart-inline{width:100%;max-height:4.20in;object-fit:contain;display:block;page-break-inside:avoid;}
+.visual-empty{height:4.20in;background:var(--panel);border:0.4pt dashed var(--line);}
+
+/* ── Executive Summary ── */
+.exec-label{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:7pt;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:0.10in;padding-bottom:0.05in;
+  border-bottom:0.4pt solid var(--line);
 }
-.chart-inline {
-    width:100%;
-    max-height:3.70in;
-    object-fit:contain;
-    display:block;
-    page-break-inside:avoid;
+.exec-findings{margin-top:0.06in;}
+.exec-item{
+  display:table;width:100%;padding:0.07in 0;
+  border-bottom:0.4pt solid #E8EAED;
 }
-.visual-empty {
-    height:3.70in;
-    background:var(--panel);
-    border:0.6pt solid var(--line);
+.exec-num{
+  display:table-cell;width:0.30in;vertical-align:top;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:8pt;font-weight:700;color:var(--accent);
+}
+.exec-text{
+  display:table-cell;vertical-align:top;
+  font-size:9pt;line-height:1.52;color:var(--ink);
 }
 
-/* Executive highlights */
-.highlights-label {
-    font-size:7pt;
-    font-weight:700;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin-bottom:0.12in;
-    padding-bottom:0.05in;
-    border-bottom:0.6pt solid var(--line);
+/* ── Implication Panel ── */
+.impl-panel{
+  background:var(--gray-bg);padding:0.10in 0.12in;
+  margin:0.10in 0 0.08in;page-break-inside:avoid;
+  border-top:0.4pt solid var(--line);
 }
-.highlight-grid {
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:0.09in 0.13in;
-    margin-top:0.05in;
+.impl-head{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:700;letter-spacing:0.06em;
+  text-transform:uppercase;color:var(--mid);margin-bottom:0.05in;
 }
-.highlight-card {
-    border-left:3pt solid var(--accent);
-    background:#FAFBFC;
-    padding:0.09in 0.11in;
-    min-height:0.60in;
-    page-break-inside:avoid;
+.impl-panel ul{margin:0;padding:0 0 0 0.14in;}
+.impl-panel li{font-size:8.5pt;line-height:1.52;margin-bottom:0.03in;color:var(--ink);}
+
+/* ── TOC ── */
+.toc-label{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:7pt;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:0.12in;padding-bottom:0.05in;
+  border-bottom:0.4pt solid var(--line);
 }
-.highlight-card .num {
-    font-size:7pt;
-    font-weight:700;
-    color:var(--accent);
-    letter-spacing:0.02em;
-    margin-bottom:0.025in;
+.toc-list{list-style:none;margin:0;padding:0;}
+.toc-list li{
+  font-size:9.5pt;line-height:1.42;margin-bottom:0.06in;
+  padding:0.04in 0;border-bottom:0.4pt solid #F0F1F3;
+  color:var(--ink);display:table;width:100%;
 }
-.highlight-card .text {
-    font-size:8.5pt;
-    line-height:1.52;
-    color:var(--ink);
-    letter-spacing:0;
+.toc-num{
+  display:table-cell;width:0.52in;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:7pt;font-weight:700;color:var(--accent);
+  letter-spacing:0.04em;vertical-align:top;padding-top:0.02in;
+}
+.toc-title-text{display:table-cell;vertical-align:top;}
+
+/* ── Disclaimer / refs ── */
+.disc-label{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:7pt;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:0.10in;padding-bottom:0.05in;
+  border-bottom:0.4pt solid var(--line);
+}
+.disc-text{font-size:9pt;line-height:1.58;color:var(--muted);margin-bottom:0.08in;}
+.disc-note{font-size:8pt;line-height:1.52;color:var(--muted);margin-top:0.06in;}
+.ref-block{
+  margin-top:0.18in;padding-top:0.10in;
+  border-top:0.4pt solid var(--line);
 }
 
-/* Insight panel */
-.insight-panel {
-    background:#F2F6FB;
-    border-left:3pt solid var(--accent);
-    padding:0.11in 0.13in;
-    margin:0.12in 0 0.10in;
-    page-break-inside:avoid;
+/* ── Cover ── */
+.cover{padding:0;background-size:cover;background-position:center top;}
+.cover-img-zone{
+  position:absolute;top:0;left:0;right:0;height:55%;
+  background-size:cover;background-position:center;
 }
-.insight-head {
-    font-size:7pt;
-    font-weight:700;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin-bottom:0.06in;
+.cover-img-overlay{
+  position:absolute;top:0;left:0;right:0;height:55%;
+  background:linear-gradient(180deg,rgba(5,28,44,0.60) 0%,rgba(5,28,44,0.35) 100%);
+  z-index:1;
 }
-.insight-panel ul { margin:0; }
-.insight-panel li { font-size:8.5pt; line-height:1.58; margin-bottom:0.04in; letter-spacing:0; }
-
-/* TOC */
-.toc-head {
-    font-size:7pt;
-    font-weight:700;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin-bottom:0.14in;
-    padding-bottom:0.06in;
-    border-bottom:0.6pt solid var(--line);
+.cover-white{
+  position:absolute;bottom:0;left:0;right:0;height:48%;
+  background:#ffffff;z-index:2;
+  padding:0.40in 0.55in 0.50in;
 }
-.toc-list { list-style:none; margin:0; padding:0; }
-.toc-list li {
-    font-size:10pt;
-    line-height:1.52;
-    margin-bottom:0.08in;
-    padding-left:0.14in;
-    border-left:1.5pt solid var(--line);
-    color:var(--ink);
+.cover-brand-line{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:7pt;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:0.14in;
 }
-.toc-num {
-    display:block;
-    font-size:6.5pt;
-    font-weight:700;
-    color:var(--accent);
-    letter-spacing:0.05em;
-    margin-bottom:0.01in;
+.cover-rule{width:0.36in;height:2pt;background:var(--accent);margin-bottom:0.16in;}
+.cover-title{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:28pt;line-height:1.06;font-weight:700;
+  color:var(--navy);letter-spacing:-0.02em;margin-bottom:0.10in;
+}
+.cover-sub{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:9pt;color:var(--muted);font-weight:400;
+  letter-spacing:0.02em;text-transform:uppercase;margin-bottom:0.28in;
+}
+.cover-divider{width:100%;height:0.4pt;background:var(--line);margin-bottom:0.14in;}
+.cover-meta{display:table;border-collapse:separate;border-spacing:0;}
+.cover-meta-item{display:table-cell;vertical-align:top;padding-right:0.44in;}
+.cover-meta-item:last-child{padding-right:0;}
+.cover-meta-label{
+  display:block;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6pt;font-weight:600;letter-spacing:0.06em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:0.03in;white-space:nowrap;
+}
+.cover-meta-value{
+  display:block;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:8.5pt;color:var(--navy);font-weight:600;white-space:nowrap;letter-spacing:0;
 }
 
-/* Disclaimer / refs */
-.disclaimer-text, .small-note {
-    font-size:8.5pt;
-    line-height:1.55;
-    color:var(--muted);
-}
-.small-note { margin-top:0.08in; }
-.reference-note {
-    border-top:0.6pt solid var(--line);
-    padding-top:0.10in;
-    margin-top:0.18in;
-    font-size:8.5pt;
-    line-height:1.55;
-    color:var(--muted);
-}
+/* ── Profiles ── */
+.profile-compact{font-size:8.5pt;}
+.profile-compact p,.profile-compact li{font-size:8.5pt;}
+.profile-compact h2{font-size:13pt;}
+.profile-presentation{font-size:12pt;}
+.profile-presentation p,.profile-presentation li{font-size:12pt;}
+.profile-presentation h2{font-size:20pt;}
 
-/* Cover */
-.cover {
-    padding:0;
-    background-size:cover;
-    background-position:center top;
-}
-.cover-overlay {
-    position:absolute;
-    inset:0;
-    background:linear-gradient(108deg, rgba(6,20,44,.95) 0%, rgba(6,20,44,.80) 50%, rgba(6,20,44,.35) 100%);
-    z-index:1;
-}
-.cover-panel {
-    position:absolute;
-    left:0.52in;
-    bottom:1.00in;
-    width:5.60in;
-    z-index:3;
-}
-.cover-brand {
-    display:block;
-    font-size:7pt;
-    font-weight:700;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    color:rgba(255,255,255,0.55);
-    margin-bottom:0.18in;
-}
-.cover-rule {
-    width:0.38in;
-    height:2.5pt;
-    background:var(--accent2);
-    margin-bottom:0.18in;
-}
-.cover-title {
-    font-size:28pt;
-    line-height:1.08;
-    font-weight:300;
-    color:#ffffff;
-    letter-spacing:-0.015em;
-    margin-bottom:0.16in;
-}
-.cover-sub {
-    font-size:8pt;
-    color:rgba(255,255,255,0.55);
-    font-weight:400;
-    letter-spacing:0.03em;
-    text-transform:uppercase;
-    margin-bottom:0.26in;
-}
-.cover-divider {
-    width:100%;
-    height:0.5pt;
-    background:rgba(255,255,255,0.15);
-    margin-bottom:0.16in;
-}
-/* Cover metadata — table layout prevents label/value collision */
-.cover-meta {
-    display:table;
-    border-collapse:separate;
-    border-spacing:0 0;
-}
-.cover-meta-item {
-    display:table-cell;
-    vertical-align:top;
-    padding-right:0.40in;
-}
-.cover-meta-item:last-child {
-    padding-right:0;
-}
-.cover-meta-label {
-    display:block;
-    font-size:6.5pt;
-    font-weight:600;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    color:rgba(255,255,255,0.40);
-    margin-bottom:0.04in;
-    white-space:nowrap;
-}
-.cover-meta-value {
-    display:block;
-    font-size:8.5pt;
-    color:rgba(255,255,255,0.80);
-    font-weight:500;
-    white-space:nowrap;
-    letter-spacing:0;
-}
-
-/* Compact profile */
-.profile-compact { font-size:9pt; }
-.profile-compact p, .profile-compact li { font-size:9pt; }
-.profile-compact h2 { font-size:14pt; }
-
-/* Presentation profile */
-.profile-presentation { font-size:12pt; }
-.profile-presentation p, .profile-presentation li { font-size:12pt; }
-.profile-presentation h2 { font-size:20pt; }
-
-/* Print */
-@media print {
-    html, body { width:8.27in; }
-    .page { margin:0; box-shadow:none; border:none; }
-    * { -webkit-print-color-adjust:exact !important; color-adjust:exact !important; }
+/* ── Print ── */
+@media print{
+  html,body{width:8.27in;}
+  .page{margin:0;box-shadow:none;border:none;}
+  *{-webkit-print-color-adjust:exact !important;color-adjust:exact !important;}
 }
 </style>
 </head>
 <body>
-<section class='page cover' style="background-image:url('assets/cover-ai.png');">
-<div class='cover-overlay'></div>
-<div class='cover-panel'>
-<span class='cover-brand'>BlueOcean</span>
+<section class='page cover'>
+<div class='cover-img-zone' style="background-image:url('assets/cover-ai.png');"></div>
+<div class='cover-img-overlay'></div>
+<div class='cover-white'>
+<div class='cover-brand-line'>BlueOcean</div>
 <div class='cover-rule'></div>
 <div class='cover-title'>Specialized agents designed for specific industries</div>
 <div class='cover-sub'>Deep Research Report</div>
@@ -418,72 +258,68 @@ li { font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); l
 </div>
 </section>
 <section class='page'>
-<div class='run-head'>
-<div class='run-head-inner'>
+<div class='run-head'><div class='run-head-inner'>
 <span class='run-head-brand'>BlueOcean</span>
-<span class='run-head-label'>Deep Research Report &nbsp;&nbsp; Confidential</span>
+<span class='run-head-label'>Deep Research Report</span>
 </div></div>
 <div class='run-foot'>
-<span class='run-foot-left'>BlueOcean &nbsp;&#183;&nbsp; Confidential</span>
-<span class='run-foot-pg'>Page 2</span>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>2</span>
 </div>
 <div class='content-area'>
-<div class='highlights-label'>Executive Summary</div>
-<h2>Decision-Relevant Conclusions</h2>
-<div class='highlight-grid'>
-<div class='highlight-card'><div class='num'>01</div><div class='text'>China&#x27;s VRFB advantage is shifting from early deployment momentum to a structural position in supply, cost and policy demand.</div></div>
-<div class='highlight-card'><div class='num'>02</div><div class='text'>Dali Energy Storage should defend leadership by proving project bankability, not by relying on equipment specifications alone.</div></div>
-<div class='highlight-card'><div class='num'>03</div><div class='text'>Vanadium access and electrolyte economics create a cost-resilience edge that global peers will find difficult to replicate quickly.</div></div>
-<div class='highlight-card'><div class='num'>04</div><div class='text'>Long-duration storage use cases provide the clearest path to differentiation versus lithium-ion systems.</div></div>
-<div class='highlight-card'><div class='num'>05</div><div class='text'>International expansion will require local partners, financing structures and reference projects that lower buyer risk.</div></div>
-<div class='highlight-card'><div class='num'>06</div><div class='text'>The next management agenda should sequence market entry around proof points, lifecycle economics and supply-chain credibility.</div></div>
+<div class='exec-label'>Executive Summary</div>
+<h2>Key Findings</h2>
+<div class='exec-findings'>
+<div class='exec-item'><span class='exec-num'>01</span><span class='exec-text'>China&#x27;s VRFB advantage is shifting from early deployment momentum to a structural position in supply, cost and policy demand.</span></div>
+<div class='exec-item'><span class='exec-num'>02</span><span class='exec-text'>Dali Energy Storage should defend leadership by proving project bankability, not by relying on equipment specifications alone.</span></div>
+<div class='exec-item'><span class='exec-num'>03</span><span class='exec-text'>Vanadium access and electrolyte economics create a cost-resilience edge that global peers will find difficult to replicate quickly.</span></div>
+<div class='exec-item'><span class='exec-num'>04</span><span class='exec-text'>Long-duration storage use cases provide the clearest path to differentiation versus lithium-ion systems.</span></div>
+<div class='exec-item'><span class='exec-num'>05</span><span class='exec-text'>International expansion will require local partners, financing structures and reference projects that lower buyer risk.</span></div>
+<div class='exec-item'><span class='exec-num'>06</span><span class='exec-text'>The next management agenda should sequence market entry around proof points, lifecycle economics and supply-chain credibility.</span></div>
 </div></div></section>
 <section class='page'>
-<div class='run-head'>
-<div class='run-head-inner'>
+<div class='run-head'><div class='run-head-inner'>
 <span class='run-head-brand'>BlueOcean</span>
-<span class='run-head-label'>Deep Research Report &nbsp;&nbsp; Confidential</span>
+<span class='run-head-label'>Deep Research Report</span>
 </div></div>
 <div class='run-foot'>
-<span class='run-foot-left'>BlueOcean &nbsp;&#183;&nbsp; Confidential</span>
-<span class='run-foot-pg'>Page 3</span>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>3</span>
 </div>
 <div class='content-area'>
-<div class='toc-head'>Table of Contents</div>
-<ol class='toc-list'>
-<li><span class='toc-num'>Chapter 01</span>China&#x27;s VRFB edge is becoming structural as supply, cost and policy reinforce each other</li>
-<li><span class='toc-num'>Chapter 02</span>Dali can convert technical capacity into leadership only if it proves project bankability</li>
-<li><span class='toc-num'>Chapter 03</span>Vanadium access gives Chinese suppliers a resilience edge, but price volatility still needs active management</li>
-<li><span class='toc-num'>Chapter 04</span>Policy support creates a protected base market, but export growth needs local legitimacy</li>
-<li><span class='toc-num'>Chapter 05</span>Lifecycle economics is the clearest wedge against lithium-ion in long-duration use cases</li>
-<li><span class='toc-num'>Chapter 06</span>Global competitors retain niche strengths, but scale and cost are tilting the field toward China</li>
-<li><span class='toc-num'>Chapter 07</span>Dali&#x27;s international playbook should sequence markets by proof potential, not just demand size</li>
-<li><span class='toc-num'>Chapter 08</span>The next leadership agenda should focus on membranes, service models and evidence quality</li>
-</ol></div></section>
+<div class='toc-label'>Table of Contents</div>
+<ul class='toc-list'>
+<li><span class='toc-num'>Chapter 01</span><span class='toc-title-text'>China&#x27;s VRFB edge is becoming structural as supply, cost and policy reinforce each other</span></li>
+<li><span class='toc-num'>Chapter 02</span><span class='toc-title-text'>Dali can convert technical capacity into leadership only if it proves project bankability</span></li>
+<li><span class='toc-num'>Chapter 03</span><span class='toc-title-text'>Vanadium access gives Chinese suppliers a resilience edge, but price volatility still needs active management</span></li>
+<li><span class='toc-num'>Chapter 04</span><span class='toc-title-text'>Policy support creates a protected base market, but export growth needs local legitimacy</span></li>
+<li><span class='toc-num'>Chapter 05</span><span class='toc-title-text'>Lifecycle economics is the clearest wedge against lithium-ion in long-duration use cases</span></li>
+<li><span class='toc-num'>Chapter 06</span><span class='toc-title-text'>Global competitors retain niche strengths, but scale and cost are tilting the field toward China</span></li>
+<li><span class='toc-num'>Chapter 07</span><span class='toc-title-text'>Dali&#x27;s international playbook should sequence markets by proof potential, not just demand size</span></li>
+<li><span class='toc-num'>Chapter 08</span><span class='toc-title-text'>The next leadership agenda should focus on membranes, service models and evidence quality</span></li>
+</ul></div></section>
 <section class='page'>
-<div class='run-head'>
-<div class='run-head-inner'>
+<div class='run-head'><div class='run-head-inner'>
 <span class='run-head-brand'>BlueOcean</span>
-<span class='run-head-label'>Deep Research Report &nbsp;&nbsp; Confidential</span>
+<span class='run-head-label'>Deep Research Report</span>
 </div></div>
 <div class='run-foot'>
-<span class='run-foot-left'>BlueOcean &nbsp;&#183;&nbsp; Confidential</span>
-<span class='run-foot-pg'>Page 4</span>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>4</span>
 </div>
 <div class='content-area'>
-<div class='toc-head'>Important Notice</div>
-<p class='disclaimer-text'>This document is a management research and strategy analysis deliverable for internal discussion purposes only. It does not constitute professional investment, legal, or regulatory advice.</p>
-<p class='small-note'>Source materials are archived in the backup folder.</p>
+<div class='disc-label'>Important Notice</div>
+<p class='disc-text'>This document is a management research and strategy analysis deliverable for internal discussion purposes only. It does not constitute professional investment, legal, or regulatory advice.</p>
+<p class='disc-note'>Source materials are archived in the backup folder.</p>
 </div></section>
 <section class='page'>
-<div class='run-head'>
-<div class='run-head-inner'>
+<div class='run-head'><div class='run-head-inner'>
 <span class='run-head-brand'>BlueOcean</span>
-<span class='run-head-label'>Deep Research Report &nbsp;&nbsp; Confidential</span>
+<span class='run-head-label'>Deep Research Report</span>
 </div></div>
 <div class='run-foot'>
-<span class='run-foot-left'>BlueOcean &nbsp;&#183;&nbsp; Confidential</span>
-<span class='run-foot-pg'>Page 5</span>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>5</span>
 </div>
 <div class='content-area'>
 <span class='chapter-label'>Chapter 01</span>
@@ -493,8 +329,8 @@ li { font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); l
 <div>
 <p>China&#x27;s VRFB industry should be assessed as an ecosystem rather than a collection of battery manufacturers. The strongest advantage comes from the combination of upstream vanadium access, domestic equipment scale, electrolyte know-how and a policy framework that prioritizes long-duration storage.</p>
 <p>For Dali Energy Storage, this means the leadership story should not be framed narrowly around stack technology. The more compelling story is an integrated system position: reliable supply, lower lifecycle cost, faster project delivery and a growing base of domestic references.</p>
-<div class='insight-panel'>
-<div class='insight-head'>Strategic Implications</div>
+<div class='impl-panel'>
+<div class='impl-head'>Implications</div>
 <ul>
 <li>China&#x27;s VRFB advantage is shifting from early deployment momentum to a structural position in supply, cost and policy demand.</li>
 <li>Translate the claim into measurable project evidence.</li>
@@ -506,44 +342,42 @@ li { font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); l
 </div>
 </div></div></section>
 <section class='page'>
-<div class='run-head'>
-<div class='run-head-inner'>
+<div class='run-head'><div class='run-head-inner'>
 <span class='run-head-brand'>BlueOcean</span>
-<span class='run-head-label'>Deep Research Report &nbsp;&nbsp; Confidential</span>
+<span class='run-head-label'>Deep Research Report</span>
 </div></div>
 <div class='run-foot'>
-<span class='run-foot-left'>BlueOcean &nbsp;&#183;&nbsp; Confidential</span>
-<span class='run-foot-pg'>Page 6</span>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>6</span>
 </div>
 <div class='content-area'>
 <span class='chapter-label'>Chapter 02</span>
 <div class='section-title'>Dali can convert technical capacity into leadership only if it proves project bankability</div>
 <div class='lead'>The next stage of competition will be won by firms that make VRFB projects easier to finance and operate.</div>
-<div class='section-grid-flip'>
+<div class='section-grid'>
 <div>
-<div class='visual-empty'></div>
-</div><div>
 <p>Dali&#x27;s production capacity gives it a credible platform, but global leadership will be tested in project execution. International customers will evaluate whether the company can deliver predictable commissioning, stable electrolyte performance and lifecycle service support across different regulatory environments.</p>
 <p>The highest-value commercial evidence will come from reference projects with transparent operating data. Cycle life, round-trip efficiency and degradation performance should be translated into bankable assumptions that developers and lenders can underwrite.</p>
-<div class='insight-panel'>
-<div class='insight-head'>Strategic Implications</div>
+<div class='impl-panel'>
+<div class='impl-head'>Implications</div>
 <ul>
 <li>Dali Energy Storage should defend leadership by proving project bankability, not by relying on equipment specifications alone.</li>
 <li>Translate the claim into measurable project evidence.</li>
 <li>Prioritize customer segments where duration and safety create clear value.</li>
 </ul></div>
 <p>A useful management move is to package technology, EPC support, service guarantees and electrolyte supply into an integrated offer. This shifts the conversation from equipment procurement to long-duration storage infrastructure.</p>
+</div><div>
+<div class='visual-empty'></div>
 </div>
 </div></div></section>
 <section class='page'>
-<div class='run-head'>
-<div class='run-head-inner'>
+<div class='run-head'><div class='run-head-inner'>
 <span class='run-head-brand'>BlueOcean</span>
-<span class='run-head-label'>Deep Research Report &nbsp;&nbsp; Confidential</span>
+<span class='run-head-label'>Deep Research Report</span>
 </div></div>
 <div class='run-foot'>
-<span class='run-foot-left'>BlueOcean &nbsp;&#183;&nbsp; Confidential</span>
-<span class='run-foot-pg'>Page 7</span>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>7</span>
 </div>
 <div class='content-area'>
 <span class='chapter-label'>Chapter 03</span>
@@ -553,8 +387,8 @@ li { font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); l
 <div>
 <p>China&#x27;s vanadium position gives domestic VRFB suppliers a structural advantage in electrolyte availability and cost visibility. This matters because electrolyte can represent a large share of system cost and can also become a financing asset if leasing structures are used.</p>
 <p>The risk is volatility. Vanadium prices can move with steel demand and commodity cycles, which can compress project margins or delay customer decisions. Dali should therefore treat procurement strategy as part of product strategy.</p>
-<div class='insight-panel'>
-<div class='insight-head'>Strategic Implications</div>
+<div class='impl-panel'>
+<div class='impl-head'>Implications</div>
 <ul>
 <li>Vanadium access and electrolyte economics create a cost-resilience edge that global peers will find difficult to replicate quickly.</li>
 <li>Translate the claim into measurable project evidence.</li>
@@ -566,44 +400,42 @@ li { font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); l
 </div>
 </div></div></section>
 <section class='page'>
-<div class='run-head'>
-<div class='run-head-inner'>
+<div class='run-head'><div class='run-head-inner'>
 <span class='run-head-brand'>BlueOcean</span>
-<span class='run-head-label'>Deep Research Report &nbsp;&nbsp; Confidential</span>
+<span class='run-head-label'>Deep Research Report</span>
 </div></div>
 <div class='run-foot'>
-<span class='run-foot-left'>BlueOcean &nbsp;&#183;&nbsp; Confidential</span>
-<span class='run-foot-pg'>Page 8</span>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>8</span>
 </div>
 <div class='content-area'>
 <span class='chapter-label'>Chapter 04</span>
 <div class='section-title'>Policy support creates a protected base market, but export growth needs local legitimacy</div>
 <div class='lead'>China&#x27;s domestic policy tailwind is powerful, while overseas growth will depend on localization and standards participation.</div>
-<div class='section-grid-flip'>
+<div class='section-grid'>
 <div>
-<div class='visual-empty'></div>
-</div><div>
 <p>Domestic mandates and demonstration projects create a demand base that allows Chinese VRFB suppliers to scale faster than most international peers. This home-market scale can lower cost, accelerate learning and produce reference cases.</p>
 <p>Outside China, the same policy advantage does not automatically transfer. Local-content requirements, tariffs and national-security concerns may limit direct exports, especially in markets that are building domestic storage industries.</p>
-<div class='insight-panel'>
-<div class='insight-head'>Strategic Implications</div>
+<div class='impl-panel'>
+<div class='impl-head'>Implications</div>
 <ul>
 <li>Long-duration storage use cases provide the clearest path to differentiation versus lithium-ion systems.</li>
 <li>Translate the claim into measurable project evidence.</li>
 <li>Prioritize customer segments where duration and safety create clear value.</li>
 </ul></div>
 <p>Dali should prioritize partnership-led entry in markets where long-duration storage policy is clear but local supply remains underdeveloped. Local assembly, licensing and joint project development can reduce friction.</p>
+</div><div>
+<div class='visual-empty'></div>
 </div>
 </div></div></section>
 <section class='page'>
-<div class='run-head'>
-<div class='run-head-inner'>
+<div class='run-head'><div class='run-head-inner'>
 <span class='run-head-brand'>BlueOcean</span>
-<span class='run-head-label'>Deep Research Report &nbsp;&nbsp; Confidential</span>
+<span class='run-head-label'>Deep Research Report</span>
 </div></div>
 <div class='run-foot'>
-<span class='run-foot-left'>BlueOcean &nbsp;&#183;&nbsp; Confidential</span>
-<span class='run-foot-pg'>Page 9</span>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>9</span>
 </div>
 <div class='content-area'>
 <span class='chapter-label'>Chapter 05</span>
@@ -613,8 +445,8 @@ li { font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); l
 <div>
 <p>VRFB systems are not likely to beat lithium-ion in every storage application. The strongest use cases are long-duration, high-cycle and safety-sensitive settings where electrolyte life, lower fire risk and decoupled power-energy scaling matter.</p>
 <p>This positioning should shape Dali&#x27;s customer segmentation. Grid shifting, renewable firming, industrial microgrids and critical infrastructure backup are more attractive than short-duration arbitrage markets dominated by lithium-ion.</p>
-<div class='insight-panel'>
-<div class='insight-head'>Strategic Implications</div>
+<div class='impl-panel'>
+<div class='impl-head'>Implications</div>
 <ul>
 <li>International expansion will require local partners, financing structures and reference projects that lower buyer risk.</li>
 <li>Translate the claim into measurable project evidence.</li>
@@ -626,44 +458,42 @@ li { font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); l
 </div>
 </div></div></section>
 <section class='page'>
-<div class='run-head'>
-<div class='run-head-inner'>
+<div class='run-head'><div class='run-head-inner'>
 <span class='run-head-brand'>BlueOcean</span>
-<span class='run-head-label'>Deep Research Report &nbsp;&nbsp; Confidential</span>
+<span class='run-head-label'>Deep Research Report</span>
 </div></div>
 <div class='run-foot'>
-<span class='run-foot-left'>BlueOcean &nbsp;&#183;&nbsp; Confidential</span>
-<span class='run-foot-pg'>Page 10</span>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>10</span>
 </div>
 <div class='content-area'>
 <span class='chapter-label'>Chapter 06</span>
 <div class='section-title'>Global competitors retain niche strengths, but scale and cost are tilting the field toward China</div>
 <div class='lead'>International peers remain relevant in reliability, modularity and brand trust, but struggle to match Chinese scale economics.</div>
-<div class='section-grid-flip'>
+<div class='section-grid'>
 <div>
-<div class='visual-empty'></div>
-</div><div>
 <p>Competitors such as Sumitomo Electric and Invinity retain important advantages in specific segments, including long operating history, modular project design and relationships with sophisticated customers.</p>
 <p>However, scale matters increasingly as the market moves from pilots to deployment programs. Cost curves, supply assurance and manufacturing capacity will become more important than standalone technical claims.</p>
-<div class='insight-panel'>
-<div class='insight-head'>Strategic Implications</div>
+<div class='impl-panel'>
+<div class='impl-head'>Implications</div>
 <ul>
 <li>The next management agenda should sequence market entry around proof points, lifecycle economics and supply-chain credibility.</li>
 <li>Translate the claim into measurable project evidence.</li>
 <li>Prioritize customer segments where duration and safety create clear value.</li>
 </ul></div>
 <p>Dali should benchmark against these players not only on product efficiency, but also on service model, bankability, certification and local partner access.</p>
+</div><div>
+<div class='visual-empty'></div>
 </div>
 </div></div></section>
 <section class='page'>
-<div class='run-head'>
-<div class='run-head-inner'>
+<div class='run-head'><div class='run-head-inner'>
 <span class='run-head-brand'>BlueOcean</span>
-<span class='run-head-label'>Deep Research Report &nbsp;&nbsp; Confidential</span>
+<span class='run-head-label'>Deep Research Report</span>
 </div></div>
 <div class='run-foot'>
-<span class='run-foot-left'>BlueOcean &nbsp;&#183;&nbsp; Confidential</span>
-<span class='run-foot-pg'>Page 11</span>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>11</span>
 </div>
 <div class='content-area'>
 <span class='chapter-label'>Chapter 07</span>
@@ -673,8 +503,8 @@ li { font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); l
 <div>
 <p>A demand-size view alone can push companies into markets that are attractive on paper but slow in procurement. A better lens combines policy clarity, partner availability, tariff exposure, financing readiness and the ability to create visible reference projects.</p>
 <p>Asia-Pacific and selected European markets may offer practical entry points if Dali can secure local development partners and demonstrate compliance with grid and safety standards.</p>
-<div class='insight-panel'>
-<div class='insight-head'>Strategic Implications</div>
+<div class='impl-panel'>
+<div class='impl-head'>Implications</div>
 <ul>
 <li>China&#x27;s VRFB advantage is shifting from early deployment momentum to a structural position in supply, cost and policy demand.</li>
 <li>Translate the claim into measurable project evidence.</li>
@@ -686,33 +516,32 @@ li { font-size:10pt; line-height:1.68; margin-bottom:0.06in; color:var(--ink); l
 </div>
 </div></div></section>
 <section class='page'>
-<div class='run-head'>
-<div class='run-head-inner'>
+<div class='run-head'><div class='run-head-inner'>
 <span class='run-head-brand'>BlueOcean</span>
-<span class='run-head-label'>Deep Research Report &nbsp;&nbsp; Confidential</span>
+<span class='run-head-label'>Deep Research Report</span>
 </div></div>
 <div class='run-foot'>
-<span class='run-foot-left'>BlueOcean &nbsp;&#183;&nbsp; Confidential</span>
-<span class='run-foot-pg'>Page 12</span>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>12</span>
 </div>
 <div class='content-area'>
 <span class='chapter-label'>Chapter 08</span>
 <div class='section-title'>The next leadership agenda should focus on membranes, service models and evidence quality</div>
 <div class='lead'>Sustained advantage will depend on converting manufacturing strength into trusted operating performance.</div>
-<div class='section-grid-flip'>
+<div class='section-grid'>
 <div>
-<div class='visual-empty'></div>
-</div><div>
 <p>The innovation agenda should focus on membrane durability, electrolyte cost, stack reliability and digital monitoring. These improvements directly affect lifecycle economics and customer confidence.</p>
 <p>Equally important is evidence quality. Dali should publish clearer operating data, third-party validation and customer references where possible, because global buyers will discount unsupported performance claims.</p>
-<div class='insight-panel'>
-<div class='insight-head'>Strategic Implications</div>
+<div class='impl-panel'>
+<div class='impl-head'>Implications</div>
 <ul>
 <li>Dali Energy Storage should defend leadership by proving project bankability, not by relying on equipment specifications alone.</li>
 <li>Translate the claim into measurable project evidence.</li>
 <li>Prioritize customer segments where duration and safety create clear value.</li>
 </ul></div>
 <p>Management should treat proof generation as a strategic workstream: select lighthouse projects, define measurable KPIs, and turn field performance into sales and financing collateral.</p>
+</div><div>
+<div class='visual-empty'></div>
 </div>
 </div></div></section>
 </body></html>

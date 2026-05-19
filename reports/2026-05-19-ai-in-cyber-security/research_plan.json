@@ -1,0 +1,41 @@
+{
+  "objective": "AI in Cyber Security",
+  "audience": "Senior executives and strategy team",
+  "decision_question": "How should leadership be assessed and defended for AI in Cyber Security?",
+  "issue_tree": [],
+  "search_queries": [
+    "China vanadium redox flow battery market leadership",
+    "Dali Energy Storage vanadium flow battery projects",
+    "China VRFB installed capacity long duration energy storage",
+    "global vanadium redox flow battery manufacturers Sumitomo Invinity China",
+    "China vanadium supply chain flow battery electrolyte",
+    "long duration energy storage policy China vanadium flow battery"
+  ],
+  "outline": [
+    "China's VRFB leadership is becoming structural rather than cyclical",
+    "Dali Energy Storage can turn technology scale into bankable project proof",
+    "Vanadium access gives Chinese suppliers a cost and resilience edge",
+    "Policy mandates create a protected domestic scaling base",
+    "Global expansion will depend on local partnerships and financing credibility",
+    "Lifecycle economics is the strongest wedge against lithium-ion alternatives",
+    "The innovation agenda should focus on membranes, electrolyte cost and system reliability",
+    "Dali should sequence international entry around reference projects and channel partners"
+  ],
+  "chart_ideas": [
+    "market position",
+    "capacity curve",
+    "cost curve",
+    "competitor matrix",
+    "policy timeline",
+    "market-entry scenarios"
+  ],
+  "insight_card_ideas": [
+    "strategic position",
+    "management agenda"
+  ],
+  "risks": [
+    "fallback plan generated because model planning failed",
+    "400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions"
+  ],
+  "_fallback_used": true
+}
