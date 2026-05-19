@@ -101,26 +101,47 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
   letter-spacing:0.005em;
 }
 
-/* ── Layout A: Editorial Split (text-heavy left, visual right) ── */
-.layout-a{display:grid;grid-template-columns:1.25fr 0.75fr;gap:0.20in;align-items:start;margin-top:0.06in;}
-/* ── Layout B: Visual-First (large visual top, text below in 2 cols) ── */
+/* ─────────────────────────────────────────────────────
+   Layout system — all display:table for wkhtmltopdf 0.12.6
+   (Qt WebKit has NO CSS Grid support)
+   ───────────────────────────────────────────────────── */
+
+/* Shared table wrapper */
+.lt{display:table;width:100%;border-collapse:separate;border-spacing:0;margin-top:0.06in;}
+.lt-l,.lt-r{display:table-cell;vertical-align:top;}
+
+/* Layout A — text 59%, visual 38%, gap 3% */
+.la-l{width:59%;padding-right:0.20in;}
+.la-r{width:38%;}
+
+/* Layout B — hero full width top; below: left 49%, right 48%, gap 3% */
 .layout-b-hero{margin-top:0.06in;margin-bottom:0.10in;}
-.layout-b-cols{display:grid;grid-template-columns:1fr 1fr;gap:0.18in;margin-top:0.04in;}
-/* ── Layout C: Asymmetric (narrow text left, wide visual right) ── */
-.layout-c{display:grid;grid-template-columns:0.65fr 1.35fr;gap:0.20in;align-items:start;margin-top:0.06in;}
-/* ── Layout D: Data + Insight (chart top-right, insight panel bottom-right) ── */
-.layout-d{display:grid;grid-template-columns:1.20fr 0.80fr;gap:0.16in;align-items:start;margin-top:0.06in;}
-.layout-d-stack{display:grid;grid-template-rows:auto auto;gap:0.10in;}
-/* ── Layout E: Side Panel (text + floating sidebar) ── */
-.layout-e{display:grid;grid-template-columns:1.40fr 0.60fr;gap:0.18in;align-items:start;margin-top:0.06in;}
+.lb-l{width:49%;padding-right:0.18in;}
+.lb-r{width:48%;}
+
+/* Layout C — narrow text 30%, large visual 67%, gap 3% */
+.lc-l{width:30%;padding-right:0.20in;}
+.lc-r{width:67%;}
+
+/* Layout D — body text 56%, data stack 41%, gap 3% */
+.ld-l{width:56%;padding-right:0.16in;}
+.ld-r{width:41%;}
+
+/* Layout E — wide text 64%, sidebar 33%, gap 3% */
+.le-l{width:64%;padding-right:0.18in;}
+.le-r{width:33%;}
 .layout-e-sidebar{background:var(--gray-bg);padding:0.10in 0.12in;border-top:1.5pt solid var(--accent);}
 
-/* ── Visuals ── */
-.vis-hero{width:100%;height:3.00in;object-fit:cover;display:block;page-break-inside:avoid;}
-.vis-main{width:100%;height:4.20in;object-fit:cover;display:block;page-break-inside:avoid;}
-.vis-half{width:100%;height:2.00in;object-fit:cover;display:block;page-break-inside:avoid;}
-.chart-inline{width:100%;max-height:4.20in;object-fit:contain;display:block;page-break-inside:avoid;}
-.chart-sm{width:100%;max-height:2.40in;object-fit:contain;display:block;page-break-inside:avoid;}
+/* ── Visuals (object-fit unsupported in wkhtmltopdf — use overflow:hidden) ── */
+.vis-hero{display:block;width:100%;height:3.00in;overflow:hidden;}
+.vis-hero img,.vis-hero-img{width:100%;height:3.00in;display:block;}
+.vis-main{display:block;width:100%;height:4.00in;overflow:hidden;}
+.vis-half{display:block;width:100%;height:2.00in;overflow:hidden;}
+.vis-hero-img{width:100%;height:3.00in;display:block;}
+.vis-main-img{width:100%;height:4.00in;display:block;}
+.vis-half-img{width:100%;height:2.00in;display:block;}
+.chart-inline{width:100%;height:4.00in;display:block;}
+.chart-sm{width:100%;height:2.40in;display:block;}
 .visual-empty{height:3.20in;background:var(--panel);border:0.4pt dashed var(--line);}
 .vis-caption{
   font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -359,10 +380,15 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <span class='chapter-label'>Chapter 01</span>
 <div class='section-title'>China&#x27;s VRFB edge is becoming structural as supply, cost and policy reinforce each other</div>
 <div class='lead'>China&#x27;s position is strongest where industrial scale, vanadium access and long-duration storage policy intersect.</div>
-<div class='layout-a'>
-<div>
+<div class='layout-b-hero'>
+<img class='vis-hero-img' src='assets/image-1.png' width='100%' alt='' />
+</div>
+<div class='lt'>
+<div class='lt-l lb-l'>
 <p>China&#x27;s VRFB industry should be assessed as an ecosystem rather than a collection of battery manufacturers. The strongest advantage comes from the combination of upstream vanadium access, domestic equipment scale, electrolyte know-how and a policy framework that prioritizes long-duration storage.</p>
 <p>For Dali Energy Storage, this means the leadership story should not be framed narrowly around stack technology. The more compelling story is an integrated system position: reliable supply, lower lifecycle cost, faster project delivery and a growing base of domestic references.</p>
+</div>
+<div class='lt-r lb-r'>
 <div class='impl-panel'>
 <div class='impl-head'>Implications</div>
 <ul>
@@ -370,9 +396,7 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <li>Translate the claim into measurable project evidence.</li>
 <li>Prioritize customer segments where duration and safety create clear value.</li>
 </ul></div>
-<p>The implication for management is to convert scale into bankability. Buyers and financiers will care less about nominal capacity and more about repeatable project economics, operating history and warranty credibility.</p>
-</div><div>
-<div class='visual-empty'></div>
+<img class='chart-sm' src='assets/chart-1.png' width='100%' alt='' />
 </div></div>
 </div></section>
 <section class='page'>
@@ -388,10 +412,14 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <span class='chapter-label'>Chapter 02</span>
 <div class='section-title'>Dali can convert technical capacity into leadership only if it proves project bankability</div>
 <div class='lead'>The next stage of competition will be won by firms that make VRFB projects easier to finance and operate.</div>
-<div class='layout-a'>
-<div>
+<div class='lt'>
+<div class='lt-l ld-l'>
 <p>Dali&#x27;s production capacity gives it a credible platform, but global leadership will be tested in project execution. International customers will evaluate whether the company can deliver predictable commissioning, stable electrolyte performance and lifecycle service support across different regulatory environments.</p>
 <p>The highest-value commercial evidence will come from reference projects with transparent operating data. Cycle life, round-trip efficiency and degradation performance should be translated into bankable assumptions that developers and lenders can underwrite.</p>
+<p>A useful management move is to package technology, EPC support, service guarantees and electrolyte supply into an integrated offer. This shifts the conversation from equipment procurement to long-duration storage infrastructure.</p>
+</div>
+<div class='lt-r ld-r'>
+<img class='chart-sm' src='assets/chart-2.png' width='100%' alt='' />
 <div class='impl-panel'>
 <div class='impl-head'>Implications</div>
 <ul>
@@ -399,9 +427,7 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <li>Translate the claim into measurable project evidence.</li>
 <li>Prioritize customer segments where duration and safety create clear value.</li>
 </ul></div>
-<p>A useful management move is to package technology, EPC support, service guarantees and electrolyte supply into an integrated offer. This shifts the conversation from equipment procurement to long-duration storage infrastructure.</p>
-</div><div>
-<div class='visual-empty'></div>
+<img class='vis-half-img' src='assets/image-2.png' width='100%' alt='' />
 </div></div>
 </div></section>
 <section class='page'>
@@ -417,12 +443,14 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <span class='chapter-label'>Chapter 03</span>
 <div class='section-title'>Vanadium access gives Chinese suppliers a resilience edge, but price volatility still needs active management</div>
 <div class='lead'>Supply security is a strategic asset only if it is backed by contracting, recycling and electrolyte leasing models.</div>
-<div class='layout-e'>
-<div>
+<div class='lt'>
+<div class='lt-l le-l'>
 <p>China&#x27;s vanadium position gives domestic VRFB suppliers a structural advantage in electrolyte availability and cost visibility. This matters because electrolyte can represent a large share of system cost and can also become a financing asset if leasing structures are used.</p>
 <p>The risk is volatility. Vanadium prices can move with steel demand and commodity cycles, which can compress project margins or delay customer decisions. Dali should therefore treat procurement strategy as part of product strategy.</p>
+<img class='vis-half-img' src='assets/image-3.png' width='100%' alt='' />
 <p>Long-term supply agreements, electrolyte rental structures and recycling partnerships can reduce buyer exposure and make VRFB economics easier to compare with lithium-ion alternatives.</p>
-</div><div class='layout-e-sidebar'>
+</div>
+<div class='lt-r le-r layout-e-sidebar'>
 <div class='impl-panel'>
 <div class='impl-head'>Implications</div>
 <ul>
@@ -430,6 +458,8 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <li>Translate the claim into measurable project evidence.</li>
 <li>Prioritize customer segments where duration and safety create clear value.</li>
 </ul></div>
+<div class='ed-accent-rule'></div>
+<img class='chart-sm' src='assets/chart-3.png' width='100%' alt='' />
 </div></div>
 </div></section>
 <section class='page'>
@@ -445,10 +475,15 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <span class='chapter-label'>Chapter 04</span>
 <div class='section-title'>Policy support creates a protected base market, but export growth needs local legitimacy</div>
 <div class='lead'>China&#x27;s domestic policy tailwind is powerful, while overseas growth will depend on localization and standards participation.</div>
-<div class='layout-a'>
-<div>
+<div class='layout-b-hero'>
+<img class='vis-hero-img' src='assets/image-4.png' width='100%' alt='' />
+</div>
+<div class='lt'>
+<div class='lt-l lb-l'>
 <p>Domestic mandates and demonstration projects create a demand base that allows Chinese VRFB suppliers to scale faster than most international peers. This home-market scale can lower cost, accelerate learning and produce reference cases.</p>
 <p>Outside China, the same policy advantage does not automatically transfer. Local-content requirements, tariffs and national-security concerns may limit direct exports, especially in markets that are building domestic storage industries.</p>
+</div>
+<div class='lt-r lb-r'>
 <div class='impl-panel'>
 <div class='impl-head'>Implications</div>
 <ul>
@@ -456,9 +491,7 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <li>Translate the claim into measurable project evidence.</li>
 <li>Prioritize customer segments where duration and safety create clear value.</li>
 </ul></div>
-<p>Dali should prioritize partnership-led entry in markets where long-duration storage policy is clear but local supply remains underdeveloped. Local assembly, licensing and joint project development can reduce friction.</p>
-</div><div>
-<div class='visual-empty'></div>
+<img class='chart-sm' src='assets/chart-4.png' width='100%' alt='' />
 </div></div>
 </div></section>
 <section class='page'>
@@ -474,8 +507,8 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <span class='chapter-label'>Chapter 05</span>
 <div class='section-title'>Lifecycle economics is the clearest wedge against lithium-ion in long-duration use cases</div>
 <div class='lead'>VRFB&#x27;s advantage strengthens as duration, cycling and safety requirements increase.</div>
-<div class='layout-a'>
-<div>
+<div class='lt'>
+<div class='lt-l lc-l'>
 <p>VRFB systems are not likely to beat lithium-ion in every storage application. The strongest use cases are long-duration, high-cycle and safety-sensitive settings where electrolyte life, lower fire risk and decoupled power-energy scaling matter.</p>
 <p>This positioning should shape Dali&#x27;s customer segmentation. Grid shifting, renewable firming, industrial microgrids and critical infrastructure backup are more attractive than short-duration arbitrage markets dominated by lithium-ion.</p>
 <div class='impl-panel'>
@@ -485,9 +518,11 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <li>Translate the claim into measurable project evidence.</li>
 <li>Prioritize customer segments where duration and safety create clear value.</li>
 </ul></div>
-<p>The commercial message should be expressed in levelized cost, availability and replacement-cycle economics rather than upfront capex alone.</p>
-</div><div>
-<div class='visual-empty'></div>
+</div>
+<div class='lt-r lc-r'>
+<img class='vis-main-img' src='assets/image-5.png' width='100%' alt='' />
+<div class='ed-rule'></div>
+<img class='chart-sm' src='assets/chart-5.png' width='100%' alt='' />
 </div></div>
 </div></section>
 <section class='page'>
@@ -503,8 +538,8 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <span class='chapter-label'>Chapter 06</span>
 <div class='section-title'>Global competitors retain niche strengths, but scale and cost are tilting the field toward China</div>
 <div class='lead'>International peers remain relevant in reliability, modularity and brand trust, but struggle to match Chinese scale economics.</div>
-<div class='layout-a'>
-<div>
+<div class='lt'>
+<div class='lt-l la-l'>
 <p>Competitors such as Sumitomo Electric and Invinity retain important advantages in specific segments, including long operating history, modular project design and relationships with sophisticated customers.</p>
 <p>However, scale matters increasingly as the market moves from pilots to deployment programs. Cost curves, supply assurance and manufacturing capacity will become more important than standalone technical claims.</p>
 <div class='impl-panel'>
@@ -515,8 +550,9 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <li>Prioritize customer segments where duration and safety create clear value.</li>
 </ul></div>
 <p>Dali should benchmark against these players not only on product efficiency, but also on service model, bankability, certification and local partner access.</p>
-</div><div>
-<div class='visual-empty'></div>
+</div>
+<div class='lt-r la-r'>
+<img class='chart-inline' src='assets/chart-6.png' width='100%' alt='' />
 </div></div>
 </div></section>
 <section class='page'>
@@ -532,8 +568,8 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <span class='chapter-label'>Chapter 07</span>
 <div class='section-title'>Dali&#x27;s international playbook should sequence markets by proof potential, not just demand size</div>
 <div class='lead'>The best first markets are those where reference projects can unlock repeatable channels.</div>
-<div class='layout-a'>
-<div>
+<div class='lt'>
+<div class='lt-l la-l'>
 <p>A demand-size view alone can push companies into markets that are attractive on paper but slow in procurement. A better lens combines policy clarity, partner availability, tariff exposure, financing readiness and the ability to create visible reference projects.</p>
 <p>Asia-Pacific and selected European markets may offer practical entry points if Dali can secure local development partners and demonstrate compliance with grid and safety standards.</p>
 <div class='impl-panel'>
@@ -544,8 +580,9 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <li>Prioritize customer segments where duration and safety create clear value.</li>
 </ul></div>
 <p>The sequence should favor markets where one credible project can become a platform for repeat orders, financing partnerships and service-network buildout.</p>
-</div><div>
-<div class='visual-empty'></div>
+</div>
+<div class='lt-r la-r'>
+<img class='vis-main-img' src='assets/image-7.png' width='100%' alt='' />
 </div></div>
 </div></section>
 <section class='page'>
@@ -561,12 +598,14 @@ li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter
 <span class='chapter-label'>Chapter 08</span>
 <div class='section-title'>The next leadership agenda should focus on membranes, service models and evidence quality</div>
 <div class='lead'>Sustained advantage will depend on converting manufacturing strength into trusted operating performance.</div>
-<div class='layout-e'>
-<div>
+<div class='lt'>
+<div class='lt-l le-l'>
 <p>The innovation agenda should focus on membrane durability, electrolyte cost, stack reliability and digital monitoring. These improvements directly affect lifecycle economics and customer confidence.</p>
 <p>Equally important is evidence quality. Dali should publish clearer operating data, third-party validation and customer references where possible, because global buyers will discount unsupported performance claims.</p>
+<img class='vis-half-img' src='assets/image-8.png' width='100%' alt='' />
 <p>Management should treat proof generation as a strategic workstream: select lighthouse projects, define measurable KPIs, and turn field performance into sales and financing collateral.</p>
-</div><div class='layout-e-sidebar'>
+</div>
+<div class='lt-r le-r layout-e-sidebar'>
 <div class='impl-panel'>
 <div class='impl-head'>Implications</div>
 <ul>
