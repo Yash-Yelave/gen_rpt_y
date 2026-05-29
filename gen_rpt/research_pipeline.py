@@ -113,8 +113,11 @@ class ResearchPipeline:
                     {"role": "user", "content": text}
                 ], temperature=0.2)
                 text = short.strip().strip('"').strip("'")
-            except Exception:
-                pass
+            except Exception as e:
+                print("Title generation failed:", e)
+                # Fallback to a smart string truncation
+                words = text.replace("Generate a comprehensive research report assessing the", "").replace("Generate a", "").split()
+                text = "Strategic Assessment: " + " ".join(words[:5]).strip() + "..."
         
         if self.language != "en" or not _has_cjk(text):
             return text
