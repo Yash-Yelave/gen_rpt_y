@@ -1,8 +1,8 @@
-# Generate a comprehensive research report assessing the safety, trustworthiness, and protection levels of major crypto exchanges (Binance, Bybit, Coinbase, OKX, KuCoin, Kraken). The report MUST include the following detailed sections: 1. A 0-10 rating for each exchange based on custody risk, historical hacks, insolvency risk, and regulatory protection. 2. A direct comparison of these exchanges against traditional regulated financial venues (Coinbase-Nasdaq, CME, ETFs, regulated custodians). 3. A deep dive into the primary mechanisms and reasons investors lose funds on exchanges. 4. Actionable, practical risk-reduction measures for both the exchanges and retail investors.
+# Strategic Assessment: safety, trustworthiness, and protection levels...
 
 **Prepared by**: BlueOcean
 
-**Topic**: Generate a comprehensive research report assessing the safety, trustworthiness, and protection levels of major crypto exchanges (Binance, Bybit, Coinbase, OKX, KuCoin, Kraken). The report MUST include the following detailed sections: 1. A 0-10 rating for each exchange based on custody risk, historical hacks, insolvency risk, and regulatory protection. 2. A direct comparison of these exchanges against traditional regulated financial venues (Coinbase-Nasdaq, CME, ETFs, regulated custodians). 3. A deep dive into the primary mechanisms and reasons investors lose funds on exchanges. 4. Actionable, practical risk-reduction measures for both the exchanges and retail investors.
+**Topic**: Strategic Assessment: safety, trustworthiness, and protection levels...
 
 ## Executive Summary
 

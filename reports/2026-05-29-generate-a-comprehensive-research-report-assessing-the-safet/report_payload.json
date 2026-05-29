@@ -1,5 +1,5 @@
 {
-  "report_title": "Generate a comprehensive research report assessing the safety, trustworthiness, and protection levels of major crypto exchanges (Binance, Bybit, Coinbase, OKX, KuCoin, Kraken). The report MUST include the following detailed sections: 1. A 0-10 rating for each exchange based on custody risk, historical hacks, insolvency risk, and regulatory protection. 2. A direct comparison of these exchanges against traditional regulated financial venues (Coinbase-Nasdaq, CME, ETFs, regulated custodians). 3. A deep dive into the primary mechanisms and reasons investors lose funds on exchanges. 4. Actionable, practical risk-reduction measures for both the exchanges and retail investors.",
+  "report_title": "Strategic Assessment: safety, trustworthiness, and protection levels...",
   "report_subtitle": "A client-ready strategic assessment based on public evidence, market signals and management-consulting synthesis.",
   "executive_summary": [
     "China's VRFB advantage is shifting from early deployment momentum to a structural position in supply, cost and policy demand.",
@@ -371,7 +371,8 @@
         ]
       ],
       "caption": "Dali's next challenge is to turn structural advantages into bankable global proof.",
-      "source_note": "BlueOcean qualitative assessment."
+      "source_note": "BlueOcean qualitative assessment.",
+      "categories": []
     },
     {
       "id": "chart-4",
@@ -414,7 +415,8 @@
       "x_label": "Entry feasibility",
       "y_label": "Demand attractiveness",
       "caption": "The best early international markets combine project proof, partner access and financing readiness.",
-      "source_note": "BlueOcean scenario assessment."
+      "source_note": "BlueOcean scenario assessment.",
+      "categories": []
     },
     {
       "id": "chart-5",
@@ -478,6 +480,11 @@
   "references": [],
   "_fallback_used": true,
   "_fallback_reason": "429 Client Error: Too Many Requests for url: https://openrouter.ai/api/v1/chat/completions",
-  "_display_topic": "Generate a comprehensive research report assessing the safety, trustworthiness, and protection levels of major crypto exchanges (Binance, Bybit, Coinbase, OKX, KuCoin, Kraken). The report MUST include the following detailed sections: 1. A 0-10 rating for each exchange based on custody risk, historical hacks, insolvency risk, and regulatory protection. 2. A direct comparison of these exchanges against traditional regulated financial venues (Coinbase-Nasdaq, CME, ETFs, regulated custodians). 3. A deep dive into the primary mechanisms and reasons investors lose funds on exchanges. 4. Actionable, practical risk-reduction measures for both the exchanges and retail investors.",
-  "reference_institutions": []
+  "_display_topic": "Strategic Assessment: safety, trustworthiness, and protection levels...",
+  "reference_institutions": [],
+  "_layout_profile": "client_ready",
+  "_qa_autofixed": true,
+  "_qa_recommendations": [
+    "remove_text_truncation"
+  ]
 }

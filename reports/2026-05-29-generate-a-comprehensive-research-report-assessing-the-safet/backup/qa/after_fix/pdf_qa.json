@@ -1,0 +1,38 @@
+{
+  "passed": false,
+  "pdf_path": "D:\\Intenship\\gen_rpt\\reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\report.pdf",
+  "html_path": "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\report.html",
+  "checks": [
+    {
+      "code": "page_count",
+      "message": "PDF has 12 pages."
+    },
+    {
+      "code": "text_extractability",
+      "message": "PDF text extraction looks healthy."
+    }
+  ],
+  "issues": [
+    {
+      "code": "visible_truncation",
+      "message": "Visible ellipses found in PDF text; content may have been truncated.",
+      "recommendation": "remove_text_truncation"
+    }
+  ],
+  "recommendations": [
+    "remove_text_truncation"
+  ],
+  "page_count": 12,
+  "screenshots": [
+    "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\backup\\qa\\after_fix\\page_001.png",
+    "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\backup\\qa\\after_fix\\page_002.png",
+    "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\backup\\qa\\after_fix\\page_003.png",
+    "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\backup\\qa\\after_fix\\page_004.png",
+    "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\backup\\qa\\after_fix\\page_005.png",
+    "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\backup\\qa\\after_fix\\page_006.png",
+    "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\backup\\qa\\after_fix\\page_007.png",
+    "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\backup\\qa\\after_fix\\page_008.png",
+    "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\backup\\qa\\after_fix\\page_009.png",
+    "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\backup\\qa\\after_fix\\page_010.png"
+  ]
+}

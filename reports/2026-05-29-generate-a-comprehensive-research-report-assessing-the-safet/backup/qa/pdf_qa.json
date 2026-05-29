@@ -1,5 +1,5 @@
 {
-  "passed": true,
+  "passed": false,
   "pdf_path": "D:\\Intenship\\gen_rpt\\reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\report.pdf",
   "html_path": "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\report.html",
   "checks": [
@@ -12,8 +12,16 @@
       "message": "PDF text extraction looks healthy."
     }
   ],
-  "issues": [],
-  "recommendations": [],
+  "issues": [
+    {
+      "code": "visible_truncation",
+      "message": "Visible ellipses found in PDF text; content may have been truncated.",
+      "recommendation": "remove_text_truncation"
+    }
+  ],
+  "recommendations": [
+    "remove_text_truncation"
+  ],
   "page_count": 12,
   "screenshots": [
     "reports\\2026-05-29-generate-a-comprehensive-research-report-assessing-the-safet\\backup\\qa\\page_001.png",
