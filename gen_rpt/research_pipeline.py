@@ -106,6 +106,16 @@ class ResearchPipeline:
 
     def _display_topic(self, topic: str) -> str:
         text = str(topic or "").strip()
+        if len(text) > 60:
+            try:
+                short = self.client.chat([
+                    {"role": "system", "content": "You are a title generator. Return a short, punchy 3-8 word professional report title for the following research topic. Return ONLY the title string, no quotes."},
+                    {"role": "user", "content": text}
+                ], temperature=0.2)
+                text = short.strip().strip('"').strip("'")
+            except Exception:
+                pass
+        
         if self.language != "en" or not _has_cjk(text):
             return text
         if "液流" in text or "钒" in text or "大力" in text:

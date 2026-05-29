@@ -29,8 +29,12 @@ class LLMClient:
             self.model = model or "llama3-70b-8192"
         elif prov == "deepseek":
             self.api_key = api_key or deepseek_key
-            self.base_url = (base_url or "https://api.deepseek.com/v1").rstrip("/")
-            self.model = model or "deepseek-chat"
+            if self.api_key and self.api_key.startswith("sk-or-"):
+                self.base_url = (base_url or "https://openrouter.ai/api/v1").rstrip("/")
+                self.model = model or "meta-llama/llama-3.3-70b-instruct:free"
+            else:
+                self.base_url = (base_url or "https://api.deepseek.com/v1").rstrip("/")
+                self.model = model or "deepseek-chat"
         else:
             if groq_key:
                 self.api_key = api_key or groq_key
@@ -38,12 +42,20 @@ class LLMClient:
                 self.model = model or "llama3-70b-8192"
             elif deepseek_key:
                 self.api_key = api_key or deepseek_key
-                self.base_url = (base_url or "https://api.deepseek.com/v1").rstrip("/")
-                self.model = model or "deepseek-chat"
+                if self.api_key and self.api_key.startswith("sk-or-"):
+                    self.base_url = (base_url or "https://openrouter.ai/api/v1").rstrip("/")
+                    self.model = model or "meta-llama/llama-3.3-70b-instruct:free"
+                else:
+                    self.base_url = (base_url or "https://api.deepseek.com/v1").rstrip("/")
+                    self.model = model or "deepseek-chat"
             elif api_key:
                 self.api_key = api_key
-                self.base_url = (base_url or "https://api.deepseek.com/v1").rstrip("/")
-                self.model = model or "deepseek-chat"
+                if self.api_key and self.api_key.startswith("sk-or-"):
+                    self.base_url = (base_url or "https://openrouter.ai/api/v1").rstrip("/")
+                    self.model = model or "meta-llama/llama-3.3-70b-instruct:free"
+                else:
+                    self.base_url = (base_url or "https://api.deepseek.com/v1").rstrip("/")
+                    self.model = model or "deepseek-chat"
             else:
                 raise ValueError("Missing API Key. Please configure GROQ_API_KEY or DEEPSEEK_API_KEY.")
 
@@ -61,6 +73,8 @@ class LLMClient:
         headers = {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
         payload = {"model": model or self.model, "messages": messages, "temperature": temperature}
         response = requests.post(url, headers=headers, json=payload, timeout=self.timeout)
+        if response.status_code != 200:
+            print("GROQ API ERROR:", response.text)
         response.raise_for_status()
         data = response.json()
         return data["choices"][0]["message"]["content"]

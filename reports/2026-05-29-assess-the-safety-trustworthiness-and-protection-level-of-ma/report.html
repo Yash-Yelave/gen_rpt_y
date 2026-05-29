@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Cryptocurrency Exchange Safety and Trustworthiness</title>
+<style>
+@page { size:8.27in 11.69in; margin:0; }
+:root {
+  --accent:#003087;
+  --accent2:#3273F6;
+  --ink:#333333;
+  --muted:#64696E;
+  --line:#C8C8C8;
+  --paper:#FFFFFF;
+  --panel:#F5F7FA;
+  --navy:#051C2C;
+  --mid:#4A5568;
+  --gray-bg:#F4F5F7;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:8.27in;background:#fff;}
+body{
+  font-family:Georgia,"Times New Roman","Noto Serif",serif;
+  font-size:9.5pt;line-height:1.68;color:var(--ink);
+  word-spacing:0.01em;letter-spacing:0.003em;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-kerning:normal;
+  font-feature-settings:"kern" 1,"liga" 1,"onum" 1;
+  orphans:2;widows:2;
+  text-wrap:pretty;
+}
+
+/* ── Page ── */
+.page{
+  width:8.27in;height:11.69in;position:relative;
+  background:var(--paper);
+  padding:0.34in 0.5in 0.28in 0.5in;
+  page-break-after:always;overflow:hidden;
+}
+.content-area{margin-top:0.20in;}
+
+/* ── Running Header ── */
+.run-head{
+  position:absolute;top:0.12in;left:0.5in;right:0.5in;
+  border-bottom:0.4pt solid var(--line);padding-bottom:0.03in;
+  display:table;width:7.27in;
+}
+.run-head-inner{display:table;width:100%;}
+.run-head-brand{
+  display:table-cell;font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5.5pt;font-weight:600;letter-spacing:0.07em;
+  text-transform:uppercase;color:var(--accent);vertical-align:bottom;white-space:nowrap;
+}
+.run-head-label{
+  display:table-cell;text-align:right;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5pt;color:var(--muted);letter-spacing:0.03em;
+  font-weight:400;white-space:nowrap;vertical-align:bottom;
+}
+
+/* ── Running Footer ── */
+.run-foot{
+  position:absolute;bottom:0.10in;left:0.5in;right:0.5in;
+  border-top:0.4pt solid var(--line);padding-top:0.03in;
+  display:table;width:7.27in;
+}
+.run-foot-left{
+  display:table-cell;font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5pt;color:var(--muted);letter-spacing:0.02em;font-weight:400;white-space:nowrap;
+}
+.run-foot-pg{
+  display:table-cell;text-align:right;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5pt;color:var(--muted);font-weight:400;letter-spacing:0.04em;white-space:nowrap;
+}
+
+/* ── Type Hierarchy ── */
+h1{font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:24pt;line-height:1.08;font-weight:800;color:var(--navy);letter-spacing:-0.025em;margin-bottom:0.12in;}
+h2{font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14pt;line-height:1.22;font-weight:600;color:var(--navy);letter-spacing:-0.008em;margin-bottom:0.08in;}
+h3{font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11.5pt;line-height:1.26;font-weight:600;color:var(--ink);letter-spacing:0;margin-bottom:0.06in;}
+p{margin:0 0 0.11in;font-size:9.5pt;line-height:1.68;color:var(--ink);letter-spacing:0.003em;orphans:2;widows:2;}
+ul,ol{margin:0 0 0.10in 0.16in;padding:0;}
+li{font-size:9.5pt;line-height:1.62;margin-bottom:0.04in;color:var(--ink);letter-spacing:0.003em;}
+
+/* ── Chapter Label ── */
+.chapter-label{
+  display:block;font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;letter-spacing:0.10em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:0.05in;
+}
+.section-title{
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:17pt;font-weight:600;line-height:1.14;
+  color:var(--navy);letter-spacing:-0.012em;margin-bottom:0.06in;
+}
+.lead{
+  font-size:9.5pt;line-height:1.58;color:var(--accent);
+  font-weight:500;margin-bottom:0.10in;font-style:normal;
+  letter-spacing:0.005em;
+}
+
+/* ─────────────────────────────────────────────────────
+   Layout system — all display:table for wkhtmltopdf 0.12.6
+   (Qt WebKit has NO CSS Grid support)
+   ───────────────────────────────────────────────────── */
+
+/* Shared table wrapper */
+.lt{display:table;width:100%;border-collapse:separate;border-spacing:0;margin-top:0.06in;}
+.lt-l,.lt-r{display:table-cell;vertical-align:top;}
+
+/* Layout A — text 59%, visual 38%, gap 3% */
+.la-l{width:59%;padding-right:0.20in;}
+.la-r{width:38%;}
+
+/* Layout B — hero full width top; below: left 49%, right 48%, gap 3% */
+.layout-b-hero{margin-top:0.06in;margin-bottom:0.10in;}
+.lb-l{width:49%;padding-right:0.18in;}
+.lb-r{width:48%;}
+
+/* Layout C — narrow text 30%, large visual 67%, gap 3% */
+.lc-l{width:30%;padding-right:0.20in;}
+.lc-r{width:67%;}
+
+/* Layout D — body text 56%, data stack 41%, gap 3% */
+.ld-l{width:56%;padding-right:0.16in;}
+.ld-r{width:41%;}
+
+/* Layout E — wide text 64%, sidebar 33%, gap 3% */
+.le-l{width:64%;padding-right:0.18in;}
+.le-r{width:33%;}
+.layout-e-sidebar{background:var(--gray-bg);padding:0.10in 0.12in;border-top:1.5pt solid var(--accent);}
+
+/* ── Visuals (object-fit unsupported in wkhtmltopdf — use overflow:hidden) ── */
+.vis-hero{display:block;width:100%;height:3.00in;overflow:hidden;}
+.vis-hero img,.vis-hero-img{width:100%;height:3.00in;display:block;}
+.vis-main{display:block;width:100%;height:4.00in;overflow:hidden;}
+.vis-half{display:block;width:100%;height:2.00in;overflow:hidden;}
+.vis-hero-img{width:100%;height:3.00in;display:block;}
+.vis-main-img{width:100%;height:4.00in;display:block;}
+.vis-half-img{width:100%;height:2.00in;display:block;}
+.chart-inline{width:100%;height:4.00in;display:block;}
+.chart-sm{width:100%;height:2.40in;display:block;}
+.visual-empty{height:3.20in;background:var(--panel);border:0.4pt dashed var(--line);}
+.vis-caption{
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6pt;color:var(--muted);margin-top:0.04in;letter-spacing:0.02em;line-height:1.4;
+}
+
+/* ── Editorial Elements ── */
+.ed-rule{width:100%;height:0.4pt;background:var(--line);margin:0.10in 0;}
+.ed-accent-rule{width:0.50in;height:1.5pt;background:var(--accent);margin:0.08in 0;}
+.pull-quote{
+  font-size:11pt;line-height:1.42;color:var(--navy);font-weight:600;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  border-left:2pt solid var(--accent);padding-left:0.12in;margin:0.10in 0;
+  letter-spacing:-0.005em;
+}
+
+/* ── Executive Summary ── */
+.exec-label{
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;letter-spacing:0.10em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:0.12in;padding-bottom:0.06in;
+  border-bottom:0.4pt solid var(--line);
+}
+.exec-findings{margin-top:0.08in;}
+.exec-item{
+  display:table;width:100%;padding:0.08in 0;
+  border-bottom:0.4pt solid #ECEDF0;
+}
+.exec-num{
+  display:table-cell;width:0.34in;vertical-align:top;padding-top:0.01in;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:8pt;font-weight:600;color:var(--accent);letter-spacing:0.02em;
+}
+.exec-text{
+  display:table-cell;vertical-align:top;
+  font-size:9.5pt;line-height:1.62;color:var(--ink);letter-spacing:0.003em;
+}
+
+/* ── Implication Panel ── */
+.impl-panel{
+  background:var(--gray-bg);padding:0.10in 0.13in;
+  margin:0.10in 0 0.08in;page-break-inside:avoid;
+  border-top:0.4pt solid var(--line);
+}
+.impl-head{
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6pt;font-weight:600;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--mid);margin-bottom:0.05in;
+}
+.impl-panel ul{margin:0;padding:0 0 0 0.14in;}
+.impl-panel li{font-size:8.5pt;line-height:1.56;margin-bottom:0.03in;color:var(--ink);letter-spacing:0.003em;}
+
+/* ── TOC ── */
+.toc-label{
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;letter-spacing:0.10em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:0.14in;padding-bottom:0.06in;
+  border-bottom:0.4pt solid var(--line);
+}
+.toc-list{list-style:none;margin:0;padding:0;}
+.toc-list li{
+  font-size:9.5pt;line-height:1.48;margin-bottom:0.04in;
+  padding:0.05in 0;border-bottom:0.4pt solid #F0F1F3;
+  color:var(--ink);display:table;width:100%;letter-spacing:0.003em;
+}
+.toc-num{
+  display:table-cell;width:0.80in;padding-right:0.12in;
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;color:var(--accent);
+  letter-spacing:0.05em;vertical-align:top;padding-top:0.03in;
+}
+.toc-title-text{display:table-cell;vertical-align:top;}
+
+/* ── Disclaimer / refs ── */
+.disc-label{
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;letter-spacing:0.10em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:0.12in;padding-bottom:0.06in;
+  border-bottom:0.4pt solid var(--line);
+}
+.disc-text{font-size:9pt;line-height:1.62;color:var(--muted);margin-bottom:0.10in;letter-spacing:0.005em;}
+.disc-note{font-size:8pt;line-height:1.56;color:var(--muted);margin-top:0.08in;letter-spacing:0.005em;}
+.ref-block{
+  margin-top:0.22in;padding-top:0.12in;
+  border-top:0.4pt solid var(--line);
+}
+
+/* ── Cover ── */
+.cover{padding:0;background-size:cover;background-position:center top;}
+.cover-img-zone{
+  position:absolute;top:0;left:0;right:0;height:55%;
+  background-size:cover;background-position:center;
+}
+.cover-img-overlay{
+  position:absolute;top:0;left:0;right:0;height:55%;
+  background:linear-gradient(180deg,rgba(5,28,44,0.60) 0%,rgba(5,28,44,0.35) 100%);
+  z-index:1;
+}
+.cover-white{
+  position:absolute;bottom:0;left:0;right:0;height:48%;
+  background:#ffffff;z-index:2;
+  padding:0.40in 0.55in 0.50in;
+}
+.cover-brand-line{
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:6.5pt;font-weight:600;letter-spacing:0.10em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:0.14in;
+}
+.cover-rule{width:0.36in;height:1.5pt;background:var(--accent);margin-bottom:0.18in;}
+.cover-title{
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:28pt;line-height:1.06;font-weight:800;
+  color:var(--navy);letter-spacing:-0.025em;margin-bottom:0.10in;
+}
+.cover-sub{
+  font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:8.5pt;color:var(--muted);font-weight:400;
+  letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.28in;
+}
+.cover-divider{width:100%;height:0.4pt;background:var(--line);margin-bottom:0.14in;}
+.cover-meta{display:table;border-collapse:separate;border-spacing:0;}
+.cover-meta-item{display:table-cell;vertical-align:top;padding-right:0.48in;}
+.cover-meta-item:last-child{padding-right:0;}
+.cover-meta-label{
+  display:block;font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:5.5pt;font-weight:500;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:0.04in;white-space:nowrap;
+}
+.cover-meta-value{
+  display:block;font-family:-apple-system,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:8.5pt;color:var(--navy);font-weight:600;white-space:nowrap;letter-spacing:0.005em;
+}
+
+/* ── Profiles ── */
+.profile-compact{font-size:8.5pt;}
+.profile-compact p,.profile-compact li{font-size:8.5pt;}
+.profile-compact h2{font-size:13pt;}
+.profile-presentation{font-size:12pt;}
+.profile-presentation p,.profile-presentation li{font-size:12pt;}
+.profile-presentation h2{font-size:20pt;}
+
+/* ── Print ── */
+@media print{
+  html,body{width:8.27in;}
+  .page{margin:0;box-shadow:none;border:none;}
+  *{-webkit-print-color-adjust:exact !important;color-adjust:exact !important;print-color-adjust:exact !important;}
+  p{orphans:2;widows:2;}
+}
+</style>
+</head>
+<body>
+<section class='page cover'>
+<div class='cover-img-zone' style="background-image:url('assets/cover-ai.png');"></div>
+<div class='cover-img-overlay'></div>
+<div class='cover-white'>
+<div class='cover-brand-line'>BlueOcean</div>
+<div class='cover-rule'></div>
+<div class='cover-title'>Cryptocurrency Exchange Safety and Trustworthiness</div>
+<div class='cover-sub'>Deep Research Report</div>
+<div class='cover-divider'></div>
+<div class='cover-meta'>
+<div class='cover-meta-item'><span class='cover-meta-label'>Prepared by</span><span class='cover-meta-value'>BlueOcean</span></div>
+<div class='cover-meta-item'><span class='cover-meta-label'>Date</span><span class='cover-meta-value'>May 2026</span></div>
+<div class='cover-meta-item'><span class='cover-meta-label'>Classification</span><span class='cover-meta-value'>Confidential</span></div>
+</div>
+</div>
+</section>
+<section class='page'>
+<div class='run-head'><div class='run-head-inner'>
+<span class='run-head-brand'>BlueOcean</span>
+<span class='run-head-label'>Deep Research Report</span>
+</div></div>
+<div class='run-foot'>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>2</span>
+</div>
+<div class='content-area'>
+<div class='exec-label'>Executive Summary</div>
+<h2>Key Findings</h2>
+<div class='exec-findings'>
+<div class='exec-item'><span class='exec-num'>01</span><span class='exec-text'>This report assesses the safety, trustworthiness, and protection level of major cryptocurrency exchanges, providing investors and regulatory bodies with key findings and recommendations for informed decision-making.</span></div>
+</div></div></section>
+<section class='page'>
+<div class='run-head'><div class='run-head-inner'>
+<span class='run-head-brand'>BlueOcean</span>
+<span class='run-head-label'>Deep Research Report</span>
+</div></div>
+<div class='run-foot'>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>3</span>
+</div>
+<div class='content-area'>
+<div class='toc-label'>Table of Contents</div>
+<ul class='toc-list'>
+<li><span class='toc-num'>Chapter 01</span><span class='toc-title-text'>Introduction to Cryptocurrency Exchanges</span></li>
+<li><span class='toc-num'>Chapter 02</span><span class='toc-title-text'>Safety and Security Measures</span></li>
+<li><span class='toc-num'>Chapter 03</span><span class='toc-title-text'>Trustworthiness and Reputation</span></li>
+<li><span class='toc-num'>Chapter 04</span><span class='toc-title-text'>Protection Level and Asset Storage</span></li>
+<li><span class='toc-num'>Chapter 05</span><span class='toc-title-text'>Comparison of Major Cryptocurrency Exchanges</span></li>
+<li><span class='toc-num'>Chapter 06</span><span class='toc-title-text'>Conclusion and Recommendations</span></li>
+<li><span class='toc-num'>Chapter 07</span><span class='toc-title-text'>Future Outlook and Challenges</span></li>
+</ul></div></section>
+<section class='page'>
+<div class='run-head'><div class='run-head-inner'>
+<span class='run-head-brand'>BlueOcean</span>
+<span class='run-head-label'>Deep Research Report</span>
+</div></div>
+<div class='run-foot'>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>4</span>
+</div>
+<div class='content-area'>
+<div class='disc-label'>Important Notice</div>
+<p class='disc-text'>This document is a management research and strategy analysis deliverable for internal discussion purposes only. It does not constitute professional investment, legal, or regulatory advice.</p>
+<p class='disc-note'>Source materials are archived in the backup folder.</p>
+<div class='ref-block'>
+<div class='disc-label'>Sources &amp; References</div>
+<p class='disc-text'>This report draws on public research and data from: Coindesk; Investopedia; Sec.</p>
+</div>
+</div></section>
+<section class='page'>
+<div class='run-head'><div class='run-head-inner'>
+<span class='run-head-brand'>BlueOcean</span>
+<span class='run-head-label'>Deep Research Report</span>
+</div></div>
+<div class='run-foot'>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>5</span>
+</div>
+<div class='content-area'>
+<span class='chapter-label'>Chapter 01</span>
+<div class='section-title'>Introduction to Cryptocurrency Exchanges</div>
+<div class='layout-b-hero'>
+<img class='vis-hero-img' src='assets/image-1.png' width='100%' alt='' />
+</div>
+<div class='lt'>
+<div class='lt-l lb-l'>
+<p>Introduction to Cryptocurrency Exchanges</p>
+</div>
+<div class='lt-r lb-r'>
+<img class='chart-sm' src='assets/chart-1.png' width='100%' alt='' />
+</div></div>
+</div></section>
+<section class='page'>
+<div class='run-head'><div class='run-head-inner'>
+<span class='run-head-brand'>BlueOcean</span>
+<span class='run-head-label'>Deep Research Report</span>
+</div></div>
+<div class='run-foot'>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>6</span>
+</div>
+<div class='content-area'>
+<span class='chapter-label'>Chapter 02</span>
+<div class='section-title'>Safety and Security Measures</div>
+<div class='lt'>
+<div class='lt-l ld-l'>
+<p>Safety and Security Measures</p>
+</div>
+<div class='lt-r ld-r'>
+<img class='chart-sm' src='assets/chart-2.png' width='100%' alt='' />
+<img class='vis-half-img' src='assets/image-2.png' width='100%' alt='' />
+</div></div>
+</div></section>
+<section class='page'>
+<div class='run-head'><div class='run-head-inner'>
+<span class='run-head-brand'>BlueOcean</span>
+<span class='run-head-label'>Deep Research Report</span>
+</div></div>
+<div class='run-foot'>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>7</span>
+</div>
+<div class='content-area'>
+<span class='chapter-label'>Chapter 03</span>
+<div class='section-title'>Trustworthiness and Reputation</div>
+<div class='lt'>
+<div class='lt-l le-l'>
+<p>Trustworthiness and Reputation</p>
+<img class='vis-half-img' src='assets/image-3.png' width='100%' alt='' />
+</div>
+<div class='lt-r le-r layout-e-sidebar'>
+<div class='ed-accent-rule'></div>
+<img class='chart-sm' src='assets/chart-3.png' width='100%' alt='' />
+</div></div>
+</div></section>
+<section class='page'>
+<div class='run-head'><div class='run-head-inner'>
+<span class='run-head-brand'>BlueOcean</span>
+<span class='run-head-label'>Deep Research Report</span>
+</div></div>
+<div class='run-foot'>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>8</span>
+</div>
+<div class='content-area'>
+<span class='chapter-label'>Chapter 04</span>
+<div class='section-title'>Protection Level and Asset Storage</div>
+<div class='layout-b-hero'>
+<img class='vis-hero-img' src='assets/image-4.png' width='100%' alt='' />
+</div>
+<div class='lt'>
+<div class='lt-l lb-l'>
+<p>Protection Level and Asset Storage</p>
+</div>
+<div class='lt-r lb-r'>
+<img class='chart-sm' src='assets/chart-4.png' width='100%' alt='' />
+</div></div>
+</div></section>
+<section class='page'>
+<div class='run-head'><div class='run-head-inner'>
+<span class='run-head-brand'>BlueOcean</span>
+<span class='run-head-label'>Deep Research Report</span>
+</div></div>
+<div class='run-foot'>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>9</span>
+</div>
+<div class='content-area'>
+<span class='chapter-label'>Chapter 05</span>
+<div class='section-title'>Comparison of Major Cryptocurrency Exchanges</div>
+<div class='lt'>
+<div class='lt-l lc-l'>
+<p>Comparison of Major Cryptocurrency Exchanges</p>
+</div>
+<div class='lt-r lc-r'>
+<img class='vis-main-img' src='assets/image-5.png' width='100%' alt='' />
+<div class='ed-rule'></div>
+<img class='chart-sm' src='assets/chart-5.png' width='100%' alt='' />
+</div></div>
+</div></section>
+<section class='page'>
+<div class='run-head'><div class='run-head-inner'>
+<span class='run-head-brand'>BlueOcean</span>
+<span class='run-head-label'>Deep Research Report</span>
+</div></div>
+<div class='run-foot'>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>10</span>
+</div>
+<div class='content-area'>
+<span class='chapter-label'>Chapter 06</span>
+<div class='section-title'>Conclusion and Recommendations</div>
+<div class='lt'>
+<div class='lt-l la-l'>
+<p>Conclusion and Recommendations</p>
+</div>
+<div class='lt-r la-r'>
+<img class='vis-main-img' src='assets/image-6.png' width='100%' alt='' />
+</div></div>
+</div></section>
+<section class='page'>
+<div class='run-head'><div class='run-head-inner'>
+<span class='run-head-brand'>BlueOcean</span>
+<span class='run-head-label'>Deep Research Report</span>
+</div></div>
+<div class='run-foot'>
+<span class='run-foot-left'>&copy; BlueOcean &middot; Confidential</span>
+<span class='run-foot-pg'>11</span>
+</div>
+<div class='content-area'>
+<span class='chapter-label'>Chapter 07</span>
+<div class='section-title'>Future Outlook and Challenges</div>
+<div class='lt'>
+<div class='lt-l la-l'>
+<p>Future Outlook and Challenges</p>
+</div>
+<div class='lt-r la-r'>
+<img class='vis-main-img' src='assets/image-7.png' width='100%' alt='' />
+</div></div>
+</div></section>
+</body></html>
